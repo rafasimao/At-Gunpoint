@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Pool<T> where T : MonoBehaviour
+public class Pool
 {
 
 	GameObject _ObjsPrefab;
 	Transform _ObjsParent;
-	List<T> _PooledObjs;
+	List<GameObject> _PooledObjs;
 	bool _IsGrowable;
 
 	public Pool (int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true)
@@ -16,25 +16,25 @@ public class Pool<T> where T : MonoBehaviour
 		_ObjsParent = parent;
 		_IsGrowable = isGrowable;
 
-		_PooledObjs = new List<T>();
+		_PooledObjs = new List<GameObject>();
 		for (int i=0; i<initialSize; i++)
 			CreateNewObj();
 	}
 
-	T CreateNewObj ()
+	GameObject CreateNewObj ()
 	{
-		T obj = GeneralFabric.CreateObject<T>(_ObjsPrefab, _ObjsParent);
-		obj.gameObject.SetActive(false);
+		GameObject obj = GeneralFabric.CreateObject(_ObjsPrefab, _ObjsParent);
+		obj.SetActive(false);
 		_PooledObjs.Add(obj);
 
 		return obj;
 	}
 
-	public T GetPooledObj () 
+	public GameObject GetPooledObj () 
 	{
 		for (int i=0; i<_PooledObjs.Count; i++)
 		{
-			if (!_PooledObjs[i].gameObject.activeInHierarchy)
+			if (!_PooledObjs[i].activeInHierarchy)
 			{
 				// Reset to prefab 
 				Rigidbody rigidbody = _PooledObjs[i].GetComponent<Rigidbody>();
@@ -56,10 +56,15 @@ public class Pool<T> where T : MonoBehaviour
 		return null;
 	}
 
+	public T GetPooledObj<T> () where T : MonoBehaviour
+	{
+		return GetPooledObj().GetComponent<T>();
+	}
+
 	public void ResetAllPooledObjs ()
 	{
 		for (int i=0; i<_PooledObjs.Count; i++)
-			_PooledObjs[i].gameObject.SetActive(false);
+			_PooledObjs[i].SetActive(false);
 	}
 
 }

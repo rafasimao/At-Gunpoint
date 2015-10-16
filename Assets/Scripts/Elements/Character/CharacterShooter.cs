@@ -6,12 +6,12 @@ public class CharacterShooter : MonoBehaviour
 	public GameObject BulletGO;
 	public float FireDelay;
 
-	Pool<Bullet> _Bullets;
+	Pool _Bullets;
 	float _FireTimer;
 
 	void Start () 
 	{
-		_Bullets = new Pool<Bullet>(5, BulletGO, null);
+		_Bullets = new Pool(5, BulletGO, null);
 		_FireTimer = 0f;
 	}
 
@@ -24,7 +24,7 @@ public class CharacterShooter : MonoBehaviour
 	{
 		if (_FireTimer > FireDelay)
 		{
-			Bullet b = _Bullets.GetPooledObj();
+			Bullet b = _Bullets.GetPooledObj<Bullet>();
 			b.transform.position = transform.position + direction;
 			b.Direction = direction;
 			b.gameObject.SetActive(true);
