@@ -8,17 +8,21 @@ public class MapController : MonoBehaviour
 	public Floor Floor1, Floor2;
 	public float FloorsOffset;
 
-	public GameObject ObstacleGO;
+	public MapPooledObject[] MapObjects;
 
 	public MapColumn[] Columns;
 
 	bool _FirstFloorTrigger = true;
 
-	Pool _Obstacles;
+	// Variables to create the progression rate
+	float _NumberOfFloorsPassed = 0f, _MaxNumberOfFloors = 50f;
+	float _StartObjectsNumber = 2f, _EndObjectsNumber = 5f; 
+	int _DeltaNumber = 4;
 
 	void Start ()
 	{
-		_Obstacles = new Pool(5, ObstacleGO, transform);
+		for (int i=0; i<MapObjects.Length; i++)
+			MapObjects[i].Initiate();
 	}
 
 	public void OnFloorTriggered (Floor floor) 
@@ -33,6 +37,8 @@ public class MapController : MonoBehaviour
 		}
 		else
 			_FirstFloorTrigger = false;
+
+		_NumberOfFloorsPassed++;
 	}
 
 	void GenerateNewFloor (Floor floorToUpdate) 
@@ -53,9 +59,12 @@ public class MapController : MonoBehaviour
 			freeColumns.Add(Columns[i]);
 		}
 
-		for (int i=0; i<5; i++)
+		int n = (int)Mathf.Lerp(_StartObjectsNumber, _EndObjectsNumber, _NumberOfFloorsPassed/_MaxNumberOfFloors);
+		n = Random.Range(n, n+_DeltaNumber);
+
+		for (int i=0; i<n; i++)
 		{
-			GameObject go = _Obstacles.GetPooledObj();
+			GameObject go = MapObjects[Random.Range(0,MapObjects.Length)].GetPooledObject();
 
 			int column = Random.Range(0,freeColumns.Count);
 			Vector3 newPos = floor.transform.position + freeColumns[column].GetARandomFreePosition();
