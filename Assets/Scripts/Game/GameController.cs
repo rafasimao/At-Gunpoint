@@ -30,7 +30,6 @@ public class GameController : MonoBehaviour
 	void Start ()
 	{
 		IsOnRunMode = false;
-		GamePlayer.SelectedChar.gameObject.SetActive(false);
 	}
 
 	public void StartRun () 
@@ -38,7 +37,8 @@ public class GameController : MonoBehaviour
 		if (!IsOnRunMode)
 		{
 			IsOnRunMode = true;
-			GamePlayer.SelectedChar.gameObject.SetActive(true);
+			GamePlayer.SelectedChar.GetComponent<Animator>().SetTrigger("StartRunning");
+			GamePlayer.SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
 			GameCamera.ChangeMode();
 		}
 	}
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
 		if (IsOnRunMode)
 		{
 			IsOnRunMode = false;
-			GamePlayer.SelectedChar.gameObject.SetActive(false);
+			GamePlayer.SelectedChar.GetComponent<CharacterMovement>().EnableRun = false;
 			GameCamera.ChangeMode();
 		}
 	}

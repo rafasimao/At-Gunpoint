@@ -4,9 +4,14 @@ using System.Collections;
 public class Character : MonoBehaviour, Damageable 
 {
 	public Control CharControl;
-	public Animator CharacterAnimator;
-
 	public int Life;
+
+	Animator _Animator;
+
+	void Start ()
+	{
+		_Animator = GetComponent<Animator>();
+	}
 
 	public void TakeDamage (int damage)
 	{
@@ -14,8 +19,8 @@ public class Character : MonoBehaviour, Damageable
 		if (IsDead()) 
 			BeKilled();
 
-		else if (CharacterAnimator!=null)
-			CharacterAnimator.SetTrigger("TookDamage");
+		else if (_Animator!=null)
+			_Animator.SetTrigger("TookDamage");
 	}
 
 	public void BeKilled ()
@@ -24,8 +29,8 @@ public class Character : MonoBehaviour, Damageable
 		Life = 0;
 		CharControl.TurnAllOff();
 
-		if (CharacterAnimator!=null)
-			CharacterAnimator.SetBool("IsDead", true);
+		if (_Animator!=null)
+			_Animator.SetBool("IsDead", true);
 	}
 
 	public bool IsDead ()

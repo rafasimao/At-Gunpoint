@@ -7,13 +7,15 @@ public class CharacterShooter : MonoBehaviour
 	public float FireDelay;
 	public Vector3 BulletsOffset;
 
-	public Animator CharacterAnimator;
+	Animator _Animator;
 
 	Pool _Bullets;
 	float _FireTimer;
 
 	void Start () 
 	{
+		_Animator = GetComponent<Animator>();
+
 		_Bullets = new Pool(5, BulletGO, null);
 		_FireTimer = 0f;
 	}
@@ -32,8 +34,8 @@ public class CharacterShooter : MonoBehaviour
 			b.Direction = direction;
 			b.gameObject.SetActive(true);
 
-			if (CharacterAnimator!=null)
-				CharacterAnimator.SetTrigger("Shot");
+			if (_Animator!=null)
+				_Animator.SetTrigger("Shot");
 
 			_FireTimer = 0f;
 		}
