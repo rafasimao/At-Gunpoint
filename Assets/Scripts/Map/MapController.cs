@@ -12,6 +12,8 @@ public class MapController : MonoBehaviour
 
 	public MapColumn[] Columns;
 
+	public AmbientController Ambient;
+
 	bool _FirstFloorTrigger = true;
 
 	// Variables to create the progression rate
@@ -23,6 +25,8 @@ public class MapController : MonoBehaviour
 	{
 		for (int i=0; i<MapObjects.Length; i++)
 			MapObjects[i].Initiate();
+
+		Ambient.Initiate();
 	}
 
 	public void OnFloorTriggered (Floor floor) 
@@ -36,7 +40,10 @@ public class MapController : MonoBehaviour
 				GenerateNewFloor(Floor1);
 		}
 		else
+		{
+			Ambient.Update(Floor2);
 			_FirstFloorTrigger = false;
+		}
 
 		_NumberOfFloorsPassed++;
 	}
@@ -45,6 +52,8 @@ public class MapController : MonoBehaviour
 	{
 
 		floorToUpdate.UpdateToNewFloor(FloorsOffset);
+
+		Ambient.Update(floorToUpdate);
 
 		GenerateObstacles(floorToUpdate);
 
