@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 
 	Rigidbody _Rigidbody;
 
-	void Start ()
+	void Awake ()
 	{
 		_Rigidbody = GetComponent<Rigidbody>();
 	}
