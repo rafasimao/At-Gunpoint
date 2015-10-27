@@ -56,7 +56,7 @@ public class Pool
 		return null;
 	}
 
-	public T GetPooledObj<T> () where T : MonoBehaviour
+	public T GetPooledObj<T> () where T : Component
 	{
 		return GetPooledObj().GetComponent<T>();
 	}

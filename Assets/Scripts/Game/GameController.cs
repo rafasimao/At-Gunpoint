@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 
 	public Player GamePlayer;
 	public CameraController GameCamera;
+	public FXController GameFXController;
 	public MapController Map;
 
 	bool IsOnRunMode;
