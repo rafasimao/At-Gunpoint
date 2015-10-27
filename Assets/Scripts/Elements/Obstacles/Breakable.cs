@@ -6,9 +6,11 @@ public class Breakable : Obstacle
 
 	public int Damage;
 
+	const float _DelayToDisappear = 0.5f;
+
 	public override void TakeDamage (int dmg)
 	{
-		gameObject.SetActive(false);
+		Invoke("Disappear", _DelayToDisappear);
 	}
 
 	void OnCollisionEnter (Collision collision)
@@ -18,7 +20,11 @@ public class Breakable : Obstacle
 			c.TakeDamage(Damage);
 			TakeDamage(1);
 		}
+	}
 
+	void Disappear ()
+	{
+		gameObject.SetActive(false);
 	}
 
 }
