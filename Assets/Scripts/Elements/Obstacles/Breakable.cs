@@ -6,7 +6,7 @@ public class Breakable : Obstacle
 
 	public int Damage;
 
-	const float _DelayToDisappear = 0.5f;
+	const float _DelayToDisappear = 0.2f;
 
 	public override void TakeDamage (int dmg)
 	{

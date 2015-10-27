@@ -7,14 +7,17 @@ public class Bullet : MonoBehaviour {
 	public float Speed;
 	public Vector3 Direction;
 
+	Rigidbody _Rigidbody;
+
+	void Start ()
+	{
+		_Rigidbody = GetComponent<Rigidbody>();
+	}
+
 	void OnEnable ()
 	{
 		Invoke("Deactivate", 2f);
-	}
-
-	void FixedUpdate ()
-	{
-		transform.Translate( Speed*Time.deltaTime*Direction.x, Direction.y, Direction.z );
+		_Rigidbody.AddForce(Direction*Speed,ForceMode.Impulse);
 	}
 
 	void OnCollisionEnter (Collision collision) 
