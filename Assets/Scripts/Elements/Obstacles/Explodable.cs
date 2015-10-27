@@ -11,6 +11,8 @@ public class Explodable : Obstacle
 
 	Collider _Collider;
 
+	const float _DelayToExplode = 0.2f;
+
 	void Start ()
 	{
 		_Collider = GetComponent<Collider>();
@@ -20,15 +22,13 @@ public class Explodable : Obstacle
 	{
 		Life--;
 		if (Life<1)
-			Invoke("Explode", 0.2f);
-			//Explode();
+			Invoke("Explode", _DelayToExplode);
 	}
 
 	void OnCollisionEnter (Collision collision)
 	{
 		if (collision.gameObject.tag.Equals("Player"))
-			Invoke("Explode", 0.2f);
-			//Explode();
+			Invoke("Explode", _DelayToExplode);
 	}
 
 	void Explode ()
@@ -48,11 +48,14 @@ public class Explodable : Obstacle
 			if (character != null)
 				character.BeKilled();
 
-			Explodable e = c.GetComponent<Explodable>();
-			if (e != null)
-				e.TakeDamage(Damage);
+			Obstacle o = c.GetComponent<Obstacle>();
+			if (o != null)
+				o.TakeDamage(Damage);
 
 		}
+
+		// Explosion effect
+		GameController.Instance.GameFXController.Play(FXController.FXTypes.Explosion,transform.position);
 
 		// Disappear
 		gameObject.SetActive(false);
