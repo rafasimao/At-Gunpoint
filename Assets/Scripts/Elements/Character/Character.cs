@@ -10,7 +10,7 @@ public class Character : MonoBehaviour, Damageable
 
 	void Start ()
 	{
-		_Animator = GetComponent<Animator>();
+		_Animator = GetComponentInChildren<Animator>();
 	}
 
 	public void TakeDamage (int damage)

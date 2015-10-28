@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
 		if (!IsOnRunMode)
 		{
 			IsOnRunMode = true;
-			GamePlayer.SelectedChar.GetComponent<Animator>().SetTrigger("StartRunning");
+			GamePlayer.SelectedChar.GetComponentInChildren<Animator>().SetTrigger("StartRunning");
 			GamePlayer.SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
 			GameCamera.ChangeMode();
 		}

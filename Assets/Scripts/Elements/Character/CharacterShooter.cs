@@ -16,7 +16,7 @@ public class CharacterShooter : MonoBehaviour
 
 	void Start () 
 	{
-		_Animator = GetComponent<Animator>();
+		_Animator = GetComponentInChildren<Animator>();
 
 		_Bullets = new Pool(5, BulletGO, null);
 		_FireTimer = 0f;
