@@ -22,12 +22,16 @@ public class Bullet : MonoBehaviour {
 
 	void OnCollisionEnter (Collision collision) 
 	{
-		Damageable obj = collision.gameObject.GetComponent<Damageable>();
+		Bullet other = collision.gameObject.GetComponent<Bullet>();
+		if (other == null)
+		{
+			Damageable obj = collision.gameObject.GetComponent<Damageable>();
 
-		if (obj != null)
-			obj.TakeDamage(Damage);
+			if (obj != null)
+				obj.TakeDamage(Damage);
 
-		gameObject.SetActive(false);
+			gameObject.SetActive(false);
+		}
 	}
 
 	void Deactivate ()
