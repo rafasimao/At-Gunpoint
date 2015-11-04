@@ -4,7 +4,10 @@ using System.Collections;
 [System.Serializable]
 public class CharacterDescriptor
 {
-	public GameObject CharacterPrefab;
+	public string Name;
+	public GameObject SkinGO;
+	public Material SkinMaterial;
+	public GameObject GunGO;
 	public CharacterLevel[] Levels;
 	public int CurrentLevel {get; private set;}
 	public int MaxLevel { get { return Levels.Length; } }
@@ -17,7 +20,7 @@ public class CharacterDescriptor
 	public CharacterDescriptor ()
 	{
 		CurrentLevel = 0;
-		IsBlocked = true;
+		IsBlocked = false;
 	}
 
 	public void Upgrade ()

@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 	public int Emeralds { get; private set; }
 
 	public Character SelectedChar;// { get; private set; }
-
 	public Control SelectedControl;// { get; private set; }
 
 	public void CollectCoins (int coins)
@@ -41,13 +40,15 @@ public class Player : MonoBehaviour
 		return false;
 	}
 
-	public void SelectCharacter (Character character)
+	public void StartRun ()
 	{
-		if (SelectedChar != null)
-			Destroy(SelectedChar.gameObject);
-		SelectedChar = character;
-		SelectedChar.transform.parent = transform;
-		IntegrateCharacterAndControl();
+		SelectedChar.GetComponentInChildren<Animator>().SetTrigger("StartRunning");
+		SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
+	}
+
+	public void SelectCharacter (CharacterDescriptor characterDescriptor)
+	{
+		//IntegrateCharacterAndControl();
 	}
 
 	public void SelectControl (Control control)

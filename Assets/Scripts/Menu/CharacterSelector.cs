@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CharacterSelector : MonoBehaviour 
 {
-
+	public CharSelectorView SelectorView;
+	public Renderer CharacterBaseRenderer;
 	public CharacterDescriptor[] CharactersDescriptors;
 
 	int CurrentCharacter;
@@ -16,13 +17,21 @@ public class CharacterSelector : MonoBehaviour
 	public void MoveLeft ()
 	{
 		if (CurrentCharacter > 0)
-			CurrentCharacter--;
+		{
+			UpdateCharacterSkin(CharactersDescriptors[CurrentCharacter],
+			                    CharactersDescriptors[--CurrentCharacter]);
+			SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+		}
 	}
 
 	public void MoveRight () 
 	{
 		if (CurrentCharacter < (CharactersDescriptors.Length-1))
-			CurrentCharacter++;
+		{
+			UpdateCharacterSkin(CharactersDescriptors[CurrentCharacter],
+			                    CharactersDescriptors[++CurrentCharacter]);
+			SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+		}
 	}
 
 	public void UpgradeCharacter ()
@@ -34,12 +43,25 @@ public class CharacterSelector : MonoBehaviour
 			descriptor.Upgrade();
 	}
 
+	void UpdateCharacterSkin (CharacterDescriptor previous, CharacterDescriptor current)
+	{
+		ActivateGO(previous.SkinGO, false);
+		ActivateGO(previous.GunGO, false);
+		ActivateGO(current.SkinGO, true);
+		ActivateGO(current.GunGO, true);
+
+		CharacterBaseRenderer.material = current.SkinMaterial;
+	}
+
+	void ActivateGO (GameObject go, bool active)
+	{
+		if (go != null)
+			go.SetActive(active);
+	}
 
 	public void SelectCharacter ()
 	{
-		Character c = GeneralFabric.CreateObject<Character>(
-			CharactersDescriptors[CurrentCharacter].CharacterPrefab, null);
-		GameController.Instance.SelectNewCharacter(c);
+		GameController.Instance.GamePlayer.SelectCharacter(CharactersDescriptors[CurrentCharacter]);
 	}
 
 }

@@ -38,8 +38,7 @@ public class GameController : MonoBehaviour
 		if (!IsOnRunMode)
 		{
 			IsOnRunMode = true;
-			GamePlayer.SelectedChar.GetComponentInChildren<Animator>().SetTrigger("StartRunning");
-			GamePlayer.SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
+			GamePlayer.StartRun();
 			GameCamera.ChangeMode();
 		}
 	}
@@ -51,15 +50,6 @@ public class GameController : MonoBehaviour
 			IsOnRunMode = false;
 			GamePlayer.SelectedChar.GetComponent<CharacterMovement>().EnableRun = false;
 			GameCamera.ChangeMode();
-		}
-	}
-
-	public void SelectNewCharacter (Character c)
-	{
-		if (!IsOnRunMode)
-		{
-			GamePlayer.SelectCharacter(c);
-			c.gameObject.SetActive(false);
 		}
 	}
 
