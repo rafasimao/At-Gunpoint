@@ -16,7 +16,7 @@ public class CharSelectorView : MonoBehaviour
 		NameText.text = character.Name;
 		UpdateInfos(character.LevelNumber, character.NumberOfLevels, EmptyStars, Stars);
 		UpdateInfos(character.Level.Life, character.LastLevel.Life, EmptyHearts, Hearts);
-		UpdateGunInformations(character.Gun, character.Level.GunLevel);
+		UpdateGunInformations(character.Gun, character.GunLevel, character.Level.GunLevelNumber);
 		UpdateUpgradeButton(character.NextLevelPrice);
 	}
 
@@ -49,15 +49,15 @@ public class CharSelectorView : MonoBehaviour
 		}
 	}
 
-	void UpdateGunInformations (GunDescriptor gun, int gunLevel)
+	void UpdateGunInformations (GunDescriptor gun, GunLevel gunLevel, int gunLevelNumber)
 	{
-		if (gun != null && gunLevel>0 && gunLevel <= gun.NumberOfLevels)
+		if (gun!=null && gunLevel!=null && gunLevelNumber>0)
 		{
 			GunNameText.text = gun.Name;
 
-			UpdateInfos(gunLevel, gun.NumberOfLevels, EmptyGunStars, GunStars);
-			UpdateBars(gun.Levels[gunLevel-1].BulletDamage, DMGBars);
-			UpdateBars(Guns.GetGunFireRateFromFireDelay(gun.Levels[gunLevel-1].FireDelay) , ROFBars);
+			UpdateInfos(gunLevelNumber, gun.NumberOfLevels, EmptyGunStars, GunStars);
+			UpdateBars(gunLevel.BulletDamage, DMGBars);
+			UpdateBars(Guns.GetGunFireRateFromFireDelay(gunLevel.FireDelay) , ROFBars);
 		}
 	}
 

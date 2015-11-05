@@ -27,6 +27,11 @@ public class CharacterShooter : MonoBehaviour
 		_FireTimer += Time.deltaTime;
 	}
 
+	public void AlignToDescriptor (CharacterDescriptor descriptor)
+	{
+		FireDelay = descriptor.GunLevel.FireDelay;
+	}
+
 	public void Fire (Vector3 direction)
 	{
 		if (_FireTimer > FireDelay)

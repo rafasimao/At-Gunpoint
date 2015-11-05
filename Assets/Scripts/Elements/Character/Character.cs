@@ -13,6 +13,11 @@ public class Character : MonoBehaviour, Damageable
 		_Animator = GetComponentInChildren<Animator>();
 	}
 
+	public void AlignToDescriptor (CharacterDescriptor descriptor)
+	{
+		Life = descriptor.Level.Life;
+	}
+
 	public void TakeDamage (int damage)
 	{
 		Life -= damage;

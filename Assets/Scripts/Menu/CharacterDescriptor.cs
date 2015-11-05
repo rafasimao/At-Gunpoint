@@ -12,6 +12,14 @@ public class CharacterDescriptor
 	public CharacterLevel[] Levels;
 
 	public GunDescriptor Gun { get { return Guns.GetGunDescriptor(GunType); } }
+	public GunLevel GunLevel 
+	{
+		get 
+		{
+			return (Level.GunLevelNumber>0 && Level.GunLevelNumber<=Gun.NumberOfLevels) ?
+				Gun.Levels[Level.GunLevelNumber-1] : null; 
+		} 
+	}
 
 	public int LevelNumber {get { return CurrentLevel+1; } }
 	public int NumberOfLevels { get { return Levels.Length; } }

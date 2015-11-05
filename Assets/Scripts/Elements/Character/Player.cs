@@ -10,8 +10,9 @@ public class Player : MonoBehaviour
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
 
-	void Start(){
-		Coins = 10000000;
+	void Start()
+	{
+		Coins = 10000;
 	}
 
 	public void CollectCoins (int coins)
@@ -52,6 +53,8 @@ public class Player : MonoBehaviour
 
 	public void SelectCharacter (CharacterDescriptor characterDescriptor)
 	{
+		SelectedChar.AlignToDescriptor(characterDescriptor);
+		SelectedChar.GetComponent<CharacterShooter>().AlignToDescriptor(characterDescriptor);
 		//IntegrateCharacterAndControl();
 	}
 

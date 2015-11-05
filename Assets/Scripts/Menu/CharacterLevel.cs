@@ -7,5 +7,5 @@ public class CharacterLevel
 	public int LevelPrice;
 	public int Life;
 
-	public int GunLevel;
+	public int GunLevelNumber;
 }
