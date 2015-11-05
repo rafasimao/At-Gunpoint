@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
 
+	void Start(){
+		Coins = 10000000;
+	}
+
 	public void CollectCoins (int coins)
 	{
 		Coins += coins;

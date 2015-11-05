@@ -8,12 +8,28 @@ public class CharacterDescriptor
 	public GameObject SkinGO;
 	public Material SkinMaterial;
 	public GameObject GunGO;
+	public Guns.Types GunType;
 	public CharacterLevel[] Levels;
-	public int CurrentLevel {get; private set;}
-	public int MaxLevel { get { return Levels.Length; } }
-	public int NextLevelPrice { get { return Levels[CurrentLevel+1].LevelPrice; } }
 
-	public bool IsUpgradable { get { return (CurrentLevel < MaxLevel); } }
+	public GunDescriptor Gun { get { return Guns.GetGunDescriptor(GunType); } }
+
+	public int LevelNumber {get { return CurrentLevel+1; } }
+	public int NumberOfLevels { get { return Levels.Length; } }
+
+	public CharacterLevel Level { get { return Levels[CurrentLevel]; } }
+	public CharacterLevel LastLevel { get { return Levels[NumberOfLevels-1]; } }
+
+	int CurrentLevel;
+
+	public int NextLevelPrice 
+	{ 
+		get 
+		{ 
+			return (CurrentLevel < NumberOfLevels-1) ? Levels[CurrentLevel+1].LevelPrice : -1; 
+		}
+	}
+
+	public bool IsUpgradable { get { return (CurrentLevel < (NumberOfLevels-1)); } }
 
 	public bool IsBlocked {get; private set;}
 

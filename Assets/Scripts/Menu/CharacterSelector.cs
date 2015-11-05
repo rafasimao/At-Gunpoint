@@ -14,6 +14,11 @@ public class CharacterSelector : MonoBehaviour
 		CurrentCharacter = 0;
 	}
 
+	void OnEnable ()
+	{
+		SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+	}
+
 	public void MoveLeft ()
 	{
 		if (CurrentCharacter > 0)
@@ -41,6 +46,8 @@ public class CharacterSelector : MonoBehaviour
 
 		if (descriptor.IsUpgradable && player.SpendCoins(descriptor.NextLevelPrice))
 			descriptor.Upgrade();
+
+		SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
 	}
 
 	void UpdateCharacterSkin (CharacterDescriptor previous, CharacterDescriptor current)

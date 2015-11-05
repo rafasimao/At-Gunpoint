@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9fd8a4e72d24a458086aeb95ef5580eb
-timeCreated: 1446596836
+timeCreated: 1446731920
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -18,6 +18,13 @@ TextureImporter:
     21300022: Shop
     21300024: Config
     21300026: Select
+    21300028: Green_Star
+    21300030: Grey_Left_Bar
+    21300032: Green_Left_Bar
+    21300034: Grey_Mid_Bar
+    21300036: Grey_Right_Bar
+    21300038: Green_Right_Bar
+    21300040: Green_Mid_Bar
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -76,9 +83,9 @@ TextureImporter:
     - name: Star
       rect:
         serializedVersion: 2
-        x: 296
+        x: 297
         y: 182
-        width: 57
+        width: 56
         height: 56
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -127,9 +134,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 50
-        width: 92
-        height: 85
+        y: 51
+        width: 91
+        height: 82
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,8 +205,78 @@ TextureImporter:
         serializedVersion: 2
         x: 2
         y: 0
-        width: 243
+        width: 241
         height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green_Star
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 1
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey_Left_Bar
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green_Left_Bar
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 17
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey_Mid_Bar
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 0
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey_Right_Bar
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green_Right_Bar
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 17
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green_Mid_Bar
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 17
+        width: 25
+        height: 15
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

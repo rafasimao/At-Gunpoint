@@ -19,13 +19,18 @@ public class GeneralFabric : MonoBehaviour
 		return CreateObject(prefab, parent).GetComponent<T>();
 	}
 
-	public static T CreateUIObject<T> (GameObject prefab, Transform parent) 
-		where T : MonoBehaviour 
+	public static GameObject CreateUIObject (GameObject prefab, Transform parent) 
 	{
 		GameObject go = (GameObject)Instantiate(
 			prefab, prefab.transform.position, prefab.transform.rotation);
 		go.transform.SetParent(parent,false);
 
-		return go.GetComponent<T>();
+		return go;
+	}
+
+	public static T CreateUIObject<T> (GameObject prefab, Transform parent) 
+		where T : MonoBehaviour 
+	{
+		return CreateUIObject(prefab, parent).GetComponent<T>();
 	}
 }
