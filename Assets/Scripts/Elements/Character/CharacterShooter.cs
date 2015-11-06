@@ -14,6 +14,10 @@ public class CharacterShooter : MonoBehaviour
 	Pool _Bullets;
 	float _FireTimer;
 
+	bool _IsSettingBullets = false;
+	float _BulletSpeed;
+	int _BulletDamage;
+
 	void Start () 
 	{
 		_Animator = GetComponentInChildren<Animator>();
@@ -30,6 +34,11 @@ public class CharacterShooter : MonoBehaviour
 	public void AlignToDescriptor (CharacterDescriptor descriptor)
 	{
 		FireDelay = descriptor.GunLevel.FireDelay;
+
+		// Just for now: Change bullets programatically every time they are released
+		_IsSettingBullets = true;
+		_BulletSpeed = descriptor.Gun.BulletSpeed;
+		_BulletDamage = descriptor.GunLevel.BulletDamage;
 	}
 
 	public void Fire (Vector3 direction)
@@ -40,6 +49,12 @@ public class CharacterShooter : MonoBehaviour
 			Bullet b = _Bullets.GetPooledObj<Bullet>();
 			b.transform.position = transform.position + direction + BulletsOffset;
 			b.Direction = direction;
+			//Changing bullets to follow descriptor description
+			if (_IsSettingBullets)
+			{
+				b.Speed = _BulletSpeed;
+				b.Damage = _BulletDamage;
+			}//----
 			b.gameObject.SetActive(true);
 
 			// Starts animation
