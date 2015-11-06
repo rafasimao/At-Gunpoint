@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
 		if (IsOnRunMode)
 		{
 			IsOnRunMode = false;
-			GamePlayer.SelectedChar.GetComponent<CharacterMovement>().EnableRun = false;
+			GamePlayer.StopRun();
 			GameCamera.ChangeMode();
 		}
 	}

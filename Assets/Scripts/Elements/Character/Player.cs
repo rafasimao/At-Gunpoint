@@ -47,8 +47,14 @@ public class Player : MonoBehaviour
 
 	public void StartRun ()
 	{
-		SelectedChar.GetComponentInChildren<Animator>().SetTrigger("StartRunning");
-		SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
+		//SelectedChar.GetComponentInChildren<Animator>().SetTrigger("StartRunning");
+		//SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
+		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
+	}
+
+	public void StopRun ()
+	{
+		SelectedChar.GetComponent<CharacterMovement>().StopRunning();
 	}
 
 	public void SelectCharacter (CharacterDescriptor characterDescriptor)

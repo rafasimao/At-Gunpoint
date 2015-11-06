@@ -12,17 +12,32 @@ public class CharacterMovement : MonoBehaviour
 	public float[] Lanes;
 
 	public bool EnableRun = true;
+	public bool MovingFoward = true;
 
 	int _CurrentLane = 0;
 
 	Vector3 _Movement;
 	Rigidbody _PlayerRigidbody;
+	Animator _Animator;
 
 	bool _MovingUp, _MovingDown;
 
 	void Awake () 
 	{
 		_PlayerRigidbody = GetComponent<Rigidbody>();
+		_Animator = GetComponentInChildren<Animator>();
+	}
+
+	public void StartRunning ()
+	{
+		_Animator.SetTrigger("StartRunning");
+		EnableRun = true;
+	}
+
+	public void StopRunning ()
+	{
+		_Animator.ResetTrigger("StartRunning");
+		EnableRun = false;
 	}
 
 	public void MoveUp ()
@@ -69,7 +84,7 @@ public class CharacterMovement : MonoBehaviour
 		}
 	
 		if (EnableRun)
-			Move(_FOWARD_MOVE, verticalMove);
+			Move((MovingFoward) ? _FOWARD_MOVE : -_FOWARD_MOVE, verticalMove);
 		else
 			Move(0f, verticalMove);
 
