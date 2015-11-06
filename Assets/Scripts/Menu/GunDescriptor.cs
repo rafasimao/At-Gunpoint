@@ -5,7 +5,7 @@ using System.Collections;
 public class GunDescriptor
 {
 	public string Name;
-	public int BulletSpeed;
+	public float BulletSpeed;
 	public GunLevel[] Levels;
 
 	public int NumberOfLevels { get { return Levels.Length; } }
