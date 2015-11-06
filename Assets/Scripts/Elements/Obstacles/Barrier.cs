@@ -10,10 +10,7 @@ public class Barrier : Obstacle
 	void OnCollisionEnter (Collision collision)
 	{
 		if (collision.gameObject.tag.Equals("Player"))
-		{
-			Character c = collision.gameObject.GetComponent<Character>();
-			c.BeKilled();
-		}
+			collision.gameObject.GetComponent<Character>().BeKilled();
 	}
 
 }
