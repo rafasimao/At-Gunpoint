@@ -4,13 +4,16 @@ using System.Collections;
 public class Breakable : Obstacle 
 {
 
+	public int Life;
 	public int Damage;
 
 	const float _DelayToDisappear = 0.2f;
 
 	public override void TakeDamage (int dmg)
 	{
-		Invoke("Disappear", _DelayToDisappear);
+		Life -= dmg;
+		if (Life < 1)
+			Invoke("Disappear", _DelayToDisappear);
 	}
 
 	void OnCollisionEnter (Collision collision)
