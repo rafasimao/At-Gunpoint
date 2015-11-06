@@ -18,9 +18,9 @@ public class Breakable : Obstacle
 
 	void OnCollisionEnter (Collision collision)
 	{
-		Character c = collision.gameObject.GetComponent<Character>();
-		if (c != null) {
-			c.TakeDamage(Damage);
+		Damageable d = collision.gameObject.GetComponent<Damageable>();
+		if (d != null) {
+			d.TakeDamage(Damage);
 			TakeDamage(1);
 		}
 	}

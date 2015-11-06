@@ -27,12 +27,15 @@ public class Explodable : Obstacle
 
 	void OnCollisionEnter (Collision collision)
 	{
-		if (collision.gameObject.tag.Equals("Player"))
+		Damageable d = collision.gameObject.GetComponent<Damageable>();
+		if (d != null)
 		{
 			if (Life<2)
 				Invoke("Explode", _DelayToExplode);
-			else
-				collision.gameObject.GetComponent<Character>().BeKilled();
+			else if (d is Character)
+				((Character)d).BeKilled();
+			else 
+				d.TakeDamage(1);
 		}
 	}
 
