@@ -13,21 +13,17 @@ public class AIKamikazeControl : Control
 	{
 		SawEnemy = false;
 		PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
+		Movement.StopRunning();
 	}
 
 	protected override void UpdateInputs ()
 	{
 		if (!SawEnemy && 
-		    (PlayerChar.position - transform.position).magnitude < _PlayerDistanceToSee)
+		    (PlayerChar.position - Movement.transform.position).magnitude < _PlayerDistanceToSee)
 		{
 			Movement.StartRunning();
 			SawEnemy = true;
 		}
-	}
-
-	void OnDisable ()
-	{
-		Movement.StopRunning();
 	}
 
 }
