@@ -6,7 +6,8 @@ public class AIControl : Control
 
 	protected override void UpdateInputs ()
 	{
-		Shooter.Fire(Vector3.right);
+		if (Shooter.IsReadyToFire)
+			Shooter.Fire(Vector3.right);
 	}
 
 }

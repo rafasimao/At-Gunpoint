@@ -9,6 +9,8 @@ public class Explodable : Obstacle
 
 	public int Damage;
 
+	public bool IsUntouchable = false;
+
 	Collider _Collider;
 
 	const float _DelayToExplode = 0.2f;
@@ -28,7 +30,9 @@ public class Explodable : Obstacle
 	void OnCollisionEnter (Collision collision)
 	{
 		Damageable d = collision.gameObject.GetComponent<Damageable>();
-		if (d != null)
+		if (IsUntouchable)
+			Invoke("Explode", _DelayToExplode);
+		else if (d != null)
 		{
 			if (Life<2)
 				Invoke("Explode", _DelayToExplode);
@@ -37,6 +41,7 @@ public class Explodable : Obstacle
 			else 
 				d.TakeDamage(1);
 		}
+
 	}
 
 	void Explode ()

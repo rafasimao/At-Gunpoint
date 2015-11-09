@@ -9,6 +9,9 @@ public class CharacterShooter : MonoBehaviour
 
 	public ParticleSystem FXGunFire;
 
+	public bool IsReadyToFire { get { return (_FireTimer > FireDelay); } }
+	public float LoadedFireDelay { get { return _FireTimer/FireDelay; } }
+
 	Animator _Animator;
 
 	Pool _Bullets;
@@ -43,7 +46,7 @@ public class CharacterShooter : MonoBehaviour
 
 	public void Fire (Vector3 direction)
 	{
-		if (_FireTimer > FireDelay)
+		if (IsReadyToFire)
 		{
 			// Place bullet
 			Bullet b = _Bullets.GetPooledObj<Bullet>();
