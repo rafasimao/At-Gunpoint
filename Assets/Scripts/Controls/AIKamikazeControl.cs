@@ -12,8 +12,12 @@ public class AIKamikazeControl : Control
 	void OnEnable ()
 	{
 		SawEnemy = false;
-		PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
 		Movement.StopRunning();
+	}
+
+	protected override void OnStart ()
+	{
+		PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
 	}
 
 	protected override void UpdateInputs ()

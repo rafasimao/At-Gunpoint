@@ -4,6 +4,9 @@ using System.Collections;
 public class KeyboardControl : Control 
 {
 
+	protected override void OnStart ()
+	{}
+
 	protected override void UpdateInputs ()
 	{
 		if (Input.GetKeyDown(KeyCode.UpArrow))

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class MapController : MonoBehaviour 
 {
-
 	public Floor Floor1, Floor2;
 	public float FloorsOffset;
 
@@ -50,13 +49,11 @@ public class MapController : MonoBehaviour
 
 	void GenerateNewFloor (Floor floorToUpdate) 
 	{
-
 		floorToUpdate.UpdateToNewFloor(FloorsOffset);
 
 		Ambient.Update(floorToUpdate);
 
 		GenerateObstacles(floorToUpdate);
-
 	}
 
 	void GenerateObstacles (Floor floor)

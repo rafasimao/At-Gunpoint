@@ -30,13 +30,15 @@ public class CharacterMovement : MonoBehaviour
 
 	public void StartRunning ()
 	{
-		_Animator.SetTrigger("StartRunning");
+		if(_Animator!=null)
+			_Animator.SetTrigger("StartRunning");
 		EnableRun = true;
 	}
 
 	public void StopRunning ()
 	{
-		_Animator.ResetTrigger("StartRunning");
+		if(_Animator!=null)
+			_Animator.ResetTrigger("StartRunning");
 		EnableRun = false;
 	}
 

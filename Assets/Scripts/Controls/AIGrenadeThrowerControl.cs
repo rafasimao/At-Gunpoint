@@ -6,7 +6,7 @@ public class AIGrenadeThrowerControl : Control
 
 	Transform _PlayerChar;
 
-	void OnEnable ()
+	protected override void OnStart ()
 	{
 		_PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
 	}

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class AIControl : Control 
 {
+	protected override void OnStart ()
+	{}
 
 	protected override void UpdateInputs ()
 	{

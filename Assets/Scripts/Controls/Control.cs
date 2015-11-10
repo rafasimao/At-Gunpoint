@@ -11,7 +11,10 @@ public abstract class Control : MonoBehaviour
 	void Start ()
 	{
 		IsOn = true;
+		OnStart();
 	}
+
+	protected abstract void OnStart ();
 
 	public void TurnAllOff ()
 	{
