@@ -5,6 +5,8 @@ public class UnloadGunState : BossState
 {
 	public int TotalNumberOfShots = 2;
 
+	public bool FollowPlayer;
+
 	int _NumberOfShots;
 
 	public override void StateStart () 
@@ -16,7 +18,13 @@ public class UnloadGunState : BossState
 	{
 		if (Shooter.IsReadyToFire)
 		{
-			Shooter.Fire(Vector3.right);
+			if (FollowPlayer)
+			{
+				Vector3 dir = (PlayerChar.position-Vector3.right*6f) - Boss.position;
+				Shooter.Fire (dir.normalized);
+			}
+			else
+				Shooter.Fire(Vector3.right);
 			_NumberOfShots++;
 			if (_NumberOfShots >= TotalNumberOfShots)
 				return true;
