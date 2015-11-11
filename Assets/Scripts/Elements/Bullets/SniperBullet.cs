@@ -1,45 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SniperBullet : Bullet
+public class SniperBullet : RegularBullet
 {
 	public float MinVelocity;
-	Rigidbody _Rigidbody;
-	
-	void Awake ()
-	{
-		_Rigidbody = GetComponent<Rigidbody>();
-	}
-	
-	void OnEnable ()
-	{
-		Invoke("Deactivate", 2f);
-		_Rigidbody.AddForce(Direction*Speed,ForceMode.Impulse);
-	}
-	
-	void OnCollisionEnter (Collision collision) 
-	{
-		Bullet other = collision.gameObject.GetComponent<Bullet>();
-		if (other == null)
-		{
-			Damageable obj = collision.gameObject.GetComponent<Damageable>();
-			
-			if (obj != null)
-				obj.TakeDamage(Damage);
 
-			Debug.Log(_Rigidbody.velocity.magnitude);
-			if (_Rigidbody.velocity.magnitude < MinVelocity)
-				gameObject.SetActive(false);
-		}
-	}
-	
-	void Deactivate ()
+	protected override void Deactivate ()
 	{
-		gameObject.SetActive(false);
-	}
-	
-	void OnDisable ()
-	{
-		CancelInvoke();
+		// Verifies if it came from a invoke functions(checking if there aint any other on)
+		// else verifies if the velocity permits to be deactivated
+		if (!IsInvoking() || _Rigidbody.velocity.magnitude < MinVelocity)
+			base.Deactivate ();
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class RegularBullet : Bullet
 {
 
-	Rigidbody _Rigidbody;
+	protected Rigidbody _Rigidbody;
 	
 	void Awake ()
 	{
@@ -27,11 +27,11 @@ public class RegularBullet : Bullet
 			if (obj != null)
 				obj.TakeDamage(Damage);
 			
-			gameObject.SetActive(false);
+			Deactivate();
 		}
 	}
 	
-	void Deactivate ()
+	protected virtual void Deactivate ()
 	{
 		gameObject.SetActive(false);
 	}
