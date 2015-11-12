@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Explodable : Obstacle 
 {
-	public int Life;
+
+	public int MaxLife;
+	public int Life { get; private set; }
 	public float Force;
 	public float Radius;
 
@@ -18,6 +20,11 @@ public class Explodable : Obstacle
 	void Start ()
 	{
 		_Collider = GetComponent<Collider>();
+	}
+
+	void OnEnable ()
+	{
+		Life = MaxLife;
 	}
 
 	public override void TakeDamage (int dmg)

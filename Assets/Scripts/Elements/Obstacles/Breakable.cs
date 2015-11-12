@@ -4,10 +4,17 @@ using System.Collections;
 public class Breakable : Obstacle 
 {
 
-	public int Life;
+	public int MaxLife;
 	public int Damage;
 
+	public int Life { get; private set; }
+
 	const float _DelayToDisappear = 0.2f;
+
+	void OnEnable ()
+	{
+		Life = MaxLife;
+	}
 
 	public override void TakeDamage (int dmg)
 	{

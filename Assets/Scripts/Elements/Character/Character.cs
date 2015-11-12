@@ -4,7 +4,8 @@ using System.Collections;
 public class Character : MonoBehaviour, Damageable 
 {
 	public Control CharControl;
-	public int Life;
+	public int MaxLife;
+	public int Life { get; private set; }
 
 	Animator _Animator;
 
@@ -13,9 +14,16 @@ public class Character : MonoBehaviour, Damageable
 		_Animator = GetComponentInChildren<Animator>();
 	}
 
+	void OnEnable ()
+	{
+		Life = MaxLife;
+		CharControl.TurnAllOn();
+	}
+
 	public void AlignToDescriptor (CharacterDescriptor descriptor)
 	{
-		Life = descriptor.Level.Life;
+		MaxLife = descriptor.Level.Life;
+		Life = MaxLife;
 	}
 
 	public void TakeDamage (int damage)
