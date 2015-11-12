@@ -27,6 +27,8 @@ public class Breakable : Obstacle
 
 	void Disappear ()
 	{
+		// Break effect
+		GameController.Instance.GameFXController.Play(FXController.FXTypes.Break,transform.position);
 		gameObject.SetActive(false);
 	}
 
