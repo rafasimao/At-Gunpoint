@@ -21,36 +21,36 @@ public class CharacterDescriptor
 		} 
 	}
 
-	public int LevelNumber {get { return CurrentLevel+1; } }
+	public int LevelNumber {get { return _CurrentLevel+1; } }
 	public int NumberOfLevels { get { return Levels.Length; } }
 
-	public CharacterLevel Level { get { return Levels[CurrentLevel]; } }
+	public CharacterLevel Level { get { return Levels[_CurrentLevel]; } }
 	public CharacterLevel LastLevel { get { return Levels[NumberOfLevels-1]; } }
 
-	int CurrentLevel;
+	int _CurrentLevel;
 
 	public int NextLevelPrice 
 	{ 
 		get 
 		{ 
-			return (CurrentLevel < NumberOfLevels-1) ? Levels[CurrentLevel+1].LevelPrice : -1; 
+			return (_CurrentLevel < NumberOfLevels-1) ? Levels[_CurrentLevel+1].LevelPrice : -1; 
 		}
 	}
 
-	public bool IsUpgradable { get { return (CurrentLevel < (NumberOfLevels-1)); } }
+	public bool IsUpgradable { get { return (_CurrentLevel < (NumberOfLevels-1)); } }
 
 	public bool IsBlocked {get; private set;}
 
 	public CharacterDescriptor ()
 	{
-		CurrentLevel = 0;
+		_CurrentLevel = 0;
 		IsBlocked = false;
 	}
 
 	public void Upgrade ()
 	{
 		if (IsUpgradable)
-			CurrentLevel++;
+			_CurrentLevel++;
 	}
 
 	public void Unblock ()
