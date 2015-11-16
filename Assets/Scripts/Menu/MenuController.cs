@@ -3,18 +3,17 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour 
 {
+	// main menu = 0;
+	// char selection = 1;
+	// war selection = 2;
+	// options = 3;
+	// run = 4;
 
-	const int _MAINMENU_MODE = 0;
-	const int _CHARSELECTION_MODE = 1;
-	const int _OPTIONS_MODE = 2;
-	const int _RUNNING_MODE = 3;
-	const int _INACTIVE_MODE = 4;
-
-	public GameObject MainMenu, CharSelection, Options, Running;
+	public GameObject[] Views;
 
 	void Start () 
 	{
-		SetMode(_MAINMENU_MODE);
+		SetMode(0);
 	}
 
 	public void GoToMode (int mode)
@@ -24,33 +23,15 @@ public class MenuController : MonoBehaviour
 
 	void SetMode (int mode)
 	{
-		switch (mode)
-		{
-		case _MAINMENU_MODE:
-			SetActiveViews (true, false, false, false);
-			break;
-		case _CHARSELECTION_MODE:
-			SetActiveViews (false, true, false, false);
-			break;
-		case _OPTIONS_MODE:
-			SetActiveViews (false, false, true, false);
-			break;
-		case _RUNNING_MODE:
-			SetActiveViews(false, false, false, true);
-			break;
-		case _INACTIVE_MODE:
-			SetActiveViews(false, false, false, false);
-			break;
-		default:
-			return;
-		}
+		if (mode > -1 && mode < Views.Length)
+			SetActiveViews(mode);
 	}
 
-	void SetActiveViews (bool mainMenu, bool charSelection, bool options, bool running)
+	void SetActiveViews (int view)
 	{
-		MainMenu.SetActive(mainMenu);
-		CharSelection.SetActive(charSelection);
-		Options.SetActive(options);
-		Running.SetActive(running);
+		for (int i=0; i<Views.Length; i++)
+			Views[i].SetActive(false);
+
+		Views[view].SetActive(true);
 	}
 }
