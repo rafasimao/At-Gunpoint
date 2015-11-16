@@ -46,7 +46,7 @@ public class Guns : MonoBehaviour
 		return null;
 	}
 
-	public static int GetGunFireRateFromFireDelay(float delay)
+	public static int GetGunFireRateFromFireDelay (float delay)
 	{
 		int result = 0;
 		if (delay < 0.4f)
