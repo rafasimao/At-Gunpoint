@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
 	{
 		if (!IsOnRunMode)
 		{
+			Map.StartRun();
 			IsOnRunMode = true;
 			GamePlayer.StartRun();
 			GameCamera.ChangeMode();

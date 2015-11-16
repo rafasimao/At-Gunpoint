@@ -19,6 +19,11 @@ public class CharacterSelector : MonoBehaviour
 		SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
 	}
 
+	public void AlignToDescriptor (WarDescriptor descriptor)
+	{
+
+	}
+
 	public void MoveLeft ()
 	{
 		if (CurrentCharacter > 0)

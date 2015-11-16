@@ -28,9 +28,19 @@ public class AmbientController
 	{
 		_StreetMatches = new Pool[StreetMatchesPrefabs.Length];
 		for (int i=0; i<StreetMatchesPrefabs.Length; i++)
-		{
 			_StreetMatches[i] = new Pool(2, StreetMatchesPrefabs[i], StreetMatchesParent, false);
-		}
+	}
+
+	public void AlignToDescriptor (SegmentDescriptor descriptor)
+	{
+		StreetMatchesPrefabs =  descriptor.StreetMatchesPrefabs;
+	}
+
+	public void Clear ()
+	{
+		for (int i=0; i<_StreetMatches.Length; i++)
+			_StreetMatches[i].Clear();
+		_LastStreetMatch = _SecondLastStreetMatch = null;
 	}
 
 	public void Update (Floor floor)

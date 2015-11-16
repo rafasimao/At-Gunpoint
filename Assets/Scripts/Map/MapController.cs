@@ -1,31 +1,65 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class MapController : MonoBehaviour 
 {
 	public Floor Floor1, Floor2;
 	public float FloorsOffset;
 
-	public MapPooledObject[] MapObjects;
+	public AmbientController _Ambient;
+	public ObstaclesController _Obstacles;
 
-	public MapColumn[] Columns;
-
-	public AmbientController Ambient;
+	SegmentDescriptor[] _Segments;
+	int _CurrentSegment;
 
 	bool _FirstFloorTrigger = true;
 
 	// Variables to create the progression rate
 	int _NumberOfFloorsPassed = 0, _MaxNumberOfFloors = 50;
-	float _StartObjectsNumber = 2f, _EndObjectsNumber = 5f; 
-	int _DeltaNumber = 4;
 
-	void Start ()
+	public void StartRun ()
 	{
-		for (int i=0; i<MapObjects.Length; i++)
-			MapObjects[i].Initiate();
+		InitiateComponents();
+	}
 
-		Ambient.Initiate();
+	public void AlignToDescriptor (RunDescriptor descriptor)
+	{
+		if (descriptor.Segments != null)
+		{
+			_Segments = descriptor.Segments;
+			_CurrentSegment = 0;
+			AlignComponentsToSegment(_Segments[_CurrentSegment]);
+		}
+	}
+
+	void InitiateComponents ()
+	{
+		_Obstacles.Initiate();
+		_Ambient.Initiate();
+	}
+
+	void AlignComponentsToSegment (SegmentDescriptor segment)
+	{
+		_Ambient.AlignToDescriptor(segment);
+		_Obstacles.AlignToDescriptor(segment);
+	}
+
+	void ClearComponents ()
+	{
+		_Ambient.Clear();
+		_Obstacles.Clear();
+	}
+
+	void GoToNextSegment ()
+	{
+		if (_CurrentSegment+1 < _Segments.Length)
+		{
+			_CurrentSegment++;
+
+			ClearComponents();
+			AlignComponentsToSegment(_Segments[_CurrentSegment]);
+			InitiateComponents();
+		}
 	}
 
 	public void OnFloorTriggered (Floor floor) 
@@ -40,7 +74,7 @@ public class MapController : MonoBehaviour
 		}
 		else
 		{
-			Ambient.Update(Floor2);
+			_Ambient.Update(Floor2);
 			_FirstFloorTrigger = false;
 		}
 
@@ -51,36 +85,9 @@ public class MapController : MonoBehaviour
 	{
 		floorToUpdate.UpdateToNewFloor(FloorsOffset);
 
-		Ambient.Update(floorToUpdate);
+		_Ambient.Update(floorToUpdate);
+		_Obstacles.Update(floorToUpdate, _NumberOfFloorsPassed/_MaxNumberOfFloors);
 
-		GenerateObstacles(floorToUpdate);
-	}
-
-	void GenerateObstacles (Floor floor)
-	{
-		List<MapColumn> freeColumns = new List<MapColumn>();
-		for (int i=0; i<Columns.Length; i++)
-		{
-			Columns[i].FreeAllPositions();
-			freeColumns.Add(Columns[i]);
-		}
-
-		int n = (int)Mathf.Lerp(_StartObjectsNumber, _EndObjectsNumber, _NumberOfFloorsPassed/_MaxNumberOfFloors);
-		n = Random.Range(n, n+_DeltaNumber);
-
-		for (int i=0; i<n; i++)
-		{
-			GameObject go = MapObjects[Random.Range(0,MapObjects.Length)].GetPooledObject();
-
-			int column = Random.Range(0,freeColumns.Count);
-			Vector3 newPos = floor.transform.position + freeColumns[column].GetARandomFreePosition();
-			newPos.y = go.transform.position.y;
-			go.transform.position = newPos;
-			if (freeColumns[column].IsFull())
-				freeColumns.RemoveAt(column);
-
-			go.SetActive(true);
-		}
 	}
 
 }
