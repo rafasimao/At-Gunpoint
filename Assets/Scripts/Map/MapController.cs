@@ -16,7 +16,7 @@ public class MapController : MonoBehaviour
 	bool _FirstFloorTrigger = true;
 
 	// Variables to create the progression rate
-	float _NumberOfFloorsPassed = 0f, _MaxNumberOfFloors = 50f;
+	int _NumberOfFloorsPassed = 0, _MaxNumberOfFloors = 50;
 	float _StartObjectsNumber = 2f, _EndObjectsNumber = 5f; 
 	int _DeltaNumber = 4;
 
