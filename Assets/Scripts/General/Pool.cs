@@ -12,10 +12,15 @@ public class Pool
 
 	public Pool (int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true)
 	{
+		InitiatePool(initialSize,prefab,parent,isGrowable);
+	}
+
+	public void InitiatePool (int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true)
+	{
 		_ObjsPrefab = prefab;
 		_ObjsParent = parent;
 		_IsGrowable = isGrowable;
-
+		
 		_PooledObjs = new List<GameObject>();
 		for (int i=0; i<initialSize; i++)
 			CreateNewObj();
@@ -28,6 +33,14 @@ public class Pool
 		_PooledObjs.Add(obj);
 
 		return obj;
+	}
+
+	public void Clear (float delay = 1f)
+	{
+		for (int i=0; i<_PooledObjs.Count; i++)
+			GameObject.Destroy(_PooledObjs[i],delay);
+
+		_PooledObjs.Clear();
 	}
 
 	public GameObject GetPooledObj () 
