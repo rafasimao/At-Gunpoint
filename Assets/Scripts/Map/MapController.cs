@@ -59,6 +59,11 @@ public class MapController : MonoBehaviour
 			ClearComponents();
 			AlignComponentsToSegment(_Segments[_CurrentSegment]);
 			InitiateComponents();
+
+			if (_CurrentSegment+1 < _Segments.Length)
+				_MaxNumberOfFloors = _Segments[_CurrentSegment+1].StartFloor - _NumberOfFloorsPassed;
+			else
+				_MaxNumberOfFloors = 50;
 		}
 	}
 
@@ -78,7 +83,13 @@ public class MapController : MonoBehaviour
 			_FirstFloorTrigger = false;
 		}
 
+		// Increment floors counter
 		_NumberOfFloorsPassed++;
+		// Verify if segment ended
+		if (_Segments!=null &&
+		    _CurrentSegment+1 < _Segments.Length && 
+		    _NumberOfFloorsPassed > _Segments[_CurrentSegment+1].StartFloor)
+			GoToNextSegment();
 	}
 
 	void GenerateNewFloor (Floor floorToUpdate) 
@@ -86,7 +97,10 @@ public class MapController : MonoBehaviour
 		floorToUpdate.UpdateToNewFloor(FloorsOffset);
 
 		_Ambient.Update(floorToUpdate);
-		_Obstacles.Update(floorToUpdate, _NumberOfFloorsPassed/_MaxNumberOfFloors);
+		_Obstacles.Update(floorToUpdate,
+		                  (_Segments!=null) ?
+		                  _NumberOfFloorsPassed-_Segments[_CurrentSegment].StartFloor/_MaxNumberOfFloors :
+		                  _NumberOfFloorsPassed/_MaxNumberOfFloors);
 
 	}
 

@@ -15,9 +15,9 @@ public class MapPooledObject
 		_ObjectPool = new Pool(InitialQuantity, ObjectPrefab, ObjectsParent);
 	}
 
-	public void Clear ()
+	public void Clear (float delay)
 	{
-		_ObjectPool.Clear();
+		_ObjectPool.Clear(delay);
 	}
 
 	public GameObject GetPooledObject ()

@@ -25,7 +25,7 @@ public class ObstaclesController
 	public void Clear ()
 	{
 		for (int i=0; i<MapObjects.Length; i++)
-			MapObjects[i].Clear();
+			MapObjects[i].Clear(10f);
 	}
 
 	public void Update (Floor floor, float traveledPercentage)

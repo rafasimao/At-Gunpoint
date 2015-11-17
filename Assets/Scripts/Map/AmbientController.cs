@@ -39,7 +39,7 @@ public class AmbientController
 	public void Clear ()
 	{
 		for (int i=0; i<_StreetMatches.Length; i++)
-			_StreetMatches[i].Clear();
+			_StreetMatches[i].Clear(10f);
 		_LastStreetMatch = _SecondLastStreetMatch = null;
 	}
 
