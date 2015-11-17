@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	public CameraController GameCamera;
 	public FXController GameFXController;
 	public MapController Map;
+	public WarController War;
 
 	bool IsOnRunMode;
 

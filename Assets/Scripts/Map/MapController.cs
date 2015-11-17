@@ -19,6 +19,7 @@ public class MapController : MonoBehaviour
 
 	public void StartRun ()
 	{
+		AlignToDescriptor (GameController.Instance.War.CurrentRunDescriptor);
 		InitiateComponents();
 	}
 

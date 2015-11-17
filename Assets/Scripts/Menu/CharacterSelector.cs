@@ -20,6 +20,7 @@ public class CharacterSelector : MonoBehaviour
 
 	void OnEnable ()
 	{
+		AlignToDescriptor (GameController.Instance.War.CurrentWarDescriptor);
 		SelectorView.UpdateCharInformations(_CurrentRun.Characters[_CurrentCharacter]);
 	}
 
@@ -38,6 +39,7 @@ public class CharacterSelector : MonoBehaviour
 		}
 		else if (_CurrentRun == _War.Run2)
 		{
+			GameController.Instance.War.SelectRun(WarDescriptor.WarRun.Run1);
 			_CurrentRun = _War.Run1;
 			_CurrentCharacter = _CurrentRun.Characters.Length-1;
 
@@ -53,6 +55,7 @@ public class CharacterSelector : MonoBehaviour
 		}
 		else if (_CurrentRun == _War.Run1)
 		{
+			GameController.Instance.War.SelectRun(WarDescriptor.WarRun.Run2);
 			_CurrentRun = _War.Run2;
 			_CurrentCharacter = 0;
 
