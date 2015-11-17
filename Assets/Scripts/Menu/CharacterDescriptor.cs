@@ -5,9 +5,7 @@ using System.Collections;
 public class CharacterDescriptor
 {
 	public string Name;
-	public GameObject SkinGO;
-	public Material SkinMaterial;
-	public GameObject GunGO;
+	public Skins.Type SkinType;
 	public Guns.Types GunType;
 	public CharacterLevel[] Levels;
 

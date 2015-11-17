@@ -4,76 +4,88 @@ using System.Collections;
 public class CharacterSelector : MonoBehaviour 
 {
 	public CharSelectorView SelectorView;
-	public Renderer CharacterBaseRenderer;
 	public CharacterDescriptor[] CharactersDescriptors;
 
-	int CurrentCharacter;
+	public SkinManager MainCharSkin;
+
+	WarDescriptor _War;
+	RunDescriptor _CurrentRun;
+
+	int _CurrentCharacter;
 
 	void Start ()
 	{
-		CurrentCharacter = 0;
+		_CurrentCharacter = 0;
 	}
 
 	void OnEnable ()
 	{
-		SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+		SelectorView.UpdateCharInformations(_CurrentRun.Characters[_CurrentCharacter]);
 	}
 
 	public void AlignToDescriptor (WarDescriptor descriptor)
 	{
-
+		_War = descriptor;
+		_CurrentRun = _War.Run1;
+		_CurrentCharacter = 0;
 	}
 
 	public void MoveLeft ()
 	{
-		if (CurrentCharacter > 0)
+		if (_CurrentCharacter > 0)
 		{
-			UpdateCharacterSkin(CharactersDescriptors[CurrentCharacter],
-			                    CharactersDescriptors[--CurrentCharacter]);
-			SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+			ChangeCharacterInfos(_CurrentRun.Characters[--_CurrentCharacter]);
+		}
+		else if (_CurrentRun == _War.Run2)
+		{
+			_CurrentRun = _War.Run1;
+			_CurrentCharacter = _CurrentRun.Characters.Length-1;
+
+			ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
 		}
 	}
 
 	public void MoveRight () 
 	{
-		if (CurrentCharacter < (CharactersDescriptors.Length-1))
+		if (_CurrentCharacter < (_CurrentRun.Characters.Length-1))
 		{
-			UpdateCharacterSkin(CharactersDescriptors[CurrentCharacter],
-			                    CharactersDescriptors[++CurrentCharacter]);
-			SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+			ChangeCharacterInfos(_CurrentRun.Characters[++_CurrentCharacter]);
 		}
+		else if (_CurrentRun == _War.Run1)
+		{
+			_CurrentRun = _War.Run2;
+			_CurrentCharacter = 0;
+
+			ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
+		}
+	}
+
+	void ChangeCharacterInfos (CharacterDescriptor character)
+	{
+		UpdateCharacterSkin(character);
+		SelectorView.UpdateCharInformations(character);
 	}
 
 	public void UpgradeCharacter ()
 	{
 		Player player = GameController.Instance.GamePlayer;
-		CharacterDescriptor descriptor = CharactersDescriptors[CurrentCharacter];
+		CharacterDescriptor descriptor = _CurrentRun.Characters[_CurrentCharacter];
 
 		if (descriptor.IsUpgradable && player.SpendCoins(descriptor.NextLevelPrice))
 			descriptor.Upgrade();
 
-		SelectorView.UpdateCharInformations(CharactersDescriptors[CurrentCharacter]);
+		SelectorView.UpdateCharInformations(_CurrentRun.Characters[_CurrentCharacter]);
 	}
 
-	void UpdateCharacterSkin (CharacterDescriptor previous, CharacterDescriptor current)
+	void UpdateCharacterSkin (CharacterDescriptor character)
 	{
-		ActivateGO(previous.SkinGO, false);
-		ActivateGO(previous.GunGO, false);
-		ActivateGO(current.SkinGO, true);
-		ActivateGO(current.GunGO, true);
-
-		CharacterBaseRenderer.material = current.SkinMaterial;
-	}
-
-	void ActivateGO (GameObject go, bool active)
-	{
-		if (go != null)
-			go.SetActive(active);
+		MainCharSkin.ChangeSkin(character.SkinType);
+		MainCharSkin.ChangeGun(character.GunType);
 	}
 
 	public void SelectCharacter ()
 	{
-		GameController.Instance.GamePlayer.SelectCharacter(CharactersDescriptors[CurrentCharacter]);
+		GameController.Instance.GamePlayer.SelectCharacter(_CurrentRun.Characters[_CurrentCharacter]);
 	}
 
 }
