@@ -8,6 +8,8 @@ public class TrampleState : BossState
 
 	float _NormalSpeed;
 
+	Character _Player;
+
 	public override void StateStart ()
 	{
 		// Keep previous speed
@@ -16,10 +18,20 @@ public class TrampleState : BossState
 		// Break
 		Movement.Speed = BreakSpeed;
 		Movement.MovingFoward = false;
+
+		_Player = PlayerChar.GetComponent<Character>();
+	}
+
+	void Stop ()
+	{
+		Movement.StopRunning();
 	}
 
 	public override bool StateUpdate ()
 	{
+		if (_Player!=null && _Player.IsDead())
+			Invoke("Stop",0.4f);
+
 		if (!Movement.MovingFoward && Boss.position.x > PlayerChar.position.x)
 		{
 			Movement.MovingFoward = true;
