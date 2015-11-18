@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class WarDescriptor
+public class WarDescriptor : ScriptableObject
 {
 	public enum WarRun
 	{

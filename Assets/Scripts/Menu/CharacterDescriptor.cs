@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class CharacterDescriptor
+public class CharacterDescriptor : ScriptableObject
 {
 	public string Name;
 	public Skins.Type SkinType;
@@ -19,7 +18,7 @@ public class CharacterDescriptor
 		} 
 	}
 
-	public int LevelNumber {get { return _CurrentLevel+1; } }
+	public int LevelNumber { get { return _CurrentLevel+1; } }
 	public int NumberOfLevels { get { return Levels.Length; } }
 
 	public CharacterLevel Level { get { return Levels[_CurrentLevel]; } }

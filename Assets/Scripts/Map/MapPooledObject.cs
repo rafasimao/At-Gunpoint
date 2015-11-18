@@ -6,6 +6,7 @@ public class MapPooledObject
 {
 	public GameObject ObjectPrefab;
 	public int InitialQuantity;
+	[HideInInspector]
 	public Transform ObjectsParent;
 
 	Pool _ObjectPool;

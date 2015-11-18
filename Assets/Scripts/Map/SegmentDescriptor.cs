@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class SegmentDescriptor
+public class SegmentDescriptor : ScriptableObject
 {
 	public int StartFloor;
 
 	public GameObject[] StreetMatchesPrefabs;
-	public MapColumn[] Columns;
 	public MapPooledObject[] MapObjects;
+	public MapMatrix Matrix;
 
 	public Interval Progression;
 }

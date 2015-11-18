@@ -5,20 +5,25 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ObstaclesController
 {
+	public Transform MapObjectsParent;
+
 	public MapPooledObject[] MapObjects;
-	public MapColumn[] Columns;
+	public MapMatrix Matrix;
 	public Interval Progression;
 
 	public void Initiate ()
 	{
 		for (int i=0; i<MapObjects.Length; i++)
+		{
+			MapObjects[i].ObjectsParent = MapObjectsParent;
 			MapObjects[i].Initiate();
+		}
 	}
 
 	public void AlignToDescriptor (SegmentDescriptor descriptor)
 	{
 		MapObjects = descriptor.MapObjects;
-		Columns = descriptor.Columns;
+		Matrix = descriptor.Matrix;
 		Progression = descriptor.Progression;
 	}
 
@@ -31,10 +36,10 @@ public class ObstaclesController
 	public void Update (Floor floor, float traveledPercentage)
 	{
 		List<MapColumn> freeColumns = new List<MapColumn>();
-		for (int i=0; i<Columns.Length; i++)
+		for (int i=0; i<Matrix.Columns.Length; i++)
 		{
-			Columns[i].FreeAllPositions();
-			freeColumns.Add(Columns[i]);
+			Matrix.Columns[i].FreeAllPositions();
+			freeColumns.Add(Matrix.Columns[i]);
 		}
 		
 		int n = (int)Mathf.Lerp(Progression.Start, Progression.End, traveledPercentage);

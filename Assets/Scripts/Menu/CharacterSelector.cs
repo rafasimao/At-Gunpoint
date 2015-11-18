@@ -4,8 +4,6 @@ using System.Collections;
 public class CharacterSelector : MonoBehaviour 
 {
 	public CharSelectorView SelectorView;
-	public CharacterDescriptor[] CharactersDescriptors;
-
 	public SkinManager MainCharSkin;
 
 	WarDescriptor _War;
