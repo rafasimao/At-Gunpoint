@@ -5,8 +5,9 @@ using System.Collections.Generic;
 public class FXController : MonoBehaviour 
 {
 
-	public GameObject[] FXPrefabs;
 	public enum FXTypes {Explosion=0, Break=1};
+
+	public GameObject[] FXPrefabs;
 
 	Pool[] _FX;
 	List<ParticleSystem> _ActiveFX;

@@ -1,0 +1,29 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class BulletsController : MonoBehaviour 
+{
+
+	public enum BulletTypes { Regular=0, Shotgun=1, Sniper=2, Bazoka=3 };
+
+	public GameObject[] BulletsPrefabs;
+
+	Pool[] _Bullets;
+
+	void Start ()
+	{
+		_Bullets = new Pool[BulletsPrefabs.Length];
+		for (int i=0; i<BulletsPrefabs.Length; i++)
+			_Bullets[i] = new Pool(1, BulletsPrefabs[i], transform);
+	}
+
+	public Bullet GetBullet (BulletTypes type)
+	{
+		int index = (int)type;
+		if (index > -1 && index < _Bullets.Length)
+			return _Bullets[index].GetPooledObj<Bullet>();
+
+		return null;
+	}
+
+}

@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 	public Player GamePlayer;
 	public CameraController GameCamera;
 	public FXController GameFXController;
+	public BulletsController GameBulletsController;
 	public MapController Map;
 	public WarController War;
 

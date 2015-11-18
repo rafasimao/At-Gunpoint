@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CharacterShooter : MonoBehaviour 
 {
-	public GameObject BulletGO;
+	//public GameObject BulletGO;
+	public BulletsController.BulletTypes BulletType;
+
 	public float FireDelay;
 	public Vector3 BulletsOffset;
 
@@ -14,7 +16,7 @@ public class CharacterShooter : MonoBehaviour
 
 	Animator _Animator;
 
-	Pool _Bullets;
+	//Pool _Bullets;
 	float _FireTimer;
 
 	bool _IsSettingBullets = false;
@@ -25,7 +27,7 @@ public class CharacterShooter : MonoBehaviour
 	{
 		_Animator = GetComponentInChildren<Animator>();
 
-		_Bullets = new Pool(5, BulletGO, null);
+		//_Bullets = new Pool(5, BulletGO, null);
 		_FireTimer = 0f;
 	}
 
@@ -38,6 +40,8 @@ public class CharacterShooter : MonoBehaviour
 	{
 		FireDelay = descriptor.GunLevel.FireDelay;
 
+		BulletType = descriptor.Gun.BulletType;
+
 		// Just for now: Change bullets programatically every time they are released
 		_IsSettingBullets = true;
 		_BulletSpeed = descriptor.Gun.BulletSpeed;
@@ -49,7 +53,8 @@ public class CharacterShooter : MonoBehaviour
 		if (IsReadyToFire)
 		{
 			// Place bullet
-			Bullet b = _Bullets.GetPooledObj<Bullet>();
+			//Bullet b = _Bullets.GetPooledObj<Bullet>();
+			Bullet b = GameController.Instance.GameBulletsController.GetBullet(BulletType);
 			b.transform.position = transform.position + direction + BulletsOffset;
 			b.Direction = direction;
 			//Changing bullets to follow descriptor description
