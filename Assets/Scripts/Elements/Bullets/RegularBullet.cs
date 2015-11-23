@@ -23,10 +23,9 @@ public class RegularBullet : Bullet
 		if (other == null)
 		{
 			Damageable obj = collision.gameObject.GetComponent<Damageable>();
-			
 			if (obj != null)
 				obj.TakeDamage(Damage);
-			
+
 			Deactivate();
 		}
 	}

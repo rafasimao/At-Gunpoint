@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CharacterShooter : MonoBehaviour 
 {
-	//public GameObject BulletGO;
 	public BulletsController.BulletTypes BulletType;
 
 	public float FireDelay;
@@ -16,18 +15,20 @@ public class CharacterShooter : MonoBehaviour
 
 	Animator _Animator;
 
-	//Pool _Bullets;
 	float _FireTimer;
 
+	[SerializeField]
 	bool _IsSettingBullets = false;
+	[SerializeField]
 	float _BulletSpeed;
+	[SerializeField]
 	int _BulletDamage;
+
 
 	void Start () 
 	{
 		_Animator = GetComponentInChildren<Animator>();
 
-		//_Bullets = new Pool(5, BulletGO, null);
 		_FireTimer = 0f;
 	}
 
