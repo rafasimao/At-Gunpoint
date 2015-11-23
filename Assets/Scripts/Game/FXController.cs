@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class FXController : MonoBehaviour 
 {
 
-	public enum FXTypes {Explosion=0, Break=1};
+	public enum FXTypes {Explosion=0, Break=1, Smoke=2};
 
 	public GameObject[] FXPrefabs;
 
