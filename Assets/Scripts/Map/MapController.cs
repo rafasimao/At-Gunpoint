@@ -15,12 +15,13 @@ public class MapController : MonoBehaviour
 	bool _FirstFloorTrigger = true;
 
 	// Variables to create the progression rate
-	int _NumberOfFloorsPassed = 0, _MaxNumberOfFloors = 50;
+	float _NumberOfFloorsPassed = 0f, _MaxNumberOfFloors = 50f;
 
 	public void StartRun ()
 	{
 		AlignToDescriptor (GameController.Instance.War.CurrentRunDescriptor);
 		InitiateComponents();
+		PrepareMaxNumberOfFloors(_CurrentSegment);
 	}
 
 	public void AlignToDescriptor (RunDescriptor descriptor)
@@ -61,11 +62,16 @@ public class MapController : MonoBehaviour
 			AlignComponentsToSegment(_Segments[_CurrentSegment]);
 			InitiateComponents();
 
-			if (_CurrentSegment+1 < _Segments.Length)
-				_MaxNumberOfFloors = _Segments[_CurrentSegment+1].StartFloor - _NumberOfFloorsPassed;
-			else
-				_MaxNumberOfFloors = 50;
+			PrepareMaxNumberOfFloors(_CurrentSegment);
 		}
+	}
+
+	void PrepareMaxNumberOfFloors (int seg)
+	{
+		if (seg+1 < _Segments.Length)
+			_MaxNumberOfFloors = _Segments[seg+1].StartFloor - _NumberOfFloorsPassed;
+		else
+			_MaxNumberOfFloors = 50;
 	}
 
 	public void OnFloorTriggered (Floor floor) 
@@ -100,9 +106,8 @@ public class MapController : MonoBehaviour
 		_Ambient.Update(floorToUpdate);
 		_Obstacles.Update(floorToUpdate,
 		                  (_Segments!=null) ?
-		                  _NumberOfFloorsPassed-_Segments[_CurrentSegment].StartFloor/_MaxNumberOfFloors :
-		                  _NumberOfFloorsPassed/_MaxNumberOfFloors);
-
+		                  ((_NumberOfFloorsPassed-_Segments[_CurrentSegment].StartFloor)/_MaxNumberOfFloors) :
+		                  (_NumberOfFloorsPassed/_MaxNumberOfFloors));
 	}
 
 }

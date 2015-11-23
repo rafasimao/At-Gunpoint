@@ -43,8 +43,8 @@ public class ObstaclesController
 		}
 		
 		int n = (int)Mathf.Lerp(Progression.Start, Progression.End, traveledPercentage);
-		n = Random.Range(n, n + Progression.Delta);
-		
+		n = Random.Range(n, (int)(n + Progression.Delta));
+
 		for (int i=0; i<n; i++)
 		{
 			GameObject go = MapObjects[Random.Range(0,MapObjects.Length)].GetPooledObject();
