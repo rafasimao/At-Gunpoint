@@ -5,8 +5,6 @@ public class Breakable : Obstacle
 {
 
 	public int MaxLife;
-	public int Damage;
-
 	public int Life { get; private set; }
 
 	const float _DelayToDisappear = 0.2f;
@@ -19,17 +17,15 @@ public class Breakable : Obstacle
 	public override void TakeDamage (int dmg)
 	{
 		Life -= dmg;
-		if (Life < 1)
+		if (Life<1)
 			Invoke("Disappear", _DelayToDisappear);
 	}
 
 	void OnCollisionEnter (Collision collision)
 	{
 		Damageable d = collision.gameObject.GetComponent<Damageable>();
-		if (d != null) {
-			d.TakeDamage(Damage);
+		if (d!=null) 
 			TakeDamage(1);
-		}
 	}
 
 	void Disappear ()
