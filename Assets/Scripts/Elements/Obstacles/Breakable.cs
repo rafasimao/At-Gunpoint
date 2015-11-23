@@ -21,12 +21,14 @@ public class Breakable : Obstacle
 			Invoke("Disappear", _DelayToDisappear);
 	}
 
+	/*
 	void OnCollisionEnter (Collision collision)
 	{
 		Damageable d = collision.gameObject.GetComponent<Damageable>();
 		if (d!=null) 
 			TakeDamage(1);
 	}
+	*/
 
 	void Disappear ()
 	{

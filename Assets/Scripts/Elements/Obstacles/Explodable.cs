@@ -36,11 +36,11 @@ public class Explodable : Obstacle
 
 	void OnCollisionEnter (Collision collision)
 	{
-		Damageable d = collision.gameObject.GetComponent<Damageable>();
+		//Damageable d = collision.gameObject.GetComponent<Damageable>();
 		if (IsUntouchable)
 			Invoke("Explode", _DelayToExplode);
-		else if (d!=null)
-			TakeDamage(1);
+		//else if (d!=null)
+		//	TakeDamage(1);
 	}
 
 	void Explode ()
