@@ -9,10 +9,14 @@ public class MapController : MonoBehaviour
 	public AmbientController _Ambient;
 	public ObstaclesController _Obstacles;
 
+	public ZoneMessageView ZoneView;
+
 	SegmentDescriptor[] _Segments;
 	int _CurrentSegment;
 
 	bool _FirstFloorTrigger = true;
+
+	bool _ShowZone = false;
 
 	// Variables to create the progression rate
 	float _NumberOfFloorsPassed = 0f, _MaxNumberOfFloors = 50f;
@@ -63,6 +67,9 @@ public class MapController : MonoBehaviour
 			InitiateComponents();
 
 			PrepareMaxNumberOfFloors(_CurrentSegment);
+
+			// Prepare to show zone
+			_ShowZone = true;
 		}
 	}
 
@@ -76,6 +83,12 @@ public class MapController : MonoBehaviour
 
 	public void OnFloorTriggered (Floor floor) 
 	{
+		if (_ShowZone)
+		{
+			ZoneView.ShowZoneMessage(_CurrentSegment+1);
+			_ShowZone=false;
+		}
+
 		if (!_FirstFloorTrigger)
 		{
 			if (floor == Floor1)
@@ -88,6 +101,9 @@ public class MapController : MonoBehaviour
 		{
 			_Ambient.Update(Floor2);
 			_FirstFloorTrigger = false;
+
+			// Prepare to show zone
+			_ShowZone =true;
 		}
 
 		// Increment floors counter
