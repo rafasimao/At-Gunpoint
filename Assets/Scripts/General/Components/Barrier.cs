@@ -15,6 +15,9 @@ public class Barrier : MonoBehaviour
 	
 	void OnCollisionEnter (Collision collision)
 	{
+		if (!enabled)
+			return;
+
 		Damageable d = collision.gameObject.GetComponent<Damageable>();
 		if (d is Character) 
 		{

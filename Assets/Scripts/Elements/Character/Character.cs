@@ -7,6 +7,8 @@ public class Character : MonoBehaviour, Damageable
 	public int MaxLife;
 	public int Life { get; private set; }
 
+	public Switcher Switch;
+
 	Animator _Animator;
 
 	void Start ()
@@ -18,6 +20,9 @@ public class Character : MonoBehaviour, Damageable
 	{
 		Life = MaxLife;
 		CharControl.TurnAllOn();
+
+		if (Switch!=null)
+			Switch.Switch(true);
 	}
 
 	public void AlignToDescriptor (CharacterDescriptor descriptor)
@@ -41,6 +46,9 @@ public class Character : MonoBehaviour, Damageable
 		// Die!
 		Life = 0;
 		CharControl.TurnAllOff();
+
+		if (Switch!=null)
+			Switch.Switch(false);
 
 		if (_Animator!=null)
 			_Animator.SetBool("IsDead", true);
