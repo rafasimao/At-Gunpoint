@@ -20,7 +20,8 @@ public class ShotgunBullet : Bullet
 
 	void OnEnable ()
 	{
-		transform.rotation = Quaternion.LookRotation(Direction);
+		if (Direction != Vector3.zero)
+			transform.rotation = Quaternion.LookRotation(Direction);
 
 		Invoke("Deactivate", 1f);
 		if (_BulletsParticle!=null)
