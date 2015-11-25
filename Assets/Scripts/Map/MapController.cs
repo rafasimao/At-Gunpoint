@@ -11,8 +11,8 @@ public class MapController : MonoBehaviour
 
 	public ZoneMessageView ZoneView;
 
-	SegmentDescriptor[] _Segments;
-	int _CurrentSegment;
+	ZoneDescriptor[] _Zones;
+	int _CurrentZone;
 
 	bool _FirstFloorTrigger = true;
 
@@ -25,16 +25,16 @@ public class MapController : MonoBehaviour
 	{
 		AlignToDescriptor (GameController.Instance.War.CurrentRunDescriptor);
 		InitiateComponents();
-		PrepareMaxNumberOfFloors(_CurrentSegment);
+		PrepareMaxNumberOfFloors(_CurrentZone);
 	}
 
 	public void AlignToDescriptor (RunDescriptor descriptor)
 	{
-		if (descriptor.Segments != null)
+		if (descriptor.Zones != null)
 		{
-			_Segments = descriptor.Segments;
-			_CurrentSegment = 0;
-			AlignComponentsToSegment(_Segments[_CurrentSegment]);
+			_Zones = descriptor.Zones;
+			_CurrentZone = 0;
+			AlignComponentsToSegment(_Zones[_CurrentZone].Segment);
 		}
 	}
 
@@ -58,15 +58,15 @@ public class MapController : MonoBehaviour
 
 	void GoToNextSegment ()
 	{
-		if (_CurrentSegment+1 < _Segments.Length)
+		if (_CurrentZone+1 < _Zones.Length)
 		{
-			_CurrentSegment++;
+			_CurrentZone++;
 
 			ClearComponents();
-			AlignComponentsToSegment(_Segments[_CurrentSegment]);
+			AlignComponentsToSegment(_Zones[_CurrentZone].Segment);
 			InitiateComponents();
 
-			PrepareMaxNumberOfFloors(_CurrentSegment);
+			PrepareMaxNumberOfFloors(_CurrentZone);
 
 			// Prepare to show zone
 			_ShowZone = true;
@@ -75,8 +75,8 @@ public class MapController : MonoBehaviour
 
 	void PrepareMaxNumberOfFloors (int seg)
 	{
-		if (seg+1 < _Segments.Length)
-			_MaxNumberOfFloors = _Segments[seg+1].StartFloor - _NumberOfFloorsPassed;
+		if (seg+1 < _Zones.Length)
+			_MaxNumberOfFloors = _Zones[seg+1].StartFloor - _NumberOfFloorsPassed;
 		else
 			_MaxNumberOfFloors = 50;
 	}
@@ -85,7 +85,7 @@ public class MapController : MonoBehaviour
 	{
 		if (_ShowZone)
 		{
-			ZoneView.ShowZoneMessage(_CurrentSegment+1);
+			ZoneView.ShowZoneMessage(_CurrentZone+1);
 			_ShowZone=false;
 		}
 
@@ -109,9 +109,9 @@ public class MapController : MonoBehaviour
 		// Increment floors counter
 		_NumberOfFloorsPassed++;
 		// Verify if segment ended
-		if (_Segments!=null &&
-		    _CurrentSegment+1 < _Segments.Length && 
-		    _NumberOfFloorsPassed > _Segments[_CurrentSegment+1].StartFloor)
+		if (_Zones!=null &&
+		    _CurrentZone+1 < _Zones.Length && 
+		    _NumberOfFloorsPassed > _Zones[_CurrentZone+1].StartFloor)
 			GoToNextSegment();
 	}
 
@@ -121,8 +121,8 @@ public class MapController : MonoBehaviour
 
 		_Ambient.Update(floorToUpdate);
 		_Obstacles.Update(floorToUpdate,
-		                  (_Segments!=null) ?
-		                  ((_NumberOfFloorsPassed-_Segments[_CurrentSegment].StartFloor)/_MaxNumberOfFloors) :
+		                  (_Zones!=null) ?
+		                  ((_NumberOfFloorsPassed-_Zones[_CurrentZone].StartFloor)/_MaxNumberOfFloors) :
 		                  (_NumberOfFloorsPassed/_MaxNumberOfFloors));
 	}
 

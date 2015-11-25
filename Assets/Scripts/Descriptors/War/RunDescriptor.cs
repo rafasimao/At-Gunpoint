@@ -6,5 +6,5 @@ public class RunDescriptor
 {
 	public GameObject Base;
 	public CharacterDescriptor[] Characters;
-	public SegmentDescriptor[] Segments;
+	public ZoneDescriptor[] Zones;
 }
