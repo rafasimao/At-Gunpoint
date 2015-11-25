@@ -26,7 +26,7 @@ public class CharacterView : MonoBehaviour
 
 	void UpdateCharacterView ()
 	{
-		UpdateInfos(_PlayerChar.Life,5,EmptyHearts,Hearts);
+		UpdateInfos(_PlayerChar.Life,_PlayerChar.MaxLife,EmptyHearts,Hearts);
 		UpdateFireRate();
 	}
 
