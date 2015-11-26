@@ -24,7 +24,7 @@ public class CharacterDescriptor : ScriptableObject
 	public CharacterLevel Level { get { return Levels[_CurrentLevel]; } }
 	public CharacterLevel LastLevel { get { return Levels[NumberOfLevels-1]; } }
 
-	int _CurrentLevel;
+	public int _CurrentLevel;
 
 	public int NextLevelPrice 
 	{ 
