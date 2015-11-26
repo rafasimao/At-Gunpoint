@@ -4,15 +4,17 @@ using System.Collections;
 public class BossControl : Control
 {
 
-	public Transform PlayerChar;
 	public BossState[] States;
 
+	Transform _PlayerChar;
 	BossState _CurrentState;
 
 	protected override void OnStart ()
 	{
+		_PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
+
 		for (int i=0; i<States.Length; i++)
-			States[i].Initiate(Movement, Shooter, PlayerChar, Movement.transform);
+			States[i].Initiate(Movement, Shooter, _PlayerChar, Movement.transform);
 
 		if (States!=null)
 		{

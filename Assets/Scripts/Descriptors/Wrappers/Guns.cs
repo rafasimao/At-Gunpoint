@@ -7,7 +7,7 @@ public class Guns : MonoBehaviour
 	{
 		Pistol =0,
 		SubMachineGun =1, 
-		ShotGun =2, 
+		Shotgun =2, 
 		AssaultRifle01 =3, 
 		AssaultRifle02 =4, 
 		Rifle =5,

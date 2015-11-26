@@ -29,7 +29,7 @@ public class CharacterShooter : MonoBehaviour
 	{
 		_Animator = GetComponentInChildren<Animator>();
 
-		_FireTimer = 0f;
+		_FireTimer = FireDelay;
 	}
 
 	void Update ()
