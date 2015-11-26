@@ -45,10 +45,10 @@ public class ObstaclesController
 		int n = (int)Mathf.Lerp(Progression.Start, Progression.End, traveledPercentage);
 		n = Random.Range(n, (int)(n + Progression.Delta));
 
-		for (int i=0; i<n; i++)
+		for (int i=0; i<n && freeColumns.Count>0; i++)
 		{
 			GameObject go = MapObjects[Random.Range(0,MapObjects.Length)].GetPooledObject();
-			
+
 			int column = Random.Range(0,freeColumns.Count);
 			Vector3 newPos = floor.transform.position + freeColumns[column].GetARandomFreePosition();
 			newPos.y = go.transform.position.y;
