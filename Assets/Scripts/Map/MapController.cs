@@ -8,6 +8,7 @@ public class MapController : MonoBehaviour
 
 	public AmbientController _Ambient;
 	public ObstaclesController _Obstacles;
+	public BossController _Boss;
 
 	public ZoneMessageView ZoneView;
 
@@ -35,6 +36,7 @@ public class MapController : MonoBehaviour
 			_Zones = descriptor.Zones;
 			_CurrentZone = 0;
 			AlignComponentsToSegment(_Zones[_CurrentZone].Segment);
+			_Boss.AlignToDescriptor(descriptor.Boss);
 		}
 	}
 
@@ -75,10 +77,8 @@ public class MapController : MonoBehaviour
 
 	void PrepareMaxNumberOfFloors (int seg)
 	{
-		if (seg+1 < _Zones.Length)
-			_MaxNumberOfFloors = _Zones[seg+1].StartFloor - _NumberOfFloorsPassed;
-		else
-			_MaxNumberOfFloors = 50;
+		_MaxNumberOfFloors = 
+			(seg+1 < _Zones.Length) ? (_Zones[seg+1].StartFloor - _NumberOfFloorsPassed) : 50;
 	}
 
 	public void OnFloorTriggered (Floor floor) 
@@ -93,7 +93,6 @@ public class MapController : MonoBehaviour
 		{
 			if (floor == Floor1)
 				GenerateNewFloor(Floor2);
-
 			else if (floor == Floor2)
 				GenerateNewFloor(Floor1);
 		}
@@ -120,6 +119,7 @@ public class MapController : MonoBehaviour
 		floorToUpdate.UpdateToNewFloor(FloorsOffset);
 
 		_Ambient.Update(floorToUpdate);
+		_Boss.Update(floorToUpdate, (int)_NumberOfFloorsPassed);
 		_Obstacles.Update(floorToUpdate,
 		                  (_Zones!=null) ?
 		                  ((_NumberOfFloorsPassed-_Zones[_CurrentZone].StartFloor)/_MaxNumberOfFloors) :

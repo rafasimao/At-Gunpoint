@@ -7,4 +7,6 @@ public class RunDescriptor
 	public GameObject Base;
 	public CharacterDescriptor[] Characters;
 	public ZoneDescriptor[] Zones;
+
+	public BossDescriptor Boss;
 }
