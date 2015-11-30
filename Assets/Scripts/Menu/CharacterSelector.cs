@@ -19,7 +19,7 @@ public class CharacterSelector : MonoBehaviour
 	void OnEnable ()
 	{
 		AlignToDescriptor (GameController.Instance.War.CurrentWarDescriptor);
-		SelectorView.UpdateCharInformations(_CurrentRun.Characters[_CurrentCharacter]);
+		ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
 	}
 
 	public void AlignToDescriptor (WarDescriptor descriptor)
