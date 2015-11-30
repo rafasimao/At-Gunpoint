@@ -21,7 +21,13 @@ public class BulletsController : MonoBehaviour
 	{
 		int index = (int)type;
 		if (index > -1 && index < _Bullets.Length)
-			return _Bullets[index].GetPooledObj<Bullet>();
+		{
+			Bullet b = _Bullets[index].GetPooledObj<Bullet>();
+			Bullet original = BulletsPrefabs[index].GetComponent<Bullet>();
+			b.Damage = original.Damage;
+			b.Speed = original.Speed;
+			return b;
+		}
 
 		return null;
 	}
