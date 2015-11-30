@@ -23,7 +23,6 @@ public class BossController
 
 	public void Update (Floor floor, int floorsPassed)
 	{
-		Debug.Log(StartFloor+" "+floorsPassed);
 		if (_Boss == null && BossPrefab != null && floorsPassed > StartFloor)
 		{
 			_Boss = GeneralFabric.CreateObject<Character> ( BossPrefab, BossParent);
