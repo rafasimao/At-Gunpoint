@@ -4,6 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class BossController
 {
+	public BossView View;
 	public Transform BossParent;
 
 	public GameObject BossPrefab;
@@ -24,16 +25,27 @@ public class BossController
 	public void Update (Floor floor, int floorsPassed)
 	{
 		if (_Boss == null && BossPrefab != null && floorsPassed > StartFloor)
-		{
-			_Boss = GeneralFabric.CreateObject<Character> ( BossPrefab, BossParent);
-			_Boss.transform.position = floor.transform.position + StartPosition;
-		}
+			StartBoss(floor);
 		else if (_Boss!=null && _Boss.IsDead())
-		{
-			//Do something about it!!!
-		}
+			EndBoss();
 	}
 
+	void StartBoss (Floor floor)
+	{
+		_Boss = GeneralFabric.CreateObject<Character> ( BossPrefab, BossParent);
+		_Boss.transform.position = floor.transform.position + StartPosition;
+
+		View.SetBoss(_Boss);
+		View.gameObject.SetActive(true);
+	}
+
+	void EndBoss ()
+	{
+		View.SetBoss(null);
+		View.gameObject.SetActive(false);
+
+		DestroyBoss();
+	}
 
 	void DestroyBoss ()
 	{
