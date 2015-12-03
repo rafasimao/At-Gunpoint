@@ -51,9 +51,9 @@ public class ShotgunBullet : Bullet
 			
 			if (obj != null)
 				obj.TakeDamage(Damage);
-			
+
 			if (hit.rigidbody != null)
-				hit.rigidbody.AddForceAtPosition(dir, hit.point, ForceMode.Impulse);
+				hit.rigidbody.AddForceAtPosition(dir.normalized*(Speed/2), hit.point, ForceMode.Impulse);
 		}
 	}
 

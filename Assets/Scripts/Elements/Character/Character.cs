@@ -47,11 +47,16 @@ public class Character : MonoBehaviour, Damageable
 		Life = 0;
 		CharControl.TurnAllOff();
 
-		if (Switch!=null)
-			Switch.Switch(false);
+		Invoke("SwitchDead",0.3f);
 
 		if (_Animator!=null)
 			_Animator.SetBool("IsDead", true);
+	}
+
+	void SwitchDead ()
+	{
+		if (Switch!=null)
+			Switch.Switch(false);
 	}
 
 	public bool IsDead ()
