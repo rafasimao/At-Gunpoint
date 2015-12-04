@@ -15,10 +15,20 @@ public class FXController : MonoBehaviour
 	void Start ()
 	{
 		_FX = new Pool[FXPrefabs.Length];
+		_ActiveFX = new List<ParticleSystem>();
+		InitiateFX();
+	}
+
+	void InitiateFX ()
+	{
 		for (int i=0; i<FXPrefabs.Length; i++)
 			_FX[i] = new Pool(1, FXPrefabs[i], transform);
+	}
 
-		_ActiveFX = new List<ParticleSystem>();
+	void Clear ()
+	{
+		for (int i=0; i<_FX.Length; i++)
+			_FX[i].Clear(0f);
 	}
 
 	void LateUpdate ()
@@ -31,6 +41,12 @@ public class FXController : MonoBehaviour
 				_ActiveFX.RemoveAt(i);
 			}
 		}
+	}
+
+	public void Reset ()
+	{
+		Clear();
+		InitiateFX();
 	}
 
 	public void Play (FXTypes type, Vector3 pos)

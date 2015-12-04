@@ -10,9 +10,15 @@ public class Player : MonoBehaviour
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
 
-	void Start()
+	Vector3 _InitialCharPosition;
+	Quaternion _InitialCharRotation;
+
+	void Start ()
 	{
 		Coins = 10000;
+
+		_InitialCharPosition = SelectedChar.transform.position;
+		_InitialCharRotation = SelectedChar.transform.rotation;
 	}
 
 	public void CollectCoins (int coins)
@@ -47,9 +53,17 @@ public class Player : MonoBehaviour
 
 	public void StartRun ()
 	{
-		//SelectedChar.GetComponentInChildren<Animator>().SetTrigger("StartRunning");
-		//SelectedChar.GetComponent<CharacterMovement>().EnableRun = true;
 		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
+	}
+
+	public void ResetPlayerCharacter ()
+	{
+		SelectedChar.transform.position = _InitialCharPosition;
+		SelectedChar.transform.rotation = _InitialCharRotation;
+		SelectedChar.gameObject.SetActive(false);
+		SelectedChar.gameObject.SetActive(true);
+
+		StopRun();
 	}
 
 	public void StopRun ()

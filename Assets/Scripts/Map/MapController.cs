@@ -22,6 +22,21 @@ public class MapController : MonoBehaviour
 	// Variables to create the progression rate
 	float _NumberOfFloorsPassed = 0f, _MaxNumberOfFloors = 50f;
 
+	public void Reset ()
+	{
+		// Reset map initial variables
+		_FirstFloorTrigger = true;
+		_ShowZone = false;
+		_NumberOfFloorsPassed = 0f;
+		_MaxNumberOfFloors = 50f;
+
+		// Reset map components
+		_Boss.Reset();
+		Floor1.Reset();
+		Floor2.Reset();
+		ClearComponents(0f);
+	}
+
 	public void StartRun ()
 	{
 		AlignToDescriptor (GameController.Instance.War.CurrentRunDescriptor);
@@ -52,10 +67,10 @@ public class MapController : MonoBehaviour
 		_Obstacles.AlignToDescriptor(segment);
 	}
 
-	void ClearComponents ()
+	void ClearComponents (float delay=10f)
 	{
-		_Ambient.Clear();
-		_Obstacles.Clear();
+		_Ambient.Clear(delay);
+		_Obstacles.Clear(delay);
 	}
 
 	void GoToNextSegment ()

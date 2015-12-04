@@ -8,6 +8,19 @@ public class Floor : MonoBehaviour
 
 	bool _Triggered;
 
+	Vector3 _InitialPosition;
+
+	void Start ()
+	{
+		_InitialPosition = transform.position;
+	}
+
+	public void Reset ()
+	{
+		transform.position = _InitialPosition;
+		_Triggered = false;
+	}
+
 	void OnTriggerEnter (Collider other) 
 	{
 		if (!_Triggered && other.tag.Equals("Player"))

@@ -36,10 +36,10 @@ public class AmbientController
 		StreetMatchesPrefabs =  descriptor.StreetMatchesPrefabs;
 	}
 
-	public void Clear ()
+	public void Clear (float delay)
 	{
 		for (int i=0; i<_StreetMatches.Length; i++)
-			_StreetMatches[i].Clear(10f);
+			_StreetMatches[i].Clear(delay);
 		_LastStreetMatch = _SecondLastStreetMatch = null;
 	}
 

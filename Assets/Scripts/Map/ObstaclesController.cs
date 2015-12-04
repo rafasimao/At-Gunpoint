@@ -27,10 +27,10 @@ public class ObstaclesController
 		Progression = descriptor.Progression;
 	}
 
-	public void Clear ()
+	public void Clear (float delay)
 	{
 		for (int i=0; i<MapObjects.Length; i++)
-			MapObjects[i].Clear(10f);
+			MapObjects[i].Clear(delay);
 	}
 
 	public void Update (Floor floor, float traveledPercentage)

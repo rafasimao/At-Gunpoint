@@ -18,9 +18,14 @@ public class Character : MonoBehaviour, Damageable
 
 	void OnEnable ()
 	{
+		Reset();
+	}
+
+	void Reset ()
+	{
 		Life = MaxLife;
 		CharControl.TurnAllOn();
-
+		
 		if (Switch!=null)
 			Switch.Switch(true);
 	}

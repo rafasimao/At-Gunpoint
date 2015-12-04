@@ -13,8 +13,25 @@ public class BulletsController : MonoBehaviour
 	void Start ()
 	{
 		_Bullets = new Pool[BulletsPrefabs.Length];
+		InitiateBullets();
+	}
+
+	void InitiateBullets ()
+	{
 		for (int i=0; i<BulletsPrefabs.Length; i++)
 			_Bullets[i] = new Pool(1, BulletsPrefabs[i], transform);
+	}
+
+	void Clear ()
+	{
+		for (int i=0; i<_Bullets.Length; i++)
+			_Bullets[i].Clear(0f);
+	}
+
+	public void Reset ()
+	{
+		Clear();
+		InitiateBullets();
 	}
 
 	public Bullet GetBullet (BulletTypes type)

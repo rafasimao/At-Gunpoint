@@ -3,11 +3,12 @@ using System.Collections;
 
 public class GameController : MonoBehaviour 
 {
-
+	//Toolbox
 	public Player GamePlayer;
 	public CameraController GameCamera;
 	public FXController GameFXController;
 	public BulletsController GameBulletsController;
+	//public QuestsController GameQuestsController;
 	public MapController Map;
 	public WarController War;
 
@@ -50,8 +51,14 @@ public class GameController : MonoBehaviour
 	{
 		if (IsOnRunMode)
 		{
+			// Reset map and wrappers
+			Map.Reset();
+			GameFXController.Reset();
+			GameBulletsController.Reset();
+			GamePlayer.ResetPlayerCharacter();
+
+			// Change to start screen menu
 			IsOnRunMode = false;
-			GamePlayer.StopRun();
 			GameCamera.ChangeMode();
 		}
 	}

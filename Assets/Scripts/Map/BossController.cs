@@ -5,6 +5,7 @@ using System.Collections;
 public class BossController
 {
 	public BossView View;
+	public GameObject GameEndView;
 	public Transform BossParent;
 
 	public GameObject BossPrefab;
@@ -12,6 +13,11 @@ public class BossController
 	public Vector3 StartPosition;
 
 	Character _Boss = null;
+
+	public void Reset ()
+	{
+		EndBoss();
+	}
 
 	public void AlignToDescriptor (BossDescriptor descriptor)
 	{
@@ -27,7 +33,8 @@ public class BossController
 		if (_Boss == null && BossPrefab != null && floorsPassed > StartFloor)
 			StartBoss(floor);
 		else if (_Boss!=null && _Boss.IsDead())
-			EndBoss();
+			GameEndView.SetActive(true);
+			//EndBoss();
 	}
 
 	void StartBoss (Floor floor)

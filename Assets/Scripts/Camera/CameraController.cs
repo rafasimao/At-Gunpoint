@@ -56,7 +56,11 @@ public class CameraController : MonoBehaviour {
 			_RunningChar = GameController.Instance.GamePlayer.SelectedChar.gameObject;
 		}
 		else
+		{
 			transform.position = MenuPosition;
+			transform.rotation = Quaternion.Euler(MenuRotation);
+			_Camera.orthographicSize = MenuOrtographicSize;
+		}
 	}
 
 }
