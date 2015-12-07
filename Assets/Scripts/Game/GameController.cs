@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameController : MonoBehaviour 
@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 	public CameraController GameCamera;
 	public FXController GameFXController;
 	public BulletsController GameBulletsController;
-	//public QuestsController GameQuestsController;
+	public MissionsController Missions;
 	public MapController Map;
 	public WarController War;
 
@@ -60,6 +60,9 @@ public class GameController : MonoBehaviour
 			// Change to start screen menu
 			IsOnRunMode = false;
 			GameCamera.ChangeMode();
+
+			// Refresh quests
+			GameController.Instance.Missions.RefreshQuests();
 		}
 	}
 

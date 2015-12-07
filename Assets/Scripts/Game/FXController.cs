@@ -29,6 +29,8 @@ public class FXController : MonoBehaviour
 	{
 		for (int i=0; i<_FX.Length; i++)
 			_FX[i].Clear(0f);
+
+		_ActiveFX.Clear();
 	}
 
 	void LateUpdate ()

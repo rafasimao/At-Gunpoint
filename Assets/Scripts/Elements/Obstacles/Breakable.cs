@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Breakable : Obstacle 
 {
+	public Mission.Objects ObjectType;
 
 	public int MaxLife;
 	public int Life { get; private set; }
@@ -18,7 +19,17 @@ public class Breakable : Obstacle
 	{
 		Life -= dmg;
 		if (Life<1)
+		{
+			NotifyBreakToQuests();
 			Invoke("Disappear", _DelayToDisappear);
+		}
+	}
+
+	void NotifyBreakToQuests () 
+	{
+		// Notify quests
+		if (GetComponent<Rigidbody>().velocity.x < 0)
+			GameController.Instance.Missions.Notify(Mission.Actions.Destroy,ObjectType);
 	}
 
 	/*

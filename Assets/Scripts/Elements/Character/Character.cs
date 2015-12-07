@@ -38,12 +38,17 @@ public class Character : MonoBehaviour, Damageable
 
 	public void TakeDamage (int damage)
 	{
-		Life -= damage;
-		if (IsDead()) 
-			BeKilled();
-
-		else if (_Animator!=null)
-			_Animator.SetTrigger("TookDamage");
+		if (!IsDead())
+		{
+			Life -= damage;
+			if (IsDead()) 
+			{
+				NotifyDeathToQuests();
+				BeKilled();
+			}
+			else if (_Animator!=null)
+				_Animator.SetTrigger("TookDamage");
+		}
 	}
 
 	public void BeKilled ()
@@ -56,6 +61,12 @@ public class Character : MonoBehaviour, Damageable
 
 		if (_Animator!=null)
 			_Animator.SetBool("IsDead", true);
+	}
+
+	void NotifyDeathToQuests ()
+	{
+		if (!tag.Equals("Player"))
+			GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Enemy);
 	}
 
 	void SwitchDead ()

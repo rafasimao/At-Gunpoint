@@ -33,8 +33,11 @@ public class BossController
 		if (_Boss == null && BossPrefab != null && floorsPassed > StartFloor)
 			StartBoss(floor);
 		else if (_Boss!=null && _Boss.IsDead())
+		{
+			GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Boss);
 			GameEndView.SetActive(true);
 			//EndBoss();
+		}
 	}
 
 	void StartBoss (Floor floor)

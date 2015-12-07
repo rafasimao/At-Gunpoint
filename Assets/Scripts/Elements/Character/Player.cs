@@ -75,6 +75,8 @@ public class Player : MonoBehaviour
 	{
 		SelectedChar.AlignToDescriptor(characterDescriptor);
 		SelectedChar.GetComponent<CharacterShooter>().AlignToDescriptor(characterDescriptor);
+
+		GameController.Instance.Missions.SelectGun(characterDescriptor.GunType);
 		//IntegrateCharacterAndControl();
 	}
 
