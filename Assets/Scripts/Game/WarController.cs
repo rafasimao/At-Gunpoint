@@ -41,6 +41,8 @@ public class WarController : MonoBehaviour
 	{
 		_CurrentRun = run;
 		SelectBase(_CurrentRun);
+
+		GameController.Instance.Missions.ReloadMissionsFamily();
 	}
 
 	void ClearBases ()

@@ -8,8 +8,6 @@ public class WarDescriptor : ScriptableObject
 		Run1 = 0, Run2 =1
 	}
 
-	public MissionsFamilySetDescriptor MissionsFamily;
-
 	public RunDescriptor Run1, Run2;
 
 	public RunDescriptor GetRun (WarRun run)

@@ -23,7 +23,7 @@ public class MissionsController : MonoBehaviour
 
 	public void ReloadMissionsFamily ()
 	{
-		_CurrentMissionsFamily = GameController.Instance.War.CurrentWarDescriptor.MissionsFamily;
+		_CurrentMissionsFamily = GameController.Instance.War.CurrentRunDescriptor.Missions;
 		_CurrentMissionsSet = _CurrentMissionsFamily.CurrentSet;
 	}
 
