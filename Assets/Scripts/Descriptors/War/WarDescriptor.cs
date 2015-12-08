@@ -9,7 +9,8 @@ public class WarDescriptor : ScriptableObject
 	}
 
 	public RunDescriptor Run1, Run2;
-	// public Quest Quests;
+
+	public MissionsFamilySetDescriptor MissionsFamily;
 
 	public RunDescriptor GetRun (WarRun run)
 	{

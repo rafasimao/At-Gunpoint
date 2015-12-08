@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class MissionsDescriptor : ScriptableObject
+public class MissionsSetDescriptor : ScriptableObject
 {
-	public int MaxActiveMissions = 3;
+	public string SetName;
 	public int Reward;
+	public int MaxActiveMissions = 3;
 	[SerializeField]
 	List<Mission> _Missions, _ActiveMissions, _CompletedMissions;
 	public List<Mission> ActiveMissions { get { return _ActiveMissions; } }

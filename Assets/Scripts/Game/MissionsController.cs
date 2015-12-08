@@ -5,13 +5,14 @@ using System.Collections.Generic;
 public class MissionsController : MonoBehaviour
 {
 
-	public MissionsDescriptor _CurrentMissions;
+	public MissionsSetDescriptor _CurrentMissions;
 
 	// Select the gun that is being used
 	Guns.Types _CurrentGun = 0;
 
 	public List<Mission> ActiveMissions { get { return _CurrentMissions.ActiveMissions; } }
-	public int ActiveMissionsReward { get { return _CurrentMissions.Reward; } }
+	public int ActiveSetReward { get { return _CurrentMissions.Reward; } }
+	public string ActiveSetName { get { return _CurrentMissions.SetName; } }
 
 	public void SelectGun (Guns.Types gun)
 	{

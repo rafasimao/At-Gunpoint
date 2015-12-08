@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class MissionsView : MonoBehaviour 
 {
+	public Text MissionsTitle;
 	public Text CoinText;
 
 	public MissionView[] Missions;
@@ -17,7 +18,9 @@ public class MissionsView : MonoBehaviour
 
 	void UpdateMissionsInfo ()
 	{
-		CoinText.text = ""+GameController.Instance.Missions.ActiveMissionsReward;
+		MissionsTitle.text = GameController.Instance.Missions.ActiveSetName;
+
+		CoinText.text = ""+GameController.Instance.Missions.ActiveSetReward;
 		ShowMissions();
 
 		if (CompleteIt)
