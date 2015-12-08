@@ -18,7 +18,6 @@ public class MissionsView : MonoBehaviour
 	void UpdateMissionsInfo ()
 	{
 		CoinText.text = ""+GameController.Instance.Missions.ActiveMissionsReward;
-		Debug.Log(""+GameController.Instance.Missions.ActiveMissionsReward);
 		ShowMissions();
 
 		if (CompleteIt)
