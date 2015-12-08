@@ -5,12 +5,13 @@ using System.Collections.Generic;
 public class MissionsController : MonoBehaviour
 {
 
-	public MissionsDescriptor _CurrentQuests;
+	public MissionsDescriptor _CurrentMissions;
 
 	// Select the gun that is being used
 	Guns.Types _CurrentGun = 0;
 
-	public List<Mission> ActiveMissions { get { return _CurrentQuests.ActiveMissions; } }
+	public List<Mission> ActiveMissions { get { return _CurrentMissions.ActiveMissions; } }
+	public int ActiveMissionsReward { get { return _CurrentMissions.Reward; } }
 
 	public void SelectGun (Guns.Types gun)
 	{
@@ -19,12 +20,12 @@ public class MissionsController : MonoBehaviour
 
 	public void RefreshQuests ()
 	{
-		_CurrentQuests.Refresh();
+		_CurrentMissions.Refresh();
 	}
 
 	public void CompleteQuests ()
 	{
-		_CurrentQuests.Complete();
+		_CurrentMissions.Complete();
 	}
 
 	public void Notify (Mission.Actions action, Mission.Objects obj, int n=1)

@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class MissionsView : MonoBehaviour 
 {
+	public Text CoinText;
 
 	public MissionView[] Missions;
 	public bool CompleteIt;
@@ -15,6 +17,8 @@ public class MissionsView : MonoBehaviour
 
 	void UpdateMissionsInfo ()
 	{
+		CoinText.text = ""+GameController.Instance.Missions.ActiveMissionsReward;
+		Debug.Log(""+GameController.Instance.Missions.ActiveMissionsReward);
 		ShowMissions();
 
 		if (CompleteIt)

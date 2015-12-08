@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MissionsDescriptor : ScriptableObject
 {
 	public int MaxActiveMissions = 3;
+	public int Reward;
 	[SerializeField]
 	List<Mission> _Missions, _ActiveMissions, _CompletedMissions;
 	public List<Mission> ActiveMissions { get { return _ActiveMissions; } }
