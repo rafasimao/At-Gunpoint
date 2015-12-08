@@ -10,10 +10,12 @@ public class Character : MonoBehaviour, Damageable
 	public Switcher Switch;
 
 	Animator _Animator;
+	bool IsPlayer;
 
 	void Start ()
 	{
 		_Animator = GetComponentInChildren<Animator>();
+		IsPlayer = tag.Equals("Player");
 	}
 
 	void OnEnable ()
@@ -65,7 +67,7 @@ public class Character : MonoBehaviour, Damageable
 
 	void NotifyDeathToQuests ()
 	{
-		if (!tag.Equals("Player"))
+		if (!IsPlayer)
 			GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Enemy);
 	}
 
