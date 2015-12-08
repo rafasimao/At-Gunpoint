@@ -18,6 +18,8 @@ public class WarController : MonoBehaviour
 	{
 		CreateNewBases();
 		SelectBase(_CurrentRun);
+
+		GameController.Instance.Missions.ReloadMissionsFamily();
 	}
 
 	public void SelectWar (int war)
@@ -30,6 +32,8 @@ public class WarController : MonoBehaviour
 			ClearBases();
 			CreateNewBases();
 			SelectBase(_CurrentRun);
+
+			GameController.Instance.Missions.ReloadMissionsFamily();
 		}
 	}
 

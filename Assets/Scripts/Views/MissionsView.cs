@@ -25,7 +25,7 @@ public class MissionsView : MonoBehaviour
 
 		if (CompleteIt)
 		{
-			GameController.Instance.Missions.CompleteQuests();
+			GameController.Instance.Missions.CompleteMissions();
 			Invoke("ShowMissions",2.5f);
 		}
 	}

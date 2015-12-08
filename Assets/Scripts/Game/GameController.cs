@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 			GameCamera.ChangeMode();
 
 			// Refresh quests
-			GameController.Instance.Missions.RefreshQuests();
+			GameController.Instance.Missions.RefreshMissions();
 		}
 	}
 

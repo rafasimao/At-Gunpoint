@@ -5,28 +5,50 @@ using System.Collections.Generic;
 public class MissionsController : MonoBehaviour
 {
 
-	public MissionsSetDescriptor _CurrentMissions;
+	MissionsFamilySetDescriptor _CurrentMissionsFamily;
+	MissionsSetDescriptor _CurrentMissionsSet;
 
 	// Select the gun that is being used
 	Guns.Types _CurrentGun = 0;
 
-	public List<Mission> ActiveMissions { get { return _CurrentMissions.ActiveMissions; } }
-	public int ActiveSetReward { get { return _CurrentMissions.Reward; } }
-	public string ActiveSetName { get { return _CurrentMissions.SetName; } }
+	public List<Mission> ActiveMissions 
+	{ 
+		get 
+		{ 
+			return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.ActiveMissions : null; 
+		}
+	}
+	public int ActiveSetReward { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.Reward : 0; } }
+	public string ActiveSetName { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetName : ""; } }
+
+	public void ReloadMissionsFamily ()
+	{
+		_CurrentMissionsFamily = GameController.Instance.War.CurrentWarDescriptor.MissionsFamily;
+		_CurrentMissionsSet = _CurrentMissionsFamily.CurrentSet;
+	}
 
 	public void SelectGun (Guns.Types gun)
 	{
 		_CurrentGun = gun;
 	}
 
-	public void RefreshQuests ()
+	public void RefreshMissions ()
 	{
-		_CurrentMissions.Refresh();
+		if (_CurrentMissionsSet!=null)
+			_CurrentMissionsSet.Refresh();
 	}
 
-	public void CompleteQuests ()
+	public void CompleteMissions ()
 	{
-		_CurrentMissions.Complete();
+		if (_CurrentMissionsSet!=null)
+		{
+			_CurrentMissionsSet.Complete();
+			if (_CurrentMissionsSet.IsAllMissionsCompleted)
+			{
+				_CurrentMissionsFamily.CompleteMissionSet();
+				ReloadMissionsFamily();
+			}
+		}
 	}
 
 	public void Notify (Mission.Actions action, Mission.Objects obj, int n=1)
@@ -34,10 +56,13 @@ public class MissionsController : MonoBehaviour
 		if (!GameController.Instance.GamePlayer.SelectedChar.IsDead())
 		{
 			List<Mission> actives = ActiveMissions;
-			for (int i=0; i<actives.Count; i++)
+			if (actives != null)
 			{
-				if (actives[i]!=null && !actives[i].IsCompleted)
-					actives[i].Notify(action, obj, _CurrentGun, n);
+				for (int i=0; i<actives.Count; i++)
+				{
+					if (actives[i]!=null && !actives[i].IsCompleted)
+						actives[i].Notify(action, obj, _CurrentGun, n);
+				}
 			}
 		}
 	}
