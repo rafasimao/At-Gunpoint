@@ -25,4 +25,5 @@ public class MetersCounterView : MonoBehaviour
 	{
 		MetersCounter.text = ((int)(_PlayerChar.position-_InitialPos).magnitude)+"m";
 	}
+
 }

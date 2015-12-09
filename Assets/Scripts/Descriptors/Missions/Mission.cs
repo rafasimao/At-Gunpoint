@@ -11,18 +11,24 @@ public class Mission
 		Explode,
 		Collect,
 		IndirectAtack,
-		Trigger
+		Trigger,
+		Run
 	}
 
 	public enum Objects
 	{
+		None,
 		Enemy,
 		Boss,
+		BossNoDamage,
 		Barrel,
 		Target,
 		Crate,
 		Mine,
-		Coin
+		Coin,
+		noFire,
+		noDamage,
+		noCoin
 	}
 
 	public bool IsSingleRun;

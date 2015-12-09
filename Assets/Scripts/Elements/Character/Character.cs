@@ -9,6 +9,8 @@ public class Character : MonoBehaviour, Damageable
 
 	public Switcher Switch;
 
+	public PlayerTracer Tracer;
+
 	Animator _Animator;
 	bool IsPlayer;
 
@@ -42,6 +44,10 @@ public class Character : MonoBehaviour, Damageable
 	{
 		if (!IsDead())
 		{
+			// notify damage
+			if (Tracer!=null) 
+				Tracer.TookDamage(damage);
+
 			Life -= damage;
 			if (IsDead()) 
 			{
@@ -58,6 +64,10 @@ public class Character : MonoBehaviour, Damageable
 		// Die!
 		Life = 0;
 		CharControl.TurnAllOff();
+
+		// notify death
+		if (Tracer!=null) 
+			Tracer.Died();
 
 		Invoke("SwitchDead",0.3f);
 

@@ -13,6 +13,8 @@ public class CharacterShooter : MonoBehaviour
 	public bool IsReadyToFire { get { return (_FireTimer > FireDelay); } }
 	public float LoadedFireDelay { get { return _FireTimer/FireDelay; } }
 
+	public PlayerTracer Tracer;
+
 	Animator _Animator;
 
 	float _FireTimer;
@@ -53,6 +55,10 @@ public class CharacterShooter : MonoBehaviour
 	{
 		if (IsReadyToFire)
 		{
+			// notify tracer that fired
+			if (Tracer!=null) 
+				Tracer.Fired();
+
 			// Place bullet
 			//Bullet b = _Bullets.GetPooledObj<Bullet>();
 			Bullet b = GameController.Instance.GameBulletsController.GetBullet(BulletType);

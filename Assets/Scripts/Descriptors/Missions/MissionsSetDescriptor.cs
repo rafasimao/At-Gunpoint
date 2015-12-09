@@ -12,7 +12,7 @@ public class MissionsSetDescriptor : ScriptableObject
 	public List<Mission> ActiveMissions { get { return _ActiveMissions; } }
 	public List<Mission> CompletedMissions { get { return _CompletedMissions; } }
 
-	public bool IsAllMissionsCompleted { get { return !(_Missions.Count>0); } }
+	public bool IsAllMissionsCompleted { get { return !(_Missions.Count>0 || _ActiveMissions.Count>0); } }
 
 	void OnEnable ()
 	{

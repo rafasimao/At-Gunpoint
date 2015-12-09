@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
 
+	public PlayerTracer Tracer;
+
 	Vector3 _InitialCharPosition;
 	Quaternion _InitialCharRotation;
 
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
 
 	public void CollectCoins (int coins)
 	{
+		Tracer.CollectedCoin();
 		Coins += coins;
 	}
 
@@ -54,6 +57,9 @@ public class Player : MonoBehaviour
 	public void StartRun ()
 	{
 		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
+
+		if (Tracer!=null)
+			Tracer.StartRun();
 	}
 
 	public void ResetPlayerCharacter ()
@@ -93,6 +99,11 @@ public class Player : MonoBehaviour
 		SelectedChar.CharControl = SelectedControl;
 		SelectedControl.Movement = SelectedChar.GetComponent<CharacterMovement>();
 		SelectedControl.Shooter = SelectedChar.GetComponent<CharacterShooter>();
+	}
+
+	public int GetDistanceRan ()
+	{
+		return ((int)(SelectedChar.transform.position-_InitialCharPosition).magnitude);
 	}
 
 }

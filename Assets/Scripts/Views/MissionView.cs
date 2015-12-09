@@ -20,7 +20,10 @@ public class MissionView : MonoBehaviour
 		else
 		{
 			MissionText.text = 
-				GetQuestAction(mission.NeededAction)+" "+mission.Quantity+" "+GetQuestObject(mission.NeededObject);
+				GetQuestAction(mission.NeededAction)+" "+mission.Quantity+" ";
+			if (mission.NeededAction==Mission.Actions.Run)
+				MissionText.text += "METERS ";
+			MissionText.text += GetQuestObject(mission.NeededObject);
 
 			if (mission.IsGunNeeded)
 				MissionText.text += " USING A "+GetQuestGun(mission.NeededGun);
@@ -56,6 +59,9 @@ public class MissionView : MonoBehaviour
 		case Mission.Actions.Trigger:
 			result = "TRIGGER";
 			break;
+		case Mission.Actions.Run:
+			result = "RUN";
+			break;
 		}
 
 		return result;
@@ -66,11 +72,17 @@ public class MissionView : MonoBehaviour
 		string result = "";
 		switch (obj)
 		{
+		case Mission.Objects.None:
+			result = "";
+			break;
 		case Mission.Objects.Enemy:
 			result = "ENEMIES";
 			break;
 		case Mission.Objects.Boss:
 			result = "BOSS";
+			break;
+		case Mission.Objects.BossNoDamage:
+			result = "BOSS WITHOUT TAKING ANY DAMAGE";
 			break;
 		case Mission.Objects.Target:
 			result = "TARGETS";
@@ -86,6 +98,15 @@ public class MissionView : MonoBehaviour
 			break;
 		case Mission.Objects.Coin:
 			result = "COINS";
+			break;
+		case Mission.Objects.noFire:
+			result = "WITHOUT FIRING";
+			break;
+		case Mission.Objects.noDamage:
+			result = "WITHOUT TAKING ANY DAMAGE";
+			break;
+		case Mission.Objects.noCoin:
+			result = "WITHOU COLLECTING ANY COINS";
 			break;
 		}
 
