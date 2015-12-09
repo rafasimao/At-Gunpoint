@@ -117,6 +117,9 @@ public class MissionView : MonoBehaviour
 		case Mission.Objects.Zone:
 			result = "ZONES";
 			break;
+		case Mission.Objects.BazookaBullet:
+			result = "BAZOOKA SHOTS WHILE FLYING";
+			break;
 		}
 
 		return result;

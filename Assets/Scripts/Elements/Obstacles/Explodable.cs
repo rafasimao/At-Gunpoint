@@ -35,7 +35,7 @@ public class Explodable : Obstacle
 		Life--;
 		if (Life<1)
 		{
-			NotifyExplodeToQuests();
+			NotifyExplodeToQuests(null);
 			Invoke("Explode", _DelayToExplode);
 		}
 	}
@@ -45,14 +45,14 @@ public class Explodable : Obstacle
 		//Damageable d = collision.gameObject.GetComponent<Damageable>();
 		if (IsUntouchable)
 		{
-			NotifyExplodeToQuests();
+			NotifyExplodeToQuests(collision);
 			Invoke("Explode", _DelayToExplode);
 		}
 		//else if (d!=null)
 		//	TakeDamage(1);
 	}
 
-	void NotifyExplodeToQuests () 
+	void NotifyExplodeToQuests (Collision collision) 
 	{
 		// Notify quests
 		if (ObjectType == Mission.Objects.Mine)
@@ -61,7 +61,11 @@ public class Explodable : Obstacle
 				GameController.Instance.Missions.Notify(Mission.Actions.Explode,ObjectType);
 			else
 				GameController.Instance.Missions.Notify(Mission.Actions.Trigger,ObjectType);
-		}
+		} 
+		else if (ObjectType == Mission.Objects.BazookaBullet && 
+		         collision!=null && collision.gameObject.GetComponent<Bullet>()!=null)
+			GameController.Instance.Missions.Notify(Mission.Actions.Explode,ObjectType);
+
 		else if (_Rigidbody.velocity.x < 0)
 			GameController.Instance.Missions.Notify(Mission.Actions.Explode,ObjectType);
 	}

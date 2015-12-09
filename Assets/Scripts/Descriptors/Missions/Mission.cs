@@ -31,7 +31,8 @@ public class Mission
 		noFire,
 		noDamage,
 		noCoin,
-		Zone
+		Zone,
+		BazookaBullet
 	}
 
 	public bool IsSingleRun;
