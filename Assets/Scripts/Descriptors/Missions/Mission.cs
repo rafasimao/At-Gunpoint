@@ -12,7 +12,8 @@ public class Mission
 		Collect,
 		IndirectAtack,
 		Trigger,
-		Run
+		Run,
+		GetAtZone
 	}
 
 	public enum Objects
@@ -59,7 +60,12 @@ public class Mission
 	{
 		if (action == NeededAction && obj == NeededObject && 
 		    (!IsGunNeeded || (IsGunNeeded && usedGun == NeededGun)) )
-			_Counter += n;
+		{
+			if (action == Actions.GetAtZone)
+				_Counter = (n == Quantity) ? n : _Counter;
+			else
+				_Counter += n;
+		}
 	}
 
 }

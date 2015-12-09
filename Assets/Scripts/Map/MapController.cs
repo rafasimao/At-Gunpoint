@@ -85,6 +85,9 @@ public class MapController : MonoBehaviour
 
 			PrepareMaxNumberOfFloors(_CurrentZone);
 
+			// Notify that got at the zone N
+			GameController.Instance.Missions.Notify(Mission.Actions.GetAtZone,Mission.Objects.None,_CurrentZone+1);
+
 			// Prepare to show zone
 			_ShowZone = true;
 		}

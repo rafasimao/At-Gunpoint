@@ -62,6 +62,9 @@ public class MissionView : MonoBehaviour
 		case Mission.Actions.Run:
 			result = "RUN";
 			break;
+		case Mission.Actions.GetAtZone:
+			result = "GET AT ZONE";
+			break;
 		}
 
 		return result;
