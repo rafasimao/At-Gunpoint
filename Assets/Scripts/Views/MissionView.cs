@@ -65,6 +65,9 @@ public class MissionView : MonoBehaviour
 		case Mission.Actions.GetAtZone:
 			result = "GET AT ZONE";
 			break;
+		case Mission.Actions.Pass:
+			result = "PASS THROUGH";
+			break;
 		}
 
 		return result;
@@ -109,7 +112,10 @@ public class MissionView : MonoBehaviour
 			result = "WITHOUT TAKING ANY DAMAGE";
 			break;
 		case Mission.Objects.noCoin:
-			result = "WITHOU COLLECTING ANY COINS";
+			result = "WITHOUT COLLECTING ANY COINS";
+			break;
+		case Mission.Objects.Zone:
+			result = "ZONES";
 			break;
 		}
 

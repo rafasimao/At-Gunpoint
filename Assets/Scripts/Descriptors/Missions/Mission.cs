@@ -13,7 +13,8 @@ public class Mission
 		IndirectAtack,
 		Trigger,
 		Run,
-		GetAtZone
+		GetAtZone,
+		Pass
 	}
 
 	public enum Objects
@@ -29,7 +30,8 @@ public class Mission
 		Coin,
 		noFire,
 		noDamage,
-		noCoin
+		noCoin,
+		Zone
 	}
 
 	public bool IsSingleRun;

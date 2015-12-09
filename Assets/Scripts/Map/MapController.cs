@@ -86,7 +86,7 @@ public class MapController : MonoBehaviour
 			PrepareMaxNumberOfFloors(_CurrentZone);
 
 			// Notify that got at the zone N
-			GameController.Instance.Missions.Notify(Mission.Actions.GetAtZone,Mission.Objects.None,_CurrentZone+1);
+			NotifyMissionsNewZone();
 
 			// Prepare to show zone
 			_ShowZone = true;
@@ -97,6 +97,12 @@ public class MapController : MonoBehaviour
 	{
 		_MaxNumberOfFloors = 
 			(seg+1 < _Zones.Length) ? (_Zones[seg+1].StartFloor - _NumberOfFloorsPassed) : 50;
+	}
+
+	void NotifyMissionsNewZone ()
+	{
+		GameController.Instance.Missions.Notify(Mission.Actions.GetAtZone,Mission.Objects.None,_CurrentZone+1);
+		GameController.Instance.Missions.Notify(Mission.Actions.Pass,Mission.Objects.Zone);
 	}
 
 	public void OnFloorTriggered (Floor floor) 
@@ -114,6 +120,9 @@ public class MapController : MonoBehaviour
 		{
 			_Ambient.Update(Floor2);
 			_FirstFloorTrigger = false;
+
+			// Notify that got at the zone N
+			NotifyMissionsNewZone();
 
 			// Prepare to show zone
 			_ShowZone =true;
