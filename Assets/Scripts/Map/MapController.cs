@@ -98,14 +98,7 @@ public class MapController : MonoBehaviour
 
 	public void OnFloorTriggered (Floor floor) 
 	{
-		if (_ShowZone)
-		{
-			if ((_CurrentZone+1) >= _Zones.Length)
-				ZoneView.ShowBossZoneMessage();
-			else
-				ZoneView.ShowZoneMessage(_CurrentZone+1);
-			_ShowZone=false;
-		}
+		ShowZone();
 
 		if (!_FirstFloorTrigger)
 		{
@@ -130,6 +123,18 @@ public class MapController : MonoBehaviour
 		    _CurrentZone+1 < _Zones.Length && 
 		    _NumberOfFloorsPassed > _Zones[_CurrentZone+1].StartFloor)
 			GoToNextSegment();
+	}
+
+	void ShowZone ()
+	{
+		if (_ShowZone)
+		{
+			if ((_CurrentZone+1) >= _Zones.Length)
+				ZoneView.ShowBossZoneMessage();
+			else
+				ZoneView.ShowZoneMessage(_CurrentZone+1);
+			_ShowZone=false;
+		}
 	}
 
 	void GenerateNewFloor (Floor floorToUpdate) 
