@@ -100,7 +100,10 @@ public class MapController : MonoBehaviour
 	{
 		if (_ShowZone)
 		{
-			ZoneView.ShowZoneMessage(_CurrentZone+1);
+			if ((_CurrentZone+1) >= _Zones.Length)
+				ZoneView.ShowBossZoneMessage();
+			else
+				ZoneView.ShowZoneMessage(_CurrentZone+1);
 			_ShowZone=false;
 		}
 

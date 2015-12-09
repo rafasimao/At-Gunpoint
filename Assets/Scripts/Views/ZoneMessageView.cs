@@ -18,11 +18,21 @@ public class ZoneMessageView : MonoBehaviour
 
 	public void ShowZoneMessage (int n)
 	{
-		ZoneText.text = "Zone "+n;
-		ZoneTextBack.text = "Zone "+n;
+		Show("ZONE "+n);
+	}
 
+	public void ShowBossZoneMessage ()
+	{
+		Show("BOSS");
+	}
+
+	void Show (string message)
+	{
+		ZoneText.text = message;
+		ZoneTextBack.text = message;
+		
 		gameObject.SetActive(true);
-
+		
 		_Timer = 0f;
 	}
 }
