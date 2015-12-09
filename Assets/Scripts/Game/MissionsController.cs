@@ -53,7 +53,7 @@ public class MissionsController : MonoBehaviour
 
 	public void Notify (Mission.Actions action, Mission.Objects obj, int n=1)
 	{
-		if ((action==Mission.Actions.Run)||
+		if ((action==Mission.Actions.Run) ||
 			(action!=Mission.Actions.Run && !GameController.Instance.GamePlayer.SelectedChar.IsDead()))
 		{
 			List<Mission> actives = ActiveMissions;

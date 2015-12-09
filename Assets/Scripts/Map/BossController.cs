@@ -34,6 +34,7 @@ public class BossController
 			StartBoss(floor);
 		else if (_Boss!=null && _Boss.IsDead())
 		{
+			GameController.Instance.GamePlayer.Tracer.EndRun();
 			GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Boss);
 			GameEndView.SetActive(true);
 			//EndBoss();
