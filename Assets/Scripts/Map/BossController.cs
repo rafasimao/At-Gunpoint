@@ -16,7 +16,10 @@ public class BossController
 
 	public void Reset ()
 	{
-		EndBoss();
+		View.SetBoss(null);
+		View.gameObject.SetActive(false);
+		
+		DestroyBoss();
 	}
 
 	public void AlignToDescriptor (BossDescriptor descriptor)
@@ -33,12 +36,7 @@ public class BossController
 		if (_Boss == null && BossPrefab != null && floorsPassed > StartFloor)
 			StartBoss(floor);
 		else if (_Boss!=null && _Boss.IsDead())
-		{
-			GameController.Instance.GamePlayer.Tracer.EndRun();
-			GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Boss);
-			GameEndView.SetActive(true);
-			//EndBoss();
-		}
+			EndBoss();
 	}
 
 	void StartBoss (Floor floor)
@@ -52,10 +50,10 @@ public class BossController
 
 	void EndBoss ()
 	{
-		View.SetBoss(null);
-		View.gameObject.SetActive(false);
-
-		DestroyBoss();
+		GameController.Instance.GamePlayer.Tracer.EndRun();
+		GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Boss);
+		GameEndView.SetActive(true);
+		//Reset();
 	}
 
 	void DestroyBoss ()
