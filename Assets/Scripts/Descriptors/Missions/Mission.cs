@@ -34,7 +34,8 @@ public class Mission
 		noCoin,
 		Zone,
 		BazookaBullet,
-		Combo
+		Combo,
+		NearMiss
 	}
 
 	public bool IsSingleRun;

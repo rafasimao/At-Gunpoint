@@ -123,6 +123,13 @@ public class PlayerTracer : MonoBehaviour
 		_Instance.NotifyMission(Mission.Actions.Pass,Mission.Objects.Zone);
 	}
 
+	public static void NearMissed ()
+	{
+		_Instance.CountCombo();
+
+		_Instance.NotifyMission(Mission.Actions.Get,Mission.Objects.NearMiss);
+	}
+
 
 	void NotifyMission (Mission.Actions action, Mission.Objects obj, int n=1)
 	{

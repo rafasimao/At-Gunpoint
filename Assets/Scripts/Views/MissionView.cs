@@ -126,6 +126,9 @@ public class MissionView : MonoBehaviour
 		case Mission.Objects.Combo:
 			result = "COMBOS";
 			break;
+		case Mission.Objects.NearMiss:
+			result = "NEAR MISSES";
+			break;
 		}
 
 		return result;
