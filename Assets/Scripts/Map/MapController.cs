@@ -42,6 +42,9 @@ public class MapController : MonoBehaviour
 		AlignToDescriptor (GameController.Instance.War.CurrentRunDescriptor);
 		InitiateComponents();
 		PrepareMaxNumberOfFloors(_CurrentZone);
+
+		// Reset Checkpoint
+		GameController.Instance.War.CurrentRunDescriptor.ResetCheckpoint();
 	}
 
 	public void AlignToDescriptor (RunDescriptor descriptor)
@@ -49,11 +52,16 @@ public class MapController : MonoBehaviour
 		if (descriptor.Zones != null)
 		{
 			_Zones = descriptor.Zones;
-			_CurrentZone = 0;
+			_CurrentZone = descriptor.CheckpointZone;
 			AlignComponentsToSegment(_Zones[_CurrentZone].Segment);
 			_Boss.AlignToDescriptor(descriptor.Boss);
 		}
 	}
+
+	public void SaveCheckpoint ()
+	{
+		GameController.Instance.War.CurrentRunDescriptor.SaveCheckpoint(_CurrentZone);
+	} 
 
 	void InitiateComponents ()
 	{
