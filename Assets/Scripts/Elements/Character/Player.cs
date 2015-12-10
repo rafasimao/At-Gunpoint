@@ -10,14 +10,12 @@ public class Player : MonoBehaviour
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
 
-	public PlayerTracer Tracer;
-
 	Vector3 _InitialCharPosition;
 	Quaternion _InitialCharRotation;
 
 	void Start ()
 	{
-		Coins = 10000;
+		Coins = 10000;//4now
 
 		_InitialCharPosition = SelectedChar.transform.position;
 		_InitialCharRotation = SelectedChar.transform.rotation;
@@ -25,7 +23,7 @@ public class Player : MonoBehaviour
 
 	public void CollectCoins (int coins)
 	{
-		Tracer.CollectedCoin();
+		PlayerTracer.CollectedCoin(coins);
 		Coins += coins;
 	}
 
@@ -57,9 +55,7 @@ public class Player : MonoBehaviour
 	public void StartRun ()
 	{
 		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
-
-		if (Tracer!=null)
-			Tracer.StartRun();
+		PlayerTracer.StartRun();
 	}
 
 	public void ResetPlayerCharacter ()

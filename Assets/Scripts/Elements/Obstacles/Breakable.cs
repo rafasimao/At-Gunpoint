@@ -29,7 +29,8 @@ public class Breakable : Obstacle
 	{
 		// Notify quests
 		if (GetComponent<Rigidbody>().velocity.x < 0)
-			GameController.Instance.Missions.Notify(Mission.Actions.Destroy,ObjectType);
+			PlayerTracer.Destroyed(ObjectType);
+			//GameController.Instance.Missions.Notify(Mission.Actions.Destroy,ObjectType);
 	}
 
 	/*

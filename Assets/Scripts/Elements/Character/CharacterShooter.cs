@@ -13,7 +13,7 @@ public class CharacterShooter : MonoBehaviour
 	public bool IsReadyToFire { get { return (_FireTimer > FireDelay); } }
 	public float LoadedFireDelay { get { return _FireTimer/FireDelay; } }
 
-	public PlayerTracer Tracer;
+	bool _IsPlayer;
 
 	Animator _Animator;
 
@@ -30,8 +30,8 @@ public class CharacterShooter : MonoBehaviour
 	void Start () 
 	{
 		_Animator = GetComponentInChildren<Animator>();
-
 		_FireTimer = FireDelay;
+		_IsPlayer = tag.Equals("Player");
 	}
 
 	void Update ()
@@ -56,8 +56,8 @@ public class CharacterShooter : MonoBehaviour
 		if (IsReadyToFire)
 		{
 			// notify tracer that fired
-			if (Tracer!=null) 
-				Tracer.Fired();
+			if (_IsPlayer) 
+				PlayerTracer.Fired();
 
 			// Place bullet
 			//Bullet b = _Bullets.GetPooledObj<Bullet>();

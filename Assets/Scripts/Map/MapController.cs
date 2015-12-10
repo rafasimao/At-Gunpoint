@@ -101,8 +101,9 @@ public class MapController : MonoBehaviour
 
 	void NotifyMissionsNewZone ()
 	{
-		GameController.Instance.Missions.Notify(Mission.Actions.GetAtZone,Mission.Objects.None,_CurrentZone+1);
-		GameController.Instance.Missions.Notify(Mission.Actions.Pass,Mission.Objects.Zone);
+		PlayerTracer.GotAtNewZone(_CurrentZone+1);
+		//GameController.Instance.Missions.Notify(Mission.Actions.GetAtZone,Mission.Objects.None,_CurrentZone+1);
+		//GameController.Instance.Missions.Notify(Mission.Actions.Pass,Mission.Objects.Zone);
 	}
 
 	public void OnFloorTriggered (Floor floor) 

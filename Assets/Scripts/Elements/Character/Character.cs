@@ -9,15 +9,13 @@ public class Character : MonoBehaviour, Damageable
 
 	public Switcher Switch;
 
-	public PlayerTracer Tracer;
-
 	Animator _Animator;
-	bool IsPlayer;
+	bool _IsPlayer;
 
 	void Start ()
 	{
 		_Animator = GetComponentInChildren<Animator>();
-		IsPlayer = tag.Equals("Player");
+		_IsPlayer = tag.Equals("Player");
 	}
 
 	void OnEnable ()
@@ -45,15 +43,12 @@ public class Character : MonoBehaviour, Damageable
 		if (!IsDead())
 		{
 			// notify damage
-			if (Tracer!=null) 
-				Tracer.TookDamage(damage);
+			if (_IsPlayer) 
+				PlayerTracer.TookDamage(damage);
 
 			Life -= damage;
 			if (IsDead()) 
-			{
-				NotifyDeathToQuests();
 				BeKilled();
-			}
 			else if (_Animator!=null)
 				_Animator.SetTrigger("TookDamage");
 		}
@@ -61,13 +56,11 @@ public class Character : MonoBehaviour, Damageable
 
 	public void BeKilled ()
 	{
+		NotifyDeath();
+
 		// Die!
 		Life = 0;
 		CharControl.TurnAllOff();
-
-		// notify death
-		if (Tracer!=null) 
-			Tracer.Died();
 
 		Invoke("SwitchDead",0.3f);
 
@@ -75,10 +68,13 @@ public class Character : MonoBehaviour, Damageable
 			_Animator.SetBool("IsDead", true);
 	}
 
-	void NotifyDeathToQuests ()
+	void NotifyDeath ()
 	{
-		if (!IsPlayer)
-			GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Enemy);
+		if (_IsPlayer)
+			PlayerTracer.Died();
+		else
+			PlayerTracer.Killed(Mission.Objects.Enemy);
+		//GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Enemy);
 	}
 
 	void SwitchDead ()

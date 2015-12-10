@@ -3,57 +3,119 @@ using System.Collections;
 
 public class PlayerTracer : MonoBehaviour 
 {
+	public MissionsController Missions;
+	public Player GamePlayer;
 
 	int _ShotsCounter=0, _DamageCounter=0, _CoinsCounter=0;
 	int _FirstShotDistance=0, _FirstDamageDistance=0, _FirstCoinDistance=0; 
 
 	bool _Notified;
 
-	void Reset ()
+	#region Singleton:
+	static PlayerTracer _Instance;
+	
+	void Awake()
 	{
-		_ShotsCounter = _DamageCounter = _CoinsCounter = 0;
-		_FirstShotDistance = _FirstDamageDistance = _FirstCoinDistance = 0;
-		_Notified = false;
+		// First we check if there are any other instances conflicting
+		if(_Instance != null && _Instance != this)
+		{
+			// If that is the case, we destroy other instances
+			Destroy(gameObject);
+		}
+
+		// Here we save our singleton instance
+		_Instance = this;
+	}
+	#endregion
+
+	public static void StartRun ()
+	{
+		if (_Instance!=null)
+			_Instance.Reset();
 	}
 
-	public void StartRun ()
+	public static void EndRun ()
 	{
-		Reset();
+		if (_Instance!=null)
+			_Instance.EndRunNotifies ();
 	}
 
-	public void Fired ()
+	public static void Fired ()
 	{
-		if (_ShotsCounter==0)
-			_FirstShotDistance = GameController.Instance.GamePlayer.GetDistanceRan();
-		_ShotsCounter++;
+		if (_Instance._ShotsCounter==0)
+			_Instance._FirstShotDistance = _Instance.GamePlayer.GetDistanceRan();
+		_Instance._ShotsCounter++;
 	}
 
-	public void TookDamage (int dmg)
+	public static void TookDamage (int dmg)
 	{
-		if (_DamageCounter==0)
-			_FirstDamageDistance = GameController.Instance.GamePlayer.GetDistanceRan();
-		_DamageCounter+=dmg;
+		if (_Instance._DamageCounter==0)
+			_Instance._FirstDamageDistance = _Instance.GamePlayer.GetDistanceRan();
+		_Instance._DamageCounter+=dmg;
 	}
 
-	public void CollectedCoin ()
+	public static void CollectedCoin (int amount)
 	{
-		if (_CoinsCounter==0)
-			_FirstCoinDistance = GameController.Instance.GamePlayer.GetDistanceRan();
-		_CoinsCounter++;
+		_Instance.NotifyMission(Mission.Actions.Collect,Mission.Objects.Coin,amount);
+
+		if (_Instance._CoinsCounter==0)
+			_Instance._FirstCoinDistance = _Instance.GamePlayer.GetDistanceRan();
+		_Instance._CoinsCounter++;
 	}
 
-	public void Died ()
+	public static void Died ()
 	{
 		EndRun();
 	}
 
-	public void EndRun ()
+	public static void Killed (Mission.Objects obj)
+	{
+		_Instance.NotifyMission(Mission.Actions.Kill,obj);
+
+		if (obj == Mission.Objects.Boss)
+			EndRun();
+	}
+
+	public static void Destroyed (Mission.Objects obj) 
+	{
+		_Instance.NotifyMission(Mission.Actions.Destroy,obj);
+	}
+
+	public static void Exploded (Mission.Objects obj)
+	{
+		_Instance.NotifyMission(Mission.Actions.Explode,obj);
+	}
+
+	public static void Triggered (Mission.Objects obj)
+	{
+		_Instance.NotifyMission(Mission.Actions.Trigger,obj);
+	}
+
+	public static void GotAtNewZone (int zone)
+	{
+		_Instance.NotifyMission(Mission.Actions.GetAtZone,Mission.Objects.None,zone);
+		_Instance.NotifyMission(Mission.Actions.Pass,Mission.Objects.Zone);
+	}
+
+	void NotifyMission (Mission.Actions action, Mission.Objects obj, int n=1)
+	{
+		Missions.Notify(action,obj,n);
+	}
+
+	void EndRunNotifies ()
 	{
 		if (!_Notified)
 		{
 			NotifyRunMissions();
 			_Notified=true;
 		}
+	}
+
+	void Reset ()
+	{
+		_ShotsCounter = _DamageCounter = _CoinsCounter = 0;
+		_FirstShotDistance = _FirstDamageDistance = _FirstCoinDistance = 0;
+		_Notified = false;
 	}
 
 	void NotifyRunMissions ()
