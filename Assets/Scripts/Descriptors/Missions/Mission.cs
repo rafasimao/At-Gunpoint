@@ -14,7 +14,8 @@ public class Mission
 		Trigger,
 		Run,
 		GetAtZone,
-		Pass
+		Pass,
+		Get
 	}
 
 	public enum Objects
@@ -32,7 +33,8 @@ public class Mission
 		noDamage,
 		noCoin,
 		Zone,
-		BazookaBullet
+		BazookaBullet,
+		Combo
 	}
 
 	public bool IsSingleRun;

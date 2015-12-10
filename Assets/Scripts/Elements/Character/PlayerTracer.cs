@@ -6,6 +6,12 @@ public class PlayerTracer : MonoBehaviour
 	public MissionsController Missions;
 	public Player GamePlayer;
 
+	public float ComboTime;
+	public int Combo { get { return _ComboCounter; } }
+
+	int _ComboCounter;
+	float _Timer;
+
 	int _ShotsCounter=0, _DamageCounter=0, _CoinsCounter=0;
 	int _FirstShotDistance=0, _FirstDamageDistance=0, _FirstCoinDistance=0; 
 
@@ -27,6 +33,16 @@ public class PlayerTracer : MonoBehaviour
 		_Instance = this;
 	}
 	#endregion
+
+	void LateUpdate ()
+	{
+		if (_Timer<ComboTime)
+		{
+			_Timer += Time.deltaTime;
+			if (_Timer>ComboTime)
+				_ComboCounter = 0;
+		}
+	}
 
 	public static void StartRun ()
 	{
@@ -56,6 +72,8 @@ public class PlayerTracer : MonoBehaviour
 
 	public static void CollectedCoin (int amount)
 	{
+		_Instance.CountCombo();
+
 		_Instance.NotifyMission(Mission.Actions.Collect,Mission.Objects.Coin,amount);
 
 		if (_Instance._CoinsCounter==0)
@@ -70,6 +88,8 @@ public class PlayerTracer : MonoBehaviour
 
 	public static void Killed (Mission.Objects obj)
 	{
+		_Instance.CountCombo();
+
 		_Instance.NotifyMission(Mission.Actions.Kill,obj);
 
 		if (obj == Mission.Objects.Boss)
@@ -78,16 +98,22 @@ public class PlayerTracer : MonoBehaviour
 
 	public static void Destroyed (Mission.Objects obj) 
 	{
+		_Instance.CountCombo();
+
 		_Instance.NotifyMission(Mission.Actions.Destroy,obj);
 	}
 
 	public static void Exploded (Mission.Objects obj)
 	{
+		_Instance.CountCombo();
+
 		_Instance.NotifyMission(Mission.Actions.Explode,obj);
 	}
 
 	public static void Triggered (Mission.Objects obj)
 	{
+		_Instance.CountCombo();
+
 		_Instance.NotifyMission(Mission.Actions.Trigger,obj);
 	}
 
@@ -97,9 +123,18 @@ public class PlayerTracer : MonoBehaviour
 		_Instance.NotifyMission(Mission.Actions.Pass,Mission.Objects.Zone);
 	}
 
+
 	void NotifyMission (Mission.Actions action, Mission.Objects obj, int n=1)
 	{
 		Missions.Notify(action,obj,n);
+	}
+
+	void CountCombo ()
+	{
+		_ComboCounter++;
+		_Timer=0f;
+
+		NotifyMission(Mission.Actions.Get, Mission.Objects.Combo);
 	}
 
 	void EndRunNotifies ()
@@ -113,6 +148,7 @@ public class PlayerTracer : MonoBehaviour
 
 	void Reset ()
 	{
+		_ComboCounter = 0;
 		_ShotsCounter = _DamageCounter = _CoinsCounter = 0;
 		_FirstShotDistance = _FirstDamageDistance = _FirstCoinDistance = 0;
 		_Notified = false;

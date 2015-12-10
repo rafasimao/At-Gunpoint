@@ -68,6 +68,9 @@ public class MissionView : MonoBehaviour
 		case Mission.Actions.Pass:
 			result = "PASS THROUGH";
 			break;
+		case Mission.Actions.Get:
+			result = "GET";
+			break;
 		}
 
 		return result;
@@ -119,6 +122,9 @@ public class MissionView : MonoBehaviour
 			break;
 		case Mission.Objects.BazookaBullet:
 			result = "BAZOOKA SHOTS WHILE FLYING";
+			break;
+		case Mission.Objects.Combo:
+			result = "COMBOS";
 			break;
 		}
 
