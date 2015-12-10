@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class RunDescriptor
+public class RunDescriptor : ScriptableObject
 {
 	[SerializeField]
 	int _CheckpointZone = 0;
