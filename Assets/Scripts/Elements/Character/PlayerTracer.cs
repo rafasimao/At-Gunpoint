@@ -93,7 +93,11 @@ public class PlayerTracer : MonoBehaviour
 		_Instance.NotifyMission(Mission.Actions.Kill,obj);
 
 		if (obj == Mission.Objects.Boss)
+		{
+			if (_Instance._DamageCounter==0)
+				_Instance.NotifyMission(Mission.Actions.Kill,Mission.Objects.BossNoDamage);
 			EndRun();
+		}
 	}
 
 	public static void Destroyed (Mission.Objects obj) 
