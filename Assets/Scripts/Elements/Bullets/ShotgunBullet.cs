@@ -47,13 +47,22 @@ public class ShotgunBullet : Bullet
 		Bullet other = hit.collider.gameObject.GetComponent<Bullet>();
 		if (other == null)
 		{
+			if (hit.rigidbody != null)
+			{
+				hit.rigidbody.AddForceAtPosition(dir.normalized*(Speed/2), hit.point, ForceMode.Impulse);
+				// Leave player mark at shots
+				if (Direction.x < 0) 
+				{
+					Vector3 vel = hit.rigidbody.velocity;
+					vel.x += -0.1f;
+					hit.rigidbody.velocity = vel;
+				}
+			}
+
 			Damageable obj = hit.collider.gameObject.GetComponent<Damageable>();
 			
 			if (obj != null)
 				obj.TakeDamage(Damage);
-
-			if (hit.rigidbody != null)
-				hit.rigidbody.AddForceAtPosition(dir.normalized*(Speed/2), hit.point, ForceMode.Impulse);
 		}
 	}
 

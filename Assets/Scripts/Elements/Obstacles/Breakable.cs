@@ -17,16 +17,20 @@ public class Breakable : Obstacle
 
 	public override void TakeDamage (int dmg)
 	{
-		Life -= dmg;
-		if (Life<1)
+		if (Life>0)
 		{
-			NotifyBreakToQuests();
-			Invoke("Disappear", _DelayToDisappear);
+			Life -= dmg;
+			if (Life<1)
+			{
+				NotifyBreakToQuests();
+				Invoke("Disappear", _DelayToDisappear);
+			}
 		}
 	}
 
 	void NotifyBreakToQuests () 
 	{
+		Debug.Log("vel x: "+GetComponent<Rigidbody>().velocity.x);
 		// Notify quests
 		if (GetComponent<Rigidbody>().velocity.x < 0)
 			PlayerTracer.Destroyed(ObjectType);
