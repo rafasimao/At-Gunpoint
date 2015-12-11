@@ -73,8 +73,11 @@ public class Character : MonoBehaviour, Damageable
 		if (_IsPlayer)
 			PlayerTracer.Died();
 		else
+		{
 			PlayerTracer.Killed(Mission.Objects.Enemy);
-		//GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Enemy);
+			GameController.Instance.GamePlayer.CollectCoins(15);
+			GameController.Instance.GamePointsController.ShowPoints(transform.position,15);
+		}
 	}
 
 	void SwitchDead ()

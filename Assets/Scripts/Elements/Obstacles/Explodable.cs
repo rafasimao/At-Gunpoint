@@ -58,20 +58,23 @@ public class Explodable : Obstacle
 		if (ObjectType == Mission.Objects.Mine)
 		{
 			if (_Rigidbody.velocity.y < -0.5)
-				PlayerTracer.Exploded(ObjectType);
-				//GameController.Instance.Missions.Notify(Mission.Actions.Explode,ObjectType);
+				TracePlayerExplosion ();
 			else
 				PlayerTracer.Triggered(ObjectType);
-				//GameController.Instance.Missions.Notify(Mission.Actions.Trigger,ObjectType);
 		} 
 		else if (ObjectType == Mission.Objects.BazookaBullet && 
 		         collision!=null && collision.gameObject.GetComponent<Bullet>()!=null)
-			PlayerTracer.Exploded(ObjectType);
-			//GameController.Instance.Missions.Notify(Mission.Actions.Explode,ObjectType);
+			TracePlayerExplosion ();
 
 		else if (_Rigidbody.velocity.x < 0)
-			PlayerTracer.Exploded(ObjectType);
-			//GameController.Instance.Missions.Notify(Mission.Actions.Explode,ObjectType);
+			TracePlayerExplosion ();
+	}
+
+	void TracePlayerExplosion () 
+	{
+		PlayerTracer.Exploded(ObjectType);
+		GameController.Instance.GamePlayer.CollectCoins(5);
+		GameController.Instance.GamePointsController.ShowPoints(transform.position,5);
 	}
 
 	void Explode ()
