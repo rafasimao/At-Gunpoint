@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
 	public void CollectCoins (int coins)
 	{
-		PlayerTracer.CollectedCoin(coins);
 		Coins += coins;
 	}
 

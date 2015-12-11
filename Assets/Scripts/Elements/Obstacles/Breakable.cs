@@ -30,7 +30,6 @@ public class Breakable : Obstacle
 
 	void NotifyBreakToQuests () 
 	{
-		Debug.Log("vel x: "+GetComponent<Rigidbody>().velocity.x);
 		// Notify quests
 		if (GetComponent<Rigidbody>().velocity.x < 0)
 			PlayerTracer.Destroyed(ObjectType);
