@@ -9,17 +9,21 @@ public class Pool
 	Transform _ObjsParent;
 	List<GameObject> _PooledObjs;
 	bool _IsGrowable;
+	bool _IsUI = false;
 
-	public Pool (int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true)
+	public Pool 
+		(int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true, bool isUI = false)
 	{
-		InitiatePool(initialSize,prefab,parent,isGrowable);
+		InitiatePool(initialSize,prefab,parent,isGrowable,isUI);
 	}
 
-	public void InitiatePool (int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true)
+	public void InitiatePool 
+		(int initialSize, GameObject prefab, Transform parent = null, bool isGrowable = true, bool isUI = false)
 	{
 		_ObjsPrefab = prefab;
 		_ObjsParent = parent;
 		_IsGrowable = isGrowable;
+		_IsUI = isUI;
 		
 		_PooledObjs = new List<GameObject>();
 		for (int i=0; i<initialSize; i++)
@@ -28,7 +32,7 @@ public class Pool
 
 	GameObject CreateNewObj ()
 	{
-		GameObject obj = GeneralFabric.CreateObject(_ObjsPrefab, _ObjsParent);
+		GameObject obj = GeneralFabric.CreateObject(_ObjsPrefab, _ObjsParent, _IsUI);
 		obj.SetActive(false);
 		_PooledObjs.Add(obj);
 
