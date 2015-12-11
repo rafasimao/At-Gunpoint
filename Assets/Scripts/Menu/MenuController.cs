@@ -6,8 +6,9 @@ public class MenuController : MonoBehaviour
 	// main menu = 0;
 	// char selection = 1;
 	// war selection = 2;
-	// options = 3;
-	// run = 4;
+	// shop = 3;
+	// options = 4;
+	// run = 5;
 
 	public GameObject[] Views;
 
