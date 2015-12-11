@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	public CameraController GameCamera;
 	public FXController GameFXController;
 	public BulletsController GameBulletsController;
+	public PointsController GamePointsController;
 	public MissionsController Missions;
 	public MapController Map;
 	public WarController War;
@@ -55,6 +56,7 @@ public class GameController : MonoBehaviour
 			Map.Reset();
 			GameFXController.Reset();
 			GameBulletsController.Reset();
+			GamePointsController.Reset();
 			GamePlayer.ResetPlayerCharacter();
 
 			// Change to start screen menu
