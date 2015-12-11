@@ -8,7 +8,8 @@ public class Collector : MonoBehaviour
 	{
 		if (other.GetComponent<Obstacle>()!=null || 
 		    other.GetComponent<Character>()!=null || 
-		    other.GetComponent<Barrier>()!=null)
+		    other.GetComponent<Barrier>()!=null ||
+		    other.GetComponent<Coin>()!=null)
 			other.gameObject.SetActive(false);
 	}
 

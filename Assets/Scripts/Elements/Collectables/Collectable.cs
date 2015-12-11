@@ -10,7 +10,7 @@ public abstract class Collectable : MonoBehaviour {
 		if (other.tag.Equals("Player"))
 		{
 			BeCollected();
-			Destroy (gameObject);
+			gameObject.SetActive(false);
 		}
 	}
 

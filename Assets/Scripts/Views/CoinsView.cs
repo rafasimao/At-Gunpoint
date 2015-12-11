@@ -12,6 +12,11 @@ public class CoinsView : MonoBehaviour
 		UpdateCoins();
 	}
 
+	void LateUpdate ()
+	{
+		UpdateCoins();
+	}
+
 	public void UpdateCoins ()
 	{
 		CoinsText.text = ""+GameController.Instance.GamePlayer.Coins;

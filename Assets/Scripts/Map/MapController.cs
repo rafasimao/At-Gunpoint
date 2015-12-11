@@ -7,7 +7,7 @@ public class MapController : MonoBehaviour
 	public float FloorsOffset;
 
 	public AmbientController _Ambient;
-	public ObstaclesController _Obstacles;
+	public ObstaclesController _Obstacles, _Collectables;
 	public BossController _Boss;
 
 	public ZoneMessageView ZoneView;
@@ -35,12 +35,14 @@ public class MapController : MonoBehaviour
 		Floor1.Reset();
 		Floor2.Reset();
 		ClearComponents(0f);
+		_Collectables.Clear(0f);
 	}
 
 	public void StartRun ()
 	{
 		AlignToDescriptor (GameController.Instance.War.CurrentRunDescriptor);
 		InitiateComponents();
+		_Collectables.Initiate();
 		PrepareMaxNumberOfFloors(_CurrentZone);
 
 		// Reset Checkpoint
@@ -67,18 +69,21 @@ public class MapController : MonoBehaviour
 	{
 		_Obstacles.Initiate();
 		_Ambient.Initiate();
+		//_Collectables.Initiate();
 	}
 
 	void AlignComponentsToSegment (SegmentDescriptor segment)
 	{
 		_Ambient.AlignToDescriptor(segment);
 		_Obstacles.AlignToDescriptor(segment);
+		//_Collectables.AlignToDescriptor(segment);
 	}
 
 	void ClearComponents (float delay=10f)
 	{
 		_Ambient.Clear(delay);
 		_Obstacles.Clear(delay);
+		//_Collectables.Clear(delay);
 	}
 
 	void GoToNextSegment ()
@@ -160,14 +165,17 @@ public class MapController : MonoBehaviour
 
 	void GenerateNewFloor (Floor floorToUpdate) 
 	{
+		float progress = 
+			(_Zones!=null) ?
+				((_NumberOfFloorsPassed-_Zones[_CurrentZone].StartFloor)/_MaxNumberOfFloors) :
+				(_NumberOfFloorsPassed/_MaxNumberOfFloors);
+
 		floorToUpdate.UpdateToNewFloor(FloorsOffset);
 
 		_Ambient.Update(floorToUpdate);
 		_Boss.Update(floorToUpdate, (int)_NumberOfFloorsPassed);
-		_Obstacles.Update(floorToUpdate,
-		                  (_Zones!=null) ?
-		                  ((_NumberOfFloorsPassed-_Zones[_CurrentZone].StartFloor)/_MaxNumberOfFloors) :
-		                  (_NumberOfFloorsPassed/_MaxNumberOfFloors));
+		_Obstacles.Update(floorToUpdate, progress);
+		_Collectables.Update(floorToUpdate, progress);
 	}
 
 }
