@@ -19,4 +19,9 @@ public class TimerSwitcher : MonoBehaviour
 			SwitchOn.SetActive(true);
 	}
 
+	public void Deactivate ()
+	{
+		CancelInvoke();
+	}
+
 }

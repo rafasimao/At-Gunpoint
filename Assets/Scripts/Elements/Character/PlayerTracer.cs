@@ -83,7 +83,7 @@ public class PlayerTracer : MonoBehaviour
 
 	public static void Died ()
 	{
-		EndRun();
+		//EndRun();
 	}
 
 	public static void Killed (Mission.Objects obj)

@@ -50,9 +50,7 @@ public class BossController
 
 	void EndBoss ()
 	{
-		//PlayerTracer.EndRun();
 		PlayerTracer.Killed(Mission.Objects.Boss);
-		//GameController.Instance.Missions.Notify(Mission.Actions.Kill,Mission.Objects.Boss);
 		GameEndView.SetActive(true);
 		//Reset();
 	}

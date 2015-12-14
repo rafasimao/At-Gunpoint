@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 	public int Coins { get; private set; }
 	public int Emeralds { get; private set; }
 
+	public int[] ItemsOwn { get; private set; }
+
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
 
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 		Coins = 10000;//4now
+
+		ItemsOwn = new int[Items.GetNumberOfItems()];
 
 		_InitialCharPosition = SelectedChar.transform.position;
 		_InitialCharRotation = SelectedChar.transform.rotation;
@@ -28,12 +32,11 @@ public class Player : MonoBehaviour
 
 	public bool SpendCoins (int coins)
 	{
-		if (Coins >= coins)
-		{
+		bool spent = (Coins >= coins);
+		if (spent)
 			Coins -= coins;
-			return true;
-		}
-		return false;
+
+		return spent;
 	}
 
 	public void CollectEmeralds (int emeralds)
@@ -43,13 +46,28 @@ public class Player : MonoBehaviour
 
 	public bool SpendEmeralds (int emeralds)
 	{
-		if (Emeralds >= emeralds)
-		{
+		bool spent = (Emeralds >= emeralds);
+		if (spent)
 			Emeralds -= emeralds;
-			return true;
-		}
-		return false;
+		return spent;
 	}
+
+	public bool UseItem (Items.Item item)
+	{
+		bool used = (ItemsOwn[(int)item] > 0);
+		if (used)
+			ItemsOwn[(int)item]--;
+		return used;
+	}
+
+	public void BuyItem (int item)
+	{
+		bool bought = (item>-1 && item<ItemsOwn.Length && SpendCoins(Items.GetItemPrice((Items.Item)item)));
+		if (bought)
+			ItemsOwn[item]++;
+		//return bought;
+	}
+
 
 	public void StartRun ()
 	{
@@ -65,6 +83,15 @@ public class Player : MonoBehaviour
 		SelectedChar.gameObject.SetActive(true);
 
 		StopRun();
+	}
+
+	public void RevivePlayer ()
+	{
+		SelectedChar.gameObject.SetActive(false);
+		SelectedChar.gameObject.SetActive(true);
+
+		StopRun();
+		StartRun();
 	}
 
 	public void StopRun ()
