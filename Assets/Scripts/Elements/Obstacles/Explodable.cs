@@ -32,11 +32,14 @@ public class Explodable : Obstacle
 
 	public override void TakeDamage (int dmg)
 	{
-		Life--;
-		if (Life<1)
+		if (Life>0)
 		{
-			NotifyExplodeToQuests(null);
-			Invoke("Explode", _DelayToExplode);
+			Life--;
+			if (Life<1)
+			{
+				NotifyExplodeToQuests(null);
+				Invoke("Explode", _DelayToExplode);
+			}
 		}
 	}
 
