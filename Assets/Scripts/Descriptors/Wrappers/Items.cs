@@ -43,25 +43,24 @@ public class Items : MonoBehaviour
 	}
 
 
-	public void UseItem (int item)
+	public static bool UseItem (Item item)
 	{
-		if (item>-1 && item<GetNumberOfItems())
+		bool canUseItem = GameController.Instance.GamePlayer.UseItem(item);
+
+		if (canUseItem)
 		{
-			Item it = (Item)item;
-			
-			if (GameController.Instance.GamePlayer.UseItem(it))
+			switch (item)
 			{
-				switch (it)
-				{
-				case Item.Checkpoint:
-					UseCheckpoint();
-					break;
-				case Item.Revival:
-					UseRevival();
-					break;
-				}
+			case Item.Checkpoint:
+				_Instance.UseCheckpoint();
+				break;
+			case Item.Revival:
+				_Instance.UseRevival();
+				break;
 			}
 		}
+
+		return canUseItem;
 	}
 
 	void UseCheckpoint ()

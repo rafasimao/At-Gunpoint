@@ -7,10 +7,10 @@ public class Player : MonoBehaviour
 	public int Coins { get; private set; }
 	public int Emeralds { get; private set; }
 
-	public int[] ItemsOwn { get; private set; }
-
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
+
+	int[] _ItemsOwn;
 
 	Vector3 _InitialCharPosition;
 	Quaternion _InitialCharRotation;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	{
 		Coins = 10000;//4now
 
-		ItemsOwn = new int[Items.GetNumberOfItems()];
+		_ItemsOwn = new int[Items.GetNumberOfItems()];
 
 		_InitialCharPosition = SelectedChar.transform.position;
 		_InitialCharRotation = SelectedChar.transform.rotation;
@@ -54,18 +54,23 @@ public class Player : MonoBehaviour
 
 	public bool UseItem (Items.Item item)
 	{
-		bool used = (ItemsOwn[(int)item] > 0);
+		bool used = (_ItemsOwn[(int)item] > 0);
 		if (used)
-			ItemsOwn[(int)item]--;
+			_ItemsOwn[(int)item]--;
 		return used;
 	}
 
-	public void BuyItem (int item)
+	public bool BuyItem (Items.Item item)
 	{
-		bool bought = (item>-1 && item<ItemsOwn.Length && SpendCoins(Items.GetItemPrice((Items.Item)item)));
+		bool bought = SpendCoins(Items.GetItemPrice(item));
 		if (bought)
-			ItemsOwn[item]++;
-		//return bought;
+			_ItemsOwn[(int)item]++;
+		return bought;
+	}
+
+	public int GetNumberOfOwnItems (Items.Item item)
+	{
+		return _ItemsOwn[(int)item];
 	}
 
 
