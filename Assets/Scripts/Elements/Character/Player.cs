@@ -96,12 +96,17 @@ public class Player : MonoBehaviour
 		SelectedChar.gameObject.SetActive(true);
 
 		StopRun();
-		StartRun();
+		ResumeRun();
 	}
 
 	public void StopRun ()
 	{
 		SelectedChar.GetComponent<CharacterMovement>().StopRunning();
+	}
+
+	public void ResumeRun ()
+	{
+		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
 	}
 
 	public void SelectCharacter (CharacterDescriptor characterDescriptor)
