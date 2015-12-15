@@ -9,7 +9,7 @@ public class BossControl : Control
 	Transform _PlayerChar;
 	BossState _CurrentState;
 
-	protected override void OnStart ()
+	void Start ()
 	{
 		_PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
 

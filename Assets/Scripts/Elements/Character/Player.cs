@@ -120,8 +120,6 @@ public class Player : MonoBehaviour
 
 	public void SelectControl (Control control)
 	{
-		if (SelectedControl != null)
-			Destroy(SelectedControl.gameObject);
 		SelectedControl = control;
 		IntegrateCharacterAndControl();
 	}
@@ -129,8 +127,8 @@ public class Player : MonoBehaviour
 	void IntegrateCharacterAndControl ()
 	{
 		SelectedChar.CharControl = SelectedControl;
-		SelectedControl.Movement = SelectedChar.GetComponent<CharacterMovement>();
-		SelectedControl.Shooter = SelectedChar.GetComponent<CharacterShooter>();
+		//SelectedControl.Movement = SelectedChar.GetComponent<CharacterMovement>();
+		//SelectedControl.Shooter = SelectedChar.GetComponent<CharacterShooter>();
 	}
 
 	public int GetDistanceRan ()

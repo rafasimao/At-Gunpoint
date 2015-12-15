@@ -6,9 +6,6 @@ public class SwipeControl : Control
 {
 
 	private Vector3 _FirstPressPos;
-
-	protected override void OnStart ()
-	{}
 	
 	protected override void UpdateInputs ()
 	{

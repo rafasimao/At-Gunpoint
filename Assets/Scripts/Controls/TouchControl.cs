@@ -4,9 +4,6 @@ using System.Collections;
 
 public class TouchControl : Control 
 {
-
-	protected override void OnStart ()
-	{}
 	
 	protected override void UpdateInputs ()
 	{

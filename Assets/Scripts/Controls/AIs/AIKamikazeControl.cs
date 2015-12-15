@@ -15,7 +15,7 @@ public class AIKamikazeControl : Control
 		Movement.StopRunning();
 	}
 
-	protected override void OnStart ()
+	void Start ()
 	{
 		PlayerChar = GameController.Instance.GamePlayer.SelectedChar.transform;
 	}

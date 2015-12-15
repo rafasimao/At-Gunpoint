@@ -6,7 +6,7 @@ public class AIControl : Control
 	public Interval FirstDelayInterval;
 	float _FirstDelay, _Timer;
 
-	protected override void OnStart ()
+	void Start ()
 	{
 		_Timer = 0f;
 		_FirstDelay = Random.Range(FirstDelayInterval.Start, FirstDelayInterval.End);

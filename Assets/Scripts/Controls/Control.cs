@@ -8,13 +8,15 @@ public abstract class Control : MonoBehaviour
 
 	public bool IsOn {get; private set;}
 
-	void Start ()
+	void OnEnable ()
 	{
 		IsOn = true;
-		OnStart();
 	}
 
-	protected abstract void OnStart ();
+	void OnDisable ()
+	{
+		IsOn = false;
+	}
 
 	public void TurnAllOff ()
 	{
