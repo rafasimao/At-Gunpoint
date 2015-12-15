@@ -7,6 +7,8 @@ public class Character : MonoBehaviour, Damageable
 	public int MaxLife;
 	public int Life { get; private set; }
 
+	public int Reward = 10;
+
 	public Switcher Switch;
 
 	Animator _Animator;
@@ -81,8 +83,8 @@ public class Character : MonoBehaviour, Damageable
 		else
 		{
 			PlayerTracer.Killed(Mission.Objects.Enemy);
-			GameController.Instance.GamePlayer.CollectCoins(15);
-			GameController.Instance.GamePointsController.ShowPoints(transform.position,15);
+			GameController.Instance.GamePlayer.CollectCoins(Reward);
+			GameController.Instance.GamePointsController.ShowPoints(transform.position,Reward);
 		}
 	}
 
