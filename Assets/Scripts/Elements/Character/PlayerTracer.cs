@@ -74,7 +74,7 @@ public class PlayerTracer : MonoBehaviour
 	{
 		_Instance.CountCombo();
 
-		_Instance.NotifyMission(Mission.Actions.Collect,Mission.Objects.Coin,amount);
+		_Instance.NotifyMission(Mission.Actions.Collect,Mission.Objects.Coin);
 
 		if (_Instance._CoinsCounter==0)
 			_Instance._FirstCoinDistance = _Instance.GamePlayer.GetDistanceRan();
