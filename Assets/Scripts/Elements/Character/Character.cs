@@ -23,6 +23,12 @@ public class Character : MonoBehaviour, Damageable
 		Reset();
 	}
 
+	void OnDisable ()
+	{
+		if (Switch!=null)
+			Switch.Switch(true);
+	}
+
 	void Reset ()
 	{
 		Life = MaxLife;
