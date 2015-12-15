@@ -8,12 +8,12 @@ public abstract class Control : MonoBehaviour
 
 	public bool IsOn {get; private set;}
 
-	void OnEnable ()
+	protected virtual void OnEnable ()
 	{
 		IsOn = true;
 	}
 
-	void OnDisable ()
+	protected virtual void OnDisable ()
 	{
 		IsOn = false;
 	}

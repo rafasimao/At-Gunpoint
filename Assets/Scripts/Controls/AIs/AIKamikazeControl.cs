@@ -9,8 +9,9 @@ public class AIKamikazeControl : Control
 	bool SawEnemy;
 	Transform PlayerChar;
 
-	void OnEnable ()
+	protected override void OnEnable ()
 	{
+		base.OnEnable();
 		SawEnemy = false;
 		Movement.StopRunning();
 	}

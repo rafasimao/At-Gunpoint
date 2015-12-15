@@ -7,7 +7,7 @@ public class TouchControl : Control
 	
 	protected override void UpdateInputs ()
 	{
-		if (Input.touches.Length == 1)
+		if (Input.touches.Length > 0)
 		{
 			if (!EventSystem.current.IsPointerOverGameObject(0))
 			{
