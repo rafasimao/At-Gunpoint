@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MapController : MonoBehaviour 
 {
@@ -18,6 +19,8 @@ public class MapController : MonoBehaviour
 	bool _FirstFloorTrigger = true;
 
 	bool _ShowZone = false;
+
+	List<GameObject> _Trash;
 
 	// Variables to create the progression rate
 	float _NumberOfFloorsPassed = 0f, _MaxNumberOfFloors = 50f;
@@ -86,13 +89,34 @@ public class MapController : MonoBehaviour
 		//_Collectables.Clear(delay);
 	}
 
+	void TrashOutComponentsObjects ()
+	{
+		if (_Trash==null)
+			_Trash = new List<GameObject>();
+		_Ambient.CopyObjectsTo(_Trash);
+		_Obstacles.CopyObjectsTo(_Trash);
+		//_Collectables.CopyObjectsTo(_Trash);
+	}
+
+	void EmptyTrash ()
+	{
+		if (_Trash!=null && _Trash.Count>0)
+		{
+			for (int i=0; i<_Trash.Count; i++)
+				Destroy(_Trash[i]);
+
+			_Trash.Clear();
+		}
+	}
+
 	void GoToNextSegment ()
 	{
 		if (_CurrentZone+1 < _Zones.Length)
 		{
 			_CurrentZone++;
 
-			ClearComponents();
+			//ClearComponents();
+			TrashOutComponentsObjects();
 			AlignComponentsToSegment(_Zones[_CurrentZone].Segment);
 			InitiateComponents();
 
@@ -122,7 +146,17 @@ public class MapController : MonoBehaviour
 	public void OnFloorTriggered (Floor floor) 
 	{
 		ShowZone();
+		EmptyTrash();
 
+		// Increment floors counter
+		_NumberOfFloorsPassed++;
+		// Verify if segment ended
+		if (_Zones!=null &&
+		    _CurrentZone+1 < _Zones.Length && 
+		    _NumberOfFloorsPassed > _Zones[_CurrentZone+1].StartFloor)
+			GoToNextSegment();
+
+		// Generate new floor
 		if (!_FirstFloorTrigger)
 		{
 			if (floor == Floor1)
@@ -142,13 +176,6 @@ public class MapController : MonoBehaviour
 			_ShowZone =true;
 		}
 
-		// Increment floors counter
-		_NumberOfFloorsPassed++;
-		// Verify if segment ended
-		if (_Zones!=null &&
-		    _CurrentZone+1 < _Zones.Length && 
-		    _NumberOfFloorsPassed > _Zones[_CurrentZone+1].StartFloor)
-			GoToNextSegment();
 	}
 
 	void ShowZone ()

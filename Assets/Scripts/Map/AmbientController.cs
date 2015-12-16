@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class AmbientController
@@ -33,7 +34,7 @@ public class AmbientController
 
 	public void AlignToDescriptor (SegmentDescriptor descriptor)
 	{
-		StreetMatchesPrefabs =  descriptor.StreetMatchesPrefabs;
+		StreetMatchesPrefabs = descriptor.StreetMatchesPrefabs;
 	}
 
 	public void Clear (float delay)
@@ -41,6 +42,12 @@ public class AmbientController
 		for (int i=0; i<_StreetMatches.Length; i++)
 			_StreetMatches[i].Clear(delay);
 		_LastStreetMatch = _SecondLastStreetMatch = null;
+	}
+
+	public void CopyObjectsTo (List<GameObject> list)
+	{
+		for (int i=0; i<_StreetMatches.Length; i++)
+			_StreetMatches[i].CopyObjectsTo(list);
 	}
 
 	public void Update (Floor floor)

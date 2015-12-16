@@ -33,6 +33,12 @@ public class ObstaclesController
 			MapObjects[i].Clear(delay);
 	}
 
+	public void CopyObjectsTo (List<GameObject> list)
+	{
+		for (int i=0; i<MapObjects.Length; i++)
+			MapObjects[i].CopyObjectsTo(list);
+	}
+
 	public void Update (Floor floor, float traveledPercentage)
 	{
 		List<MapColumn> freeColumns = new List<MapColumn>();

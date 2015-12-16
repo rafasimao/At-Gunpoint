@@ -24,8 +24,9 @@ public class Pool
 		_ObjsParent = parent;
 		_IsGrowable = isGrowable;
 		_IsUI = isUI;
-		
-		_PooledObjs = new List<GameObject>();
+
+		if (_PooledObjs==null)
+			_PooledObjs = new List<GameObject>();
 		for (int i=0; i<initialSize; i++)
 			CreateNewObj();
 	}
@@ -41,10 +42,21 @@ public class Pool
 
 	public void Clear (float delay = 1f)
 	{
-		for (int i=0; i<_PooledObjs.Count; i++)
-			GameObject.Destroy(_PooledObjs[i],delay);
+		ClearList(_PooledObjs,delay);
+	}
 
-		_PooledObjs.Clear();
+	void ClearList (List<GameObject> list, float delay) 
+	{
+		for (int i=0; i<list.Count; i++)
+			GameObject.Destroy(list[i],delay);
+		
+		list.Clear();
+	}
+
+	public void CopyObjectsTo (List<GameObject> list)
+	{
+		for (int i=0; i<_PooledObjs.Count; i++)
+			list.Add(_PooledObjs[i]);
 	}
 
 	public GameObject GetPooledObj () 

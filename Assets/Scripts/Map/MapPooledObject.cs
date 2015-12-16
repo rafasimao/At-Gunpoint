@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class MapPooledObject
@@ -19,6 +20,11 @@ public class MapPooledObject
 	public void Clear (float delay)
 	{
 		_ObjectPool.Clear(delay);
+	}
+
+	public void CopyObjectsTo (List<GameObject> list)
+	{
+		_ObjectPool.CopyObjectsTo(list);
 	}
 
 	public GameObject GetPooledObject ()
