@@ -7,12 +7,18 @@ public class TouchControl : Control
 	
 	protected override void UpdateInputs ()
 	{
+		if (Movement.EnableRun)
+			TreatTouches();
+	}
+
+	void TreatTouches ()
+	{
 		if (Input.touches.Length > 0)
 		{
 			if (!EventSystem.current.IsPointerOverGameObject(0))
 			{
 				Touch t = Input.GetTouch(0);
-
+				
 				if (t.phase == TouchPhase.Began)
 				{
 					if (t.position.x < Screen.width/2)

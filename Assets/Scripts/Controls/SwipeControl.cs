@@ -9,6 +9,12 @@ public class SwipeControl : Control
 	
 	protected override void UpdateInputs ()
 	{
+		if (Movement.EnableRun)
+			Swipe();
+	}
+
+	void Swipe ()
+	{
 		if (Input.touches.Length == 1) 
 		{
 			if (!EventSystem.current.IsPointerOverGameObject(0))
