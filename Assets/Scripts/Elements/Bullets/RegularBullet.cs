@@ -19,15 +19,15 @@ public class RegularBullet : Bullet
 	
 	void OnCollisionEnter (Collision collision) 
 	{
-		Bullet other = collision.gameObject.GetComponent<Bullet>();
-		if (other == null)
-		{
+		//Bullet other = collision.gameObject.GetComponent<Bullet>();
+		//if (other == null)
+		//{
 			Damageable obj = collision.gameObject.GetComponent<Damageable>();
 			if (obj != null)
 				obj.TakeDamage(Damage);
 
 			Deactivate();
-		}
+		//}
 	}
 	
 	protected virtual void Deactivate ()
