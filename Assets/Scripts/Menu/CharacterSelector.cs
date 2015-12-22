@@ -27,7 +27,7 @@ public class CharacterSelector : MonoBehaviour
 	public void AlignToDescriptor (WarDescriptor descriptor)
 	{
 		_War = descriptor;
-		_CurrentRun = _War.Run1;
+		_CurrentRun = GameController.Instance.War.CurrentRunDescriptor;
 		_CurrentCharacter = 0;
 	}
 
