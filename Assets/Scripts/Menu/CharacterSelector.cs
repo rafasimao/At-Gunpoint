@@ -5,6 +5,7 @@ public class CharacterSelector : MonoBehaviour
 {
 	public CharSelectorView SelectorView;
 	public SkinManager MainCharSkin;
+	public MissionsButtonView MissionBt; 
 
 	WarDescriptor _War;
 	RunDescriptor _CurrentRun;
@@ -20,6 +21,7 @@ public class CharacterSelector : MonoBehaviour
 	{
 		AlignToDescriptor (GameController.Instance.War.CurrentWarDescriptor);
 		ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
+		MissionBt.UpdateImage();
 	}
 
 	public void AlignToDescriptor (WarDescriptor descriptor)
@@ -42,6 +44,7 @@ public class CharacterSelector : MonoBehaviour
 			_CurrentCharacter = _CurrentRun.Characters.Length-1;
 
 			ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
+			MissionBt.UpdateImage();
 		}
 	}
 
@@ -58,6 +61,7 @@ public class CharacterSelector : MonoBehaviour
 			_CurrentCharacter = 0;
 
 			ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
+			MissionBt.UpdateImage();
 		}
 	}
 

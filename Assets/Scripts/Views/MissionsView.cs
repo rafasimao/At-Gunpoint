@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class MissionsView : MonoBehaviour 
 {
+	public Image MissionsImage;
 	public Text MissionsTitle;
 	public Text CoinText;
 
@@ -18,6 +19,7 @@ public class MissionsView : MonoBehaviour
 
 	void UpdateMissionsInfo ()
 	{
+		MissionsImage.sprite = GameController.Instance.Missions.ActiveSetSprite;
 		MissionsTitle.text = GameController.Instance.Missions.ActiveSetName;
 
 		CoinText.text = ""+GameController.Instance.Missions.ActiveSetReward;

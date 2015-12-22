@@ -20,6 +20,7 @@ public class MissionsController : MonoBehaviour
 	}
 	public int ActiveSetReward { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.Reward : 0; } }
 	public string ActiveSetName { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetName : ""; } }
+	public Sprite ActiveSetSprite { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetSprite : null; } }
 
 	public void ReloadMissionsFamily ()
 	{
