@@ -10,14 +10,24 @@ public class CharSelectorView : MonoBehaviour
 	public GameObject[] EmptyStars, Stars, EmptyHearts, Hearts, EmptyGunStars, GunStars;
 	public GameObject[] EmptyDMGBars, DMGBars, EmptyROFBars, ROFBars;
 
+	public Button PlayBt, MissionsBt;
+	public GameObject LockView;
+	public Text LockPriceText;
+
+	CharacterDescriptor _CurrentChar;
 
 	public void UpdateCharInformations (CharacterDescriptor character)
 	{
+		_CurrentChar = character;
 		NameText.text = character.Name;
 		UpdateInfos(character.LevelNumber, character.NumberOfLevels, EmptyStars, Stars);
 		UpdateInfos(character.Level.Life, character.LastLevel.Life, EmptyHearts, Hearts);
 		UpdateGunInformations(character.Gun, character.GunLevel, character.Level.GunLevelNumber);
 		UpdateUpgradeButton(character.NextLevelPrice);
+		if (character.IsLocked)
+			LockChar();
+		else
+			UnlockChar();
 	}
 
 	void UpdateInfos (int current, int max, GameObject[] emptyGOs, GameObject[] fullGOs)
@@ -58,6 +68,29 @@ public class CharSelectorView : MonoBehaviour
 			UpdateInfos(gunLevelNumber, gun.NumberOfLevels, EmptyGunStars, GunStars);
 			UpdateBars(gunLevel.BulletDamage, DMGBars);
 			UpdateBars(Guns.GetGunFireRateFromFireDelay(gunLevel.FireDelay) , ROFBars);
+		}
+	}
+
+	void LockChar ()
+	{
+		PlayBt.interactable = MissionsBt.interactable = UpgradeBt.interactable = false;
+		LockView.SetActive(true);
+		LockPriceText.text = ""+_CurrentChar.UnlockPrice;
+	}
+
+	void UnlockChar ()
+	{
+		PlayBt.interactable = MissionsBt.interactable = UpgradeBt.interactable = true;
+		LockView.SetActive(false);
+	}
+
+	public void BuyUnlock ()
+	{
+		if (_CurrentChar!=null)
+		{
+			_CurrentChar.Unlock();
+			if (!_CurrentChar.IsLocked)
+				UnlockChar();
 		}
 	}
 

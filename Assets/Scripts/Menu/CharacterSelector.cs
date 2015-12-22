@@ -34,35 +34,29 @@ public class CharacterSelector : MonoBehaviour
 	public void MoveLeft ()
 	{
 		if (_CurrentCharacter > 0)
-		{
 			ChangeCharacterInfos(_CurrentRun.Characters[--_CurrentCharacter]);
-		}
-		else if (_CurrentRun == _War.Run2)
-		{
-			GameController.Instance.War.SelectRun(WarDescriptor.WarRun.Run1);
-			_CurrentRun = _War.Run1;
-			_CurrentCharacter = _CurrentRun.Characters.Length-1;
 
-			ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
-			MissionBt.UpdateImage();
-		}
+		else if (_CurrentRun == _War.Run2)
+			ChangeToRun(WarDescriptor.WarRun.Run1, _War.Run1.Characters.Length-1);
 	}
 
 	public void MoveRight () 
 	{
 		if (_CurrentCharacter < (_CurrentRun.Characters.Length-1))
-		{
 			ChangeCharacterInfos(_CurrentRun.Characters[++_CurrentCharacter]);
-		}
-		else if (_CurrentRun == _War.Run1)
-		{
-			GameController.Instance.War.SelectRun(WarDescriptor.WarRun.Run2);
-			_CurrentRun = _War.Run2;
-			_CurrentCharacter = 0;
 
-			ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
-			MissionBt.UpdateImage();
-		}
+		else if (_CurrentRun == _War.Run1)
+			ChangeToRun(WarDescriptor.WarRun.Run2, 0);
+	}
+
+	void ChangeToRun (WarDescriptor.WarRun warRun, int currentChar)
+	{
+		GameController.Instance.War.SelectRun(warRun);
+		_CurrentRun = _War.GetRun(warRun);
+		_CurrentCharacter = currentChar;
+		
+		ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
+		MissionBt.UpdateImage();
 	}
 
 	void ChangeCharacterInfos (CharacterDescriptor character)
