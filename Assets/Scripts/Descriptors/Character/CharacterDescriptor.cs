@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CharacterDescriptor : ScriptableObject
@@ -36,13 +36,10 @@ public class CharacterDescriptor : ScriptableObject
 
 	public bool IsUpgradable { get { return (_CurrentLevel < (NumberOfLevels-1)); } }
 
-	public bool IsBlocked {get; private set;}
-
-	public CharacterDescriptor ()
-	{
-		_CurrentLevel = 0;
-		IsBlocked = false;
-	}
+	[SerializeField]
+	bool _IsLocked;
+	public bool IsLocked { get { return _IsLocked; } }
+	public int UnlockPrice;
 
 	public void Upgrade ()
 	{
@@ -50,8 +47,9 @@ public class CharacterDescriptor : ScriptableObject
 			_CurrentLevel++;
 	}
 
-	public void Unblock ()
+	public void Unlock ()
 	{
-		IsBlocked = false;
+		if (GameController.Instance.GamePlayer.SpendCoins(UnlockPrice))
+			_IsLocked = false;
 	}
 }

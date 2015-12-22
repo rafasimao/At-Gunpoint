@@ -20,10 +20,12 @@ public class WarDescriptor : ScriptableObject
 		return null;
 	}
 
-	public bool IsBlocked;
+	public bool IsLocked;
+	public int UnlockPrice;
 
-	public void Unblock ()
+	public void Unlock ()
 	{
-		IsBlocked = false;
+		if (GameController.Instance.GamePlayer.SpendCoins(UnlockPrice))
+			IsLocked = false;
 	}
 }

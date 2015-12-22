@@ -22,6 +22,11 @@ public class WarController : MonoBehaviour
 		GameController.Instance.Missions.ReloadMissionsFamily();
 	}
 
+	public WarDescriptor GetWar (int war)
+	{
+		return (war > -1 && war < WarsDescriptors.Length) ? WarsDescriptors[war] : null ;
+	} 
+
 	public void SelectWar (int war)
 	{
 		if (war > -1 && war < WarsDescriptors.Length)
