@@ -13,7 +13,12 @@ public class PlayerTracer : MonoBehaviour
 	float _Timer;
 
 	int _ShotsCounter=0, _DamageCounter=0, _CoinsCounter=0;
-	int _FirstShotDistance=0, _FirstDamageDistance=0, _FirstCoinDistance=0; 
+	int _FirstShotDistance=0, _FirstDamageDistance=0, _FirstCoinDistance=0;
+
+	float _InitialPlayerPosX;
+	int _InitialMoney;
+	int _MetersRan, _MoneyCollected, _ZoneReached;
+	bool _KnowsLastRun;
 
 	bool _Notified;
 
@@ -53,7 +58,10 @@ public class PlayerTracer : MonoBehaviour
 	public static void EndRun ()
 	{
 		if (_Instance!=null)
+		{
+			_Instance.PrepareLastRunData();
 			_Instance.EndRunNotifies ();
+		}
 	}
 
 	public static void Fired ()
@@ -125,6 +133,7 @@ public class PlayerTracer : MonoBehaviour
 	{
 		_Instance.NotifyMission(Mission.Actions.GetAtZone,Mission.Objects.None,zone);
 		_Instance.NotifyMission(Mission.Actions.Pass,Mission.Objects.Zone);
+		_Instance._ZoneReached = zone;
 	}
 
 	public static void NearMissed ()
@@ -134,6 +143,25 @@ public class PlayerTracer : MonoBehaviour
 		_Instance.NotifyMission(Mission.Actions.Get,Mission.Objects.NearMiss);
 	}
 
+	public static bool KnowsLastRun ()
+	{
+		return (_Instance!=null) ? _Instance._KnowsLastRun : false;
+	}
+
+	public static int LastMetersRan ()
+	{
+		return (_Instance!=null) ? _Instance._MetersRan : 0;
+	}
+
+	public static int LastMoneyCollected ()
+	{
+		return (_Instance!=null) ? _Instance._MoneyCollected : 0;
+	}
+
+	public static int LastZoneReached ()
+	{
+		return (_Instance!=null) ? _Instance._ZoneReached : 0;
+	}
 
 	void NotifyMission (Mission.Actions action, Mission.Objects obj, int n=1)
 	{
@@ -146,6 +174,13 @@ public class PlayerTracer : MonoBehaviour
 		_Timer=0f;
 
 		NotifyMission(Mission.Actions.Get, Mission.Objects.Combo);
+	}
+
+	void PrepareLastRunData ()
+	{
+		_MetersRan = (int)(_InitialPlayerPosX - GamePlayer.SelectedChar.transform.position.x);
+		_MoneyCollected = GamePlayer.Coins - _InitialMoney;
+		_KnowsLastRun = true;
 	}
 
 	void EndRunNotifies ()
@@ -163,6 +198,11 @@ public class PlayerTracer : MonoBehaviour
 		_ShotsCounter = _DamageCounter = _CoinsCounter = 0;
 		_FirstShotDistance = _FirstDamageDistance = _FirstCoinDistance = 0;
 		_Notified = false;
+
+		_InitialPlayerPosX = GamePlayer.SelectedChar.transform.position.x;
+		_InitialMoney = GamePlayer.Coins;
+		_MetersRan = _MoneyCollected = _ZoneReached =0;
+		_KnowsLastRun = false;
 	}
 
 	void NotifyRunMissions ()
