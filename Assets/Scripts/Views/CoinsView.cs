@@ -6,9 +6,13 @@ public class CoinsView : MonoBehaviour
 {
 
 	public Text CoinsText;
+	public bool IsRunning;
+
+	int _InitialCoins;
 
 	void OnEnable ()
 	{
+		_InitialCoins = GameController.Instance.GamePlayer.Coins;
 		UpdateCoins();
 	}
 
@@ -19,7 +23,9 @@ public class CoinsView : MonoBehaviour
 
 	public void UpdateCoins ()
 	{
-		CoinsText.text = ""+GameController.Instance.GamePlayer.Coins;
+		CoinsText.text = (IsRunning) ? 
+			""+(GameController.Instance.GamePlayer.Coins - _InitialCoins) : 
+				""+GameController.Instance.GamePlayer.Coins;
 	}
 
 }
