@@ -1,30 +1,55 @@
 fileFormatVersion: 2
-guid: 9fd8a4e72d24a458086aeb95ef5580eb
-timeCreated: 1446731920
+guid: aa0b9969f65904ea7b0255bfa1f43d58
+timeCreated: 1450731203
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Heart_Back
-    21300002: Star
-    21300004: Coin
-    21300006: Heart
-    21300008: Chars
-    21300010: BtBackground
-    21300012: Star_Back
-    21300014: Pause
-    21300016: Play
-    21300018: Up
-    21300020: Swords
-    21300022: Shop
-    21300024: Config
-    21300026: Select
-    21300028: Green_Star
-    21300030: Grey_Left_Bar
-    21300032: Green_Left_Bar
-    21300034: Grey_Mid_Bar
-    21300036: Grey_Right_Bar
-    21300038: Green_Right_Bar
-    21300040: Green_Mid_Bar
+    21300000: Revival
+    21300002: Bt_Main
+    21300004: Music_Off
+    21300006: Play
+    21300008: Pause
+    21300010: buttons_5
+    21300012: Up
+    21300014: Heart_Back
+    21300016: Star
+    21300018: Bt_WhiteBorder
+    21300020: Music_On
+    21300022: Coin
+    21300024: Heart
+    21300026: Checkpoint
+    21300028: Star_Back
+    21300030: Config
+    21300032: Shop
+    21300034: Wars
+    21300036: Chars
+    21300038: Bt_Side
+    21300040: Green_Left_Bar
+    21300042: Green_Mid_Bar
+    21300044: Green_Right_Bar
+    21300046: Grey_Left_Bar
+    21300048: Grey_Mid_Bar
+    21300050: Grey_Right_Bar
+    21300052: buttons_26
+    21300054: buttons_27
+    21300056: buttons_28
+    21300058: buttons_29
+    21300060: buttons_30
+    21300062: buttons_31
+    21300064: buttons_32
+    21300066: Private
+    21300068: Green_Star
+    21300070: buttons_35
+    21300072: buttons_36
+    21300074: Sergeant
+    21300076: Corporal
+    21300078: Sound_Off
+    21300080: Sound_On
+    21300082: buttons_41
+    21300084: buttons_42
+    21300086: buttons_43
+    21300088: Staff_Sergeant
+    21300090: Sergeant_First_Class
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,7 +73,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
-  maxTextureSize: 1024
+  maxTextureSize: 512
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -58,6 +83,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -70,12 +96,72 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
+    - name: Revival
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 183
+        width: 138
+        height: 122
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bt_Main
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 263
+        width: 58
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 7, y: 7, z: 7, w: 8}
+    - name: Music_Off
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 262
+        width: 50
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Play
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 212
+        width: 48
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pause
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 282
+        width: 35
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Up
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 213
+        width: 68
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Heart_Back
       rect:
         serializedVersion: 2
-        x: 236
-        y: 182
-        width: 60
+        x: 383
+        y: 259
+        width: 61
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -83,159 +169,159 @@ TextureImporter:
     - name: Star
       rect:
         serializedVersion: 2
-        x: 297
-        y: 182
-        width: 56
-        height: 56
+        x: 445
+        y: 259
+        width: 58
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bt_WhiteBorder
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 220
+        width: 54
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 6, y: 7, z: 6, w: 6}
+    - name: Music_On
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 212
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Coin
       rect:
         serializedVersion: 2
-        x: 251
-        y: 138
+        x: 400
+        y: 214
         width: 31
-        height: 43
+        height: 44
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Heart
       rect:
         serializedVersion: 2
-        x: 303
-        y: 139
+        x: 452
+        y: 216
         width: 44
-        height: 41
+        height: 40
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Chars
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 52
-        width: 74
-        height: 81
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: BtBackground
+    - name: Checkpoint
       rect:
         serializedVersion: 2
         x: 0
-        y: 135
-        width: 122
-        height: 103
+        y: 22
+        width: 149
+        height: 142
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Star_Back
       rect:
         serializedVersion: 2
-        x: 0
-        y: 51
-        width: 91
-        height: 82
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Pause
-      rect:
-        serializedVersion: 2
-        x: 123
-        y: 203
-        width: 36
-        height: 35
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Play
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 135
-        width: 47
-        height: 68
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Up
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 136
-        width: 67
-        height: 92
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Swords
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 60
-        width: 67
-        height: 64
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Shop
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 66
-        width: 50
-        height: 53
+        x: 150
+        y: 126
+        width: 92
+        height: 87
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Config
       rect:
         serializedVersion: 2
-        x: 92
-        y: 61
-        width: 61
+        x: 243
+        y: 138
+        width: 63
         height: 63
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Select
+    - name: Shop
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 241
-        height: 50
+        x: 307
+        y: 143
+        width: 50
+        height: 53
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Star
+    - name: Wars
       rect:
         serializedVersion: 2
-        x: 243
-        y: 1
-        width: 30
-        height: 28
+        x: 359
+        y: 137
+        width: 68
+        height: 63
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grey_Left_Bar
+    - name: Chars
       rect:
         serializedVersion: 2
-        x: 275
-        y: 0
-        width: 26
-        height: 15
+        x: 429
+        y: 129
+        width: 73
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bt_Side
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 73
+        width: 242
+        height: 51
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Green_Left_Bar
       rect:
         serializedVersion: 2
-        x: 275
-        y: 17
-        width: 26
+        x: 409
+        y: 97
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green_Mid_Bar
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 97
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Green_Right_Bar
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 97
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grey_Left_Bar
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 77
+        width: 27
         height: 15
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -243,8 +329,8 @@ TextureImporter:
     - name: Grey_Mid_Bar
       rect:
         serializedVersion: 2
-        x: 302
-        y: 0
+        x: 442
+        y: 77
         width: 25
         height: 15
       alignment: 0
@@ -253,30 +339,90 @@ TextureImporter:
     - name: Grey_Right_Bar
       rect:
         serializedVersion: 2
-        x: 328
+        x: 473
+        y: 77
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Private
+      rect:
+        serializedVersion: 2
+        x: 349
         y: 0
-        width: 26
-        height: 15
+        width: 44
+        height: 71
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Right_Bar
+    - name: Green_Star
       rect:
         serializedVersion: 2
-        x: 328
-        y: 17
-        width: 26
-        height: 15
+        x: 397
+        y: 46
+        width: 30
+        height: 29
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Mid_Bar
+    - name: Sergeant
       rect:
         serializedVersion: 2
-        x: 302
-        y: 17
-        width: 25
-        height: 15
+        x: 253
+        y: 0
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Corporal
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 0
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sound_Off
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 8
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sound_On
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 8
+        width: 43
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Staff_Sergeant
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 44
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sergeant_First_Class
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 0
+        width: 44
+        height: 71
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
