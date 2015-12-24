@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
 	void Start ()
 	{
-		Coins = 10000;//4now
+		Coins = 500;//10000;//4now
 
 		_ItemsOwn = new int[Items.GetNumberOfItems()];
 
