@@ -11,13 +11,12 @@ public class MissionsController : MonoBehaviour
 	// Select the gun that is being used
 	Guns.Types _CurrentGun = 0;
 
-	public List<Mission> ActiveMissions 
-	{ 
-		get 
-		{ 
-			return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.ActiveMissions : null; 
-		}
-	}
+	public List<Mission> ActiveMissions {
+		get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.ActiveMissions : null; } }
+
+	public List<Mission> CompletedMissions { 
+		get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.CompletedMissions : null; } }
+
 	public int ActiveSetReward { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.Reward : 0; } }
 	public string ActiveSetName { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetName : ""; } }
 	public Sprite ActiveSetSprite { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetSprite : null; } }
@@ -47,7 +46,8 @@ public class MissionsController : MonoBehaviour
 			if (_CurrentMissionsSet.IsAllMissionsCompleted)
 			{
 				_CurrentMissionsFamily.CompleteMissionSet();
-				ReloadMissionsFamily();
+				GameController.Instance.GamePlayer.CollectCoins(_CurrentMissionsSet.Reward);
+				_CurrentMissionsSet = _CurrentMissionsFamily.CurrentSet;
 			}
 		}
 	}
