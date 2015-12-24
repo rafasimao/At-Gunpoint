@@ -28,6 +28,12 @@ public class CharacterMovement : MonoBehaviour
 		_Animator = GetComponentInChildren<Animator>();
 	}
 
+	public void Reset ()
+	{
+		StopRunning();
+		_MovingDown = _MovingUp = false;
+	}
+
 	public void StartRunning ()
 	{
 		if(_Animator!=null)
