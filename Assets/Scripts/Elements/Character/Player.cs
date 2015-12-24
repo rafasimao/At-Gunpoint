@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
 
 	public int Coins { get; private set; }
-	public int Emeralds { get; private set; }
+	//public int Emeralds { get; private set; }
 
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 		return spent;
 	}
 
+	/*
 	public void CollectEmeralds (int emeralds)
 	{
 		Emeralds += emeralds;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
 			Emeralds -= emeralds;
 		return spent;
 	}
+	*/
 
 	public bool UseItem (Items.Item item)
 	{

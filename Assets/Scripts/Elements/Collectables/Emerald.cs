@@ -5,6 +5,6 @@ public class Emerald : Collectable
 {
 	protected override void BeCollected ()
 	{
-		GameController.Instance.GamePlayer.CollectEmeralds(Amount);
+		//GameController.Instance.GamePlayer.CollectEmeralds(Amount);
 	}
 }
