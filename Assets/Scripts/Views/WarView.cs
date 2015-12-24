@@ -17,6 +17,8 @@ public class WarView : MonoBehaviour
 		_War = GameController.Instance.War.GetWar(WarNumber);
 		if (_War.IsLocked)
 			LockWar();
+		else
+			UnlockWar();
 	}
 
 	void LockWar ()
@@ -29,7 +31,8 @@ public class WarView : MonoBehaviour
 	void UnlockWar () 
 	{
 		SelectWarBt.interactable = true;
-		LockView.SetActive(false);
+		if (LockView!=null)
+			LockView.SetActive(false);
 	}
 
 	public void BuyUnlock ()
