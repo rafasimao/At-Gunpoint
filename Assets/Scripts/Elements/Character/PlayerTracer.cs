@@ -18,7 +18,7 @@ public class PlayerTracer : MonoBehaviour
 	float _InitialPlayerPosX;
 	int _InitialMoney;
 	int _MetersRan, _MoneyCollected, _ZoneReached;
-	bool _KnowsLastRun;
+	bool _Died, _ReachedBoss, _KnowsLastRun;
 
 	bool _Notified;
 
@@ -92,6 +92,7 @@ public class PlayerTracer : MonoBehaviour
 	public static void Died ()
 	{
 		//EndRun();
+		_Instance._Died = true;
 	}
 
 	public static void Killed (Mission.Objects obj)
@@ -136,6 +137,11 @@ public class PlayerTracer : MonoBehaviour
 		_Instance._ZoneReached = zone;
 	}
 
+	public static void GotAtBoss ()
+	{
+		_Instance._ReachedBoss = true;
+	}
+
 	public static void NearMissed ()
 	{
 		_Instance.CountCombo();
@@ -146,6 +152,16 @@ public class PlayerTracer : MonoBehaviour
 	public static bool KnowsLastRun ()
 	{
 		return (_Instance!=null) ? _Instance._KnowsLastRun : false;
+	}
+
+	public static bool ClearedStage ()
+	{
+		return (_Instance!=null) ? (!_Instance._Died && _Instance._ReachedBoss) : false;
+	}
+
+	public static bool ReachedBoss ()
+	{
+		return (_Instance!=null) ? _Instance._ReachedBoss : false;
 	}
 
 	public static int LastMetersRan ()
@@ -202,7 +218,7 @@ public class PlayerTracer : MonoBehaviour
 		_InitialPlayerPosX = GamePlayer.SelectedChar.transform.position.x;
 		_InitialMoney = GamePlayer.Coins;
 		_MetersRan = _MoneyCollected = _ZoneReached =0;
-		_KnowsLastRun = false;
+		_Died = _ReachedBoss = _KnowsLastRun = false;
 	}
 
 	void NotifyRunMissions ()

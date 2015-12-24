@@ -138,7 +138,10 @@ public class MapController : MonoBehaviour
 
 	void NotifyMissionsNewZone ()
 	{
-		PlayerTracer.GotAtNewZone(_CurrentZone+1);
+		if ((_CurrentZone+1) >= _Zones.Length)
+			PlayerTracer.GotAtBoss();
+		else
+			PlayerTracer.GotAtNewZone(_CurrentZone+1);
 		//GameController.Instance.Missions.Notify(Mission.Actions.GetAtZone,Mission.Objects.None,_CurrentZone+1);
 		//GameController.Instance.Missions.Notify(Mission.Actions.Pass,Mission.Objects.Zone);
 	}
