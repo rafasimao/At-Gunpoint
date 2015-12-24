@@ -31,7 +31,7 @@ public class MissionView : MonoBehaviour
 			if (mission.IsSingleRun)
 				MissionText.text += " IN A SINGLE RUN";
 
-			if (mission.Counter > 0)
+			if (mission.Counter > 0 && !mission.IsCompleted)
 				MissionText.text += ". "+(mission.Quantity-mission.Counter)+" TO GO.";
 		}
 	}
