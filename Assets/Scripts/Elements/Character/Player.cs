@@ -4,75 +4,45 @@ using System.Collections;
 public class Player : MonoBehaviour 
 {
 
-	public int Coins { get; private set; }
-	//public int Emeralds { get; private set; }
+	public int Coins { get { return Descriptor.Coins; } }
+
+	public PlayerDescriptor Descriptor;
 
 	public Character SelectedChar;// { get; private set; }
 	public Control SelectedControl;// { get; private set; }
-
-	int[] _ItemsOwn;
 
 	Vector3 _InitialCharPosition;
 	Quaternion _InitialCharRotation;
 
 	void Start ()
 	{
-		Coins = 500;//10000;//4now
-
-		_ItemsOwn = new int[Items.GetNumberOfItems()];
-
 		_InitialCharPosition = SelectedChar.transform.position;
 		_InitialCharRotation = SelectedChar.transform.rotation;
 	}
 
 	public void CollectCoins (int coins)
 	{
-		Coins += coins;
+		Descriptor.CollectCoins(coins);
 	}
-
+	
 	public bool SpendCoins (int coins)
 	{
-		bool spent = (Coins >= coins);
-		if (spent)
-			Coins -= coins;
-
-		return spent;
+		return Descriptor.SpendCoins(coins);
 	}
-
-	/*
-	public void CollectEmeralds (int emeralds)
-	{
-		Emeralds += emeralds;
-	}
-
-	public bool SpendEmeralds (int emeralds)
-	{
-		bool spent = (Emeralds >= emeralds);
-		if (spent)
-			Emeralds -= emeralds;
-		return spent;
-	}
-	*/
 
 	public bool UseItem (Items.Item item)
 	{
-		bool used = (_ItemsOwn[(int)item] > 0);
-		if (used)
-			_ItemsOwn[(int)item]--;
-		return used;
+		return Descriptor.UseItem(item);
 	}
 
 	public bool BuyItem (Items.Item item)
 	{
-		bool bought = SpendCoins(Items.GetItemPrice(item));
-		if (bought)
-			_ItemsOwn[(int)item]++;
-		return bought;
+		return Descriptor.BuyItem(item);
 	}
 
 	public int GetNumberOfOwnItems (Items.Item item)
 	{
-		return _ItemsOwn[(int)item];
+		return Descriptor.GetNumberOfOwnItems(item);
 	}
 
 
