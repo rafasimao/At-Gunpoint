@@ -5,6 +5,7 @@ public class MissionsFamilySetDescriptor : ScriptableObject
 {
 	[SerializeField]
 	int _Counter =0;
+	public int Counter { get { return _Counter; } }
 
 	public MissionsSetDescriptor[] Sets;
 
@@ -15,6 +16,13 @@ public class MissionsFamilySetDescriptor : ScriptableObject
 	{
 		if (_Counter+1 < Sets.Length)
 			_Counter++;
+	}
+
+	public void LoadData (MissionsFamilySetData data)
+	{
+		_Counter = data.Counter;
+		for (int i=0; i<Sets.Length; i++)
+			Sets[i].LoadData(data.MissionsSets[i]);
 	}
 
 }

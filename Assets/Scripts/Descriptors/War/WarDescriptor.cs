@@ -28,4 +28,12 @@ public class WarDescriptor : ScriptableObject
 		if (GameController.Instance.GamePlayer.SpendCoins(UnlockPrice))
 			IsLocked = false;
 	}
+
+	public void LoadData (WarData data)
+	{
+		IsLocked = data.IsLocked;
+		Run1.LoadData(data.Run1);
+		Run2.LoadData(data.Run2);
+	}
+
 }

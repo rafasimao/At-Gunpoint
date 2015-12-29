@@ -52,4 +52,11 @@ public class CharacterDescriptor : ScriptableObject
 		if (GameController.Instance.GamePlayer.SpendCoins(UnlockPrice))
 			_IsLocked = false;
 	}
+
+	public void LoadData (CharacterData data)
+	{
+		_IsLocked = data.IsLocked;
+		_CurrentLevel = data.CurrentLevel;
+	}
+
 }

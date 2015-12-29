@@ -74,4 +74,9 @@ public class Mission
 		}
 	}
 
+	public void LoadData (MissionData data)
+	{
+		_Counter = data.Counter;
+	}
+
 }

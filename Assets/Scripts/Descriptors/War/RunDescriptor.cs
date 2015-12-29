@@ -24,4 +24,12 @@ public class RunDescriptor : ScriptableObject
 	{
 		_CheckpointZone = 0;
 	}
+
+	public void LoadData (RunData data)
+	{
+		_CheckpointZone = data.CheckpointZone;
+		Missions.LoadData(data.MissionsFamilySet);
+		for (int i=0; i<Characters.Length; i++)
+			Characters[i].LoadData(data.Characters[i]);
+	}
 }

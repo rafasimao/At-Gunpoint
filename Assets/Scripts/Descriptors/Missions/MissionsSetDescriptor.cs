@@ -74,4 +74,10 @@ public class MissionsSetDescriptor : ScriptableObject
 		from.RemoveAt(index);
 	}
 
+	public void LoadData (MissionsSetData data)
+	{
+		for (int i=0; i<_ActiveMissions.Count; i++)
+			_ActiveMissions[i].LoadData(data.Missions[i]);
+	}
+
 }
