@@ -37,7 +37,9 @@ public class LastRunView : MonoBehaviour
 
 	void SetReachedPanel (bool cleared)
 	{
-		ReachedText.text = (cleared) ? "CLEARED" : "REACHED" ;
+		ReachedText.text = (cleared) ? 
+			Languages.GetPhrase(LanguageDescriptor.PhraseKey.LR_Cleared) : 
+				Languages.GetPhrase(LanguageDescriptor.PhraseKey.LR_Reached) ;
 		ZoneImage.color = (cleared) ? ClearedColor : NonClearedColor ;
 	}
 
