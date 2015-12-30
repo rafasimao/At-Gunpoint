@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class MissionsSetDescriptor : ScriptableObject
 {
 	public Sprite SetSprite;
-	public string SetName;
+	public LanguageDescriptor.PhraseKey NameKey;
+	public string SetName { get { return Languages.GetPhrase(NameKey); } }
 	public int Reward;
 	public int MaxActiveMissions = 3;
 	[SerializeField]
