@@ -59,7 +59,7 @@ public class LanguageDescriptor : ScriptableObject
 		Zone =44,
 		Boss =45,
 
-		LR_GoodJobUouRan =46,
+		LR_GoodJobYouRan =46,
 		LR_AndCollected =47,
 		LR_Reached =48,
 		LR_Cleared =49,
@@ -72,7 +72,7 @@ public class LanguageDescriptor : ScriptableObject
 	public string GetPhrase (PhraseKey key)
 	{
 		int ikey = (int)key;
-		return (ikey>0 && ikey<Phrases.Length) ? Phrases[ikey] : "Wrong Key" ;
+		return (ikey>-1 && ikey<Phrases.Length) ? Phrases[ikey] : "Wrong Key" ;
 	}
 
 }
