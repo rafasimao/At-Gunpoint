@@ -31,7 +31,7 @@ public class Languages : MonoBehaviour
 
 	public void SelectLanguage (int language)
 	{
-		if (language != _CurrentLanguage && language > 0 && language < LanguageDescriptors.Length)
+		if (language != _CurrentLanguage && language > -1 && language < LanguageDescriptors.Length)
 			_CurrentLanguage = language;
 	}
 
