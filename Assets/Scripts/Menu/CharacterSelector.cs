@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterSelector : MonoBehaviour 
@@ -6,6 +7,8 @@ public class CharacterSelector : MonoBehaviour
 	public CharSelectorView SelectorView;
 	public SkinManager MainCharSkin;
 	public MissionsButtonView MissionBt; 
+
+	public Button LeftChoser, RightChoser;
 
 	WarDescriptor _War;
 	RunDescriptor _CurrentRun;
@@ -22,6 +25,8 @@ public class CharacterSelector : MonoBehaviour
 		AlignToDescriptor (GameController.Instance.War.CurrentWarDescriptor);
 		ChangeCharacterInfos(_CurrentRun.Characters[_CurrentCharacter]);
 		MissionBt.UpdateImage();
+
+		VerifySideButtons();
 	}
 
 	public void AlignToDescriptor (WarDescriptor descriptor)
@@ -38,6 +43,8 @@ public class CharacterSelector : MonoBehaviour
 
 		else if (_CurrentRun == _War.Run2)
 			ChangeToRun(WarDescriptor.WarRun.Run1, _War.Run1.Characters.Length-1);
+
+		VerifySideButtons();
 	}
 
 	public void MoveRight () 
@@ -47,6 +54,15 @@ public class CharacterSelector : MonoBehaviour
 
 		else if (_CurrentRun == _War.Run1)
 			ChangeToRun(WarDescriptor.WarRun.Run2, 0);
+
+		VerifySideButtons();
+	}
+
+	void VerifySideButtons () 
+	{
+		LeftChoser.interactable = !(_CurrentCharacter == 0 && _CurrentRun == _War.Run1);
+		RightChoser.interactable = 
+			!(_CurrentCharacter == (_CurrentRun.Characters.Length-1) && _CurrentRun == _War.Run2);
 	}
 
 	void ChangeToRun (WarDescriptor.WarRun warRun, int currentChar)
