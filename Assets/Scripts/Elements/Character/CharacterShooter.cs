@@ -6,7 +6,8 @@ public class CharacterShooter : MonoBehaviour
 	public BulletsController.BulletTypes BulletType;
 
 	public float FireDelay;
-	public Vector3 BulletsOffset;
+	//public Vector3 BulletsOffset;
+	public Transform GunTip;
 
 	public ParticleSystem FXGunFire;
 
@@ -62,7 +63,8 @@ public class CharacterShooter : MonoBehaviour
 			// Place bullet
 			//Bullet b = _Bullets.GetPooledObj<Bullet>();
 			Bullet b = GameController.Instance.GameBulletsController.GetBullet(BulletType);
-			b.transform.position = transform.position + direction + BulletsOffset;
+			b.transform.position = 
+				(GunTip!=null) ? GunTip.position : (transform.position + direction); //BulletsOffset;
 			b.Direction = direction;
 			//Changing bullets to follow descriptor description
 			if (_IsSettingBullets)

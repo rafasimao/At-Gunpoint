@@ -6,6 +6,7 @@ public class UnloadGunState : BossState
 	public int TotalNumberOfShots = 2;
 
 	public bool FollowPlayer;
+	public GameObject Turret;
 
 	int _NumberOfShots;
 
@@ -21,6 +22,7 @@ public class UnloadGunState : BossState
 			if (FollowPlayer)
 			{
 				Vector3 dir = (PlayerChar.position-Vector3.right*6f) - Boss.position;
+				MoveTurretTowards(dir);
 				Shooter.Fire (dir.normalized);
 			}
 			else
@@ -28,8 +30,16 @@ public class UnloadGunState : BossState
 			_NumberOfShots++;
 			if (_NumberOfShots >= TotalNumberOfShots)
 				return true;
-		}	
+		}
 		return false;
+	}
+
+	void MoveTurretTowards (Vector3 dir)
+	{
+		dir.y = 0;
+		dir.x = -dir.x;
+		dir.z = -dir.z;
+		Turret.transform.rotation = Quaternion.LookRotation(dir);
 	}
 
 }
