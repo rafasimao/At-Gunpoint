@@ -42,4 +42,9 @@ public class DropBombsState : BossState
 		else
 			Movement.MoveDown();
 	}
+
+	void OnDestroy ()
+	{
+		_Bombs.Clear(0f);
+	}
 }
