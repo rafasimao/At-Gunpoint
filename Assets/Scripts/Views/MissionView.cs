@@ -7,13 +7,18 @@ public class MissionView : MonoBehaviour
 	public Text MissionText;
 	public Image MissionPanel;
 
-	public Color CompleteColor, IncompleteColor, InativeColor;
+	//public Color CompleteColor, IncompleteColor, InativeColor;
+	public Color IncompleteColor, InativeColor;
+	public MissionCompleteEffect MissionEffect;
 
 	public void UpdateInfo (Mission mission)
 	{
 
-		MissionPanel.color = (mission == null) ? InativeColor : 
-			(mission.IsCompleted) ? CompleteColor : IncompleteColor;
+		MissionPanel.color = (mission == null) ? InativeColor : IncompleteColor; 
+			//(mission.IsCompleted) ? CompleteColor : IncompleteColor;
+		if (mission != null && mission.IsCompleted)
+			MissionEffect.Play();
+
 
 		if (mission == null)
 			MissionText.text = "";
