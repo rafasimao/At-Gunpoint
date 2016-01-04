@@ -64,7 +64,12 @@ public class LanguageDescriptor : ScriptableObject
 		LR_Reached =48,
 		LR_Cleared =49,
 		LR_Zone =50,
-		LR_Boss =51
+		LR_Boss =51,
+
+		AMC_Congratulations = 52,
+		AMC_UHaveClearedAll = 53,
+
+		Champion = 54
 	}
 
 	public string[] Phrases;

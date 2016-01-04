@@ -12,6 +12,8 @@ public class MissionsView : MonoBehaviour
 	public MissionView[] Missions;
 	public bool CompleteIt;
 
+	public GameObject AllCompletedGO;
+
 	void OnEnable ()
 	{
 		UpdateMissionsInfo();
@@ -19,17 +21,45 @@ public class MissionsView : MonoBehaviour
 
 	void UpdateMissionsInfo ()
 	{
-		MissionsImage.sprite = GameController.Instance.Missions.ActiveSetSprite;
-		MissionsTitle.text = GameController.Instance.Missions.ActiveSetName;
 
-		CoinText.text = ""+GameController.Instance.Missions.ActiveSetReward;
-		ShowMissions();
+		ShowMissionsInfo();
 
 		if (CompleteIt)
 		{
 			GameController.Instance.Missions.CompleteMissions();
-			Invoke("ShowMissions",2.5f);
+			Invoke("ShowMissionsInfo",2.5f);
 		}
+	}
+
+	void ShowMissionsInfo ()
+	{
+		if (GameController.Instance.Missions.IsMissionsFamilyCompleted)
+		{
+			AllCompletedGO.SetActive(true);
+			ShowMissionsFamily();
+		}
+		else
+		{
+			AllCompletedGO.SetActive(false);
+			ShowMissionsSet();
+		}
+	}
+
+	void ShowMissionsFamily ()
+	{
+		MissionsImage.sprite = GameController.Instance.Missions.ActiveFamilySprite;
+		MissionsTitle.text = GameController.Instance.Missions.ActiveFamilyName;
+		CoinText.text = "";
+	}
+
+	void ShowMissionsSet ()
+	{
+		MissionsImage.sprite = GameController.Instance.Missions.ActiveSetSprite;
+		MissionsTitle.text = GameController.Instance.Missions.ActiveSetName;
+		
+		CoinText.text = ""+GameController.Instance.Missions.ActiveSetReward;
+
+		ShowMissions();
 	}
 
 	void ShowMissions ()
@@ -42,7 +72,7 @@ public class MissionsView : MonoBehaviour
 				Missions[i].UpdateInfo((i<missions.Count) ? missions[i] : null);
 		}
 		// Show Completed missions and closed missions
-		int initial = missions.Count;
+		int initial = (missions!=null) ? missions.Count : 0;
 		missions = GameController.Instance.Missions.CompletedMissions;
 		if (missions!=null)
 		{

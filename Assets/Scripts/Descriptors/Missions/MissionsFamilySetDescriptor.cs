@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MissionsFamilySetDescriptor : ScriptableObject
@@ -7,6 +8,10 @@ public class MissionsFamilySetDescriptor : ScriptableObject
 	int _Counter =0;
 	public int Counter { get { return _Counter; } }
 
+	public Sprite FamilySprite;
+	public LanguageDescriptor.PhraseKey NameKey;
+	public string FamilyName { get { return Languages.GetPhrase(NameKey); } }
+
 	public MissionsSetDescriptor[] Sets;
 
 	public MissionsSetDescriptor CurrentSet { get { return (_Counter<Sets.Length) ? Sets[_Counter] : null; } }
@@ -14,7 +19,7 @@ public class MissionsFamilySetDescriptor : ScriptableObject
 
 	public void CompleteMissionSet ()
 	{
-		if (_Counter+1 < Sets.Length)
+		//if (_Counter+1 < Sets.Length)
 			_Counter++;
 	}
 

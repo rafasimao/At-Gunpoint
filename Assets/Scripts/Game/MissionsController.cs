@@ -21,6 +21,13 @@ public class MissionsController : MonoBehaviour
 	public string ActiveSetName { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetName : ""; } }
 	public Sprite ActiveSetSprite { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetSprite : null; } }
 
+	public string ActiveFamilyName { get { 
+			return (_CurrentMissionsFamily!=null) ? _CurrentMissionsFamily.FamilyName : ""; } }
+	public Sprite ActiveFamilySprite { get { 
+			return (_CurrentMissionsFamily!=null) ? _CurrentMissionsFamily.FamilySprite : null; } }
+
+	public bool IsMissionsFamilyCompleted { get { return _CurrentMissionsFamily.IsCompleted; } }
+
 	public void ReloadMissionsFamily ()
 	{
 		_CurrentMissionsFamily = GameController.Instance.War.CurrentRunDescriptor.Missions;

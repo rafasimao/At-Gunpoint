@@ -13,6 +13,8 @@ public class MissionsButtonView : MonoBehaviour
 
 	public void UpdateImage ()
 	{
-		MissionImage.sprite = GameController.Instance.Missions.ActiveSetSprite;
+		MissionImage.sprite = (GameController.Instance.Missions.IsMissionsFamilyCompleted) ?
+			GameController.Instance.Missions.ActiveFamilySprite :
+				GameController.Instance.Missions.ActiveSetSprite;
 	}
 }
