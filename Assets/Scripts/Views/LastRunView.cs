@@ -18,12 +18,11 @@ public class LastRunView : MonoBehaviour
 			SetTextGOsActive(reachedBoss);
 			SetReachedPanel(PlayerTracer.ClearedStage());
 
+			MetersText.text = PlayerTracer.LastMetersRan()+"m";
+			CoinsText.text = PlayerTracer.LastMoneyCollected()+"";
+
 			if (!reachedBoss)
-			{
-				MetersText.text = PlayerTracer.LastMetersRan()+"m";
-				CoinsText.text = PlayerTracer.LastMoneyCollected()+"";
 				ZoneNumberText.text = PlayerTracer.LastZoneReached()+"";
-			}
 		}
 		else
 			gameObject.SetActive(false);
