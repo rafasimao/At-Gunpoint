@@ -54,6 +54,8 @@ public class CharacterMovement : MonoBehaviour
 		{
 			_CurrentLane--;
 			_MovingUp = true;
+
+			Sounds.PlayEffect(Sounds.Effect.ChangeLane);
 		}
 	}
 
@@ -63,6 +65,8 @@ public class CharacterMovement : MonoBehaviour
 		{
 			_CurrentLane++;
 			_MovingDown = true;
+
+			Sounds.PlayEffect(Sounds.Effect.ChangeLane);
 		}
 	}
 

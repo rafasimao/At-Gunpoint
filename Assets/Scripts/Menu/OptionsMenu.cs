@@ -4,6 +4,10 @@ using System.Collections;
 
 public class OptionsMenu : MonoBehaviour 
 {
+	public Sounds SoundsController;
+	public Image MusicBtImage, EffectAudioBtImage;
+	public Sprite MusicOnSprite, MusicOffSprite, EffectsOnSprite, EffectsOffSprite;
+	bool _IsMusicOn = true, _IsEffectsOn = true;
 
 	public Languages LanguagesController;
 	public Sprite[] Flags;
@@ -35,6 +39,20 @@ public class OptionsMenu : MonoBehaviour
 	{
 		for (int i=0; i<Controls.Length; i++)
 			Controls[i].gameObject.SetActive(active);
+	}
+
+	public void ToggleMusic ()
+	{
+		_IsMusicOn = !_IsMusicOn;
+		SoundsController.SetMusicOn(_IsMusicOn);
+		MusicBtImage.sprite = (_IsMusicOn) ? MusicOnSprite : MusicOffSprite;
+	}
+
+	public void ToggleEffectAudio ()
+	{
+		_IsEffectsOn = !_IsEffectsOn;
+		SoundsController.SetEffectsOn(_IsEffectsOn);
+		EffectAudioBtImage.sprite = (_IsEffectsOn) ? EffectsOnSprite : EffectsOffSprite;
 	}
 
 }

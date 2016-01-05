@@ -59,6 +59,8 @@ public class Character : MonoBehaviour, Damageable
 				BeKilled();
 			else if (_Animator!=null)
 				_Animator.SetTrigger("TookDamage");
+
+			Sounds.PlayEffect(Sounds.Effect.TakeHit);
 		}
 	}
 
@@ -74,6 +76,8 @@ public class Character : MonoBehaviour, Damageable
 
 		if (_Animator!=null)
 			_Animator.SetBool("IsDead", true);
+
+		Sounds.PlayEffect(Sounds.Effect.Death);
 	}
 
 	void NotifyDeath ()

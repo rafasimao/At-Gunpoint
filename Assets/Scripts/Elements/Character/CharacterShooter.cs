@@ -87,6 +87,8 @@ public class CharacterShooter : MonoBehaviour
 
 			// Resets timer
 			_FireTimer = 0f;
+
+			Sounds.PlayEffect(Sounds.Effect.GunFire);
 		}
 	}
 

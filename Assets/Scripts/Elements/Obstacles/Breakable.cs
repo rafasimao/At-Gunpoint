@@ -52,6 +52,9 @@ public class Breakable : Obstacle
 	{
 		// Break effect
 		GameController.Instance.GameFXController.Play(FXController.FXTypes.Break,transform.position);
+		// Sound Effect
+		Sounds.PlayEffect(Sounds.Effect.Break);
+
 		gameObject.SetActive(false);
 	}
 

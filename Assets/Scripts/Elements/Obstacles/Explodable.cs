@@ -105,6 +105,8 @@ public class Explodable : Obstacle
 
 		// Explosion effect
 		GameController.Instance.GameFXController.Play(FXController.FXTypes.Explosion,transform.position);
+		//Sound Effect
+		Sounds.PlayEffect(Sounds.Effect.Explosion);
 
 		// Disappear
 		gameObject.SetActive(false);

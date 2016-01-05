@@ -8,5 +8,7 @@ public class Coin : Collectable
 		GameController.Instance.GamePlayer.CollectCoins(Amount);
 		PlayerTracer.CollectedCoin(Amount);
 		GameController.Instance.GamePointsController.ShowPoints(transform.position,Amount);
+
+		Sounds.PlayEffect(Sounds.Effect.PickCoins);
 	}
 }
