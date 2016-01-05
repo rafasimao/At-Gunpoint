@@ -205,7 +205,8 @@ public class MapController : MonoBehaviour
 		_Ambient.Update(floorToUpdate);
 		_Boss.Update(floorToUpdate, (int)_NumberOfFloorsPassed);
 		_Obstacles.Update(floorToUpdate, progress);
-		_Collectables.Update(floorToUpdate, progress);
+		if (!PlayerTracer.ReachedBoss())
+			_Collectables.Update(floorToUpdate, progress);
 	}
 
 }
