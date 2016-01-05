@@ -14,7 +14,13 @@ public class DataController : MonoBehaviour
 		Load();
 	}
 
-	void OnDestroy ()
+	void OnApplicationPause (bool paused)
+	{
+		if (paused)
+			Save();
+	}
+
+	void OnApplicationQuit ()
 	{
 		Save();
 	}
