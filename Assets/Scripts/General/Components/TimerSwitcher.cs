@@ -24,4 +24,10 @@ public class TimerSwitcher : MonoBehaviour
 		CancelInvoke();
 	}
 
+	public void Activate ()
+	{
+		CancelInvoke();
+		Disappear();
+	}
+
 }

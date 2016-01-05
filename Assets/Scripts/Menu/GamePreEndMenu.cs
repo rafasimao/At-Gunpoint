@@ -14,8 +14,13 @@ public class GamePreEndMenu : MonoBehaviour
 		if (_GamePlayer==null)
 			_GamePlayer = GameController.Instance.GamePlayer;
 
-		EnableItemButton(CheckpointBt, Items.Item.Checkpoint);
-		EnableItemButton(RevivalBt, Items.Item.Revival);
+		if (PlayerTracer.ReachedBoss())
+			Switcher.Activate();
+		else
+		{
+			EnableItemButton(CheckpointBt, Items.Item.Checkpoint);
+			EnableItemButton(RevivalBt, Items.Item.Revival);
+		}
 	}
 
 	void EnableItemButton (GameObject bt, Items.Item item)
