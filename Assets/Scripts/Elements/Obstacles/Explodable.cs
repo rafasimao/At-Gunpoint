@@ -40,6 +40,8 @@ public class Explodable : Obstacle
 				NotifyExplodeToQuests(null);
 				Invoke("Explode", _DelayToExplode);
 			}
+
+			Sounds.PlayEffect(Sounds.Effect.TakeHit);
 		}
 	}
 

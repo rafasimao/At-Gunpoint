@@ -25,6 +25,8 @@ public class Breakable : Obstacle
 				NotifyBreakToQuests();
 				Invoke("Disappear", _DelayToDisappear);
 			}
+
+			Sounds.PlayEffect(Sounds.Effect.TakeHit);
 		}
 	}
 
