@@ -14,7 +14,7 @@ public class DataController : MonoBehaviour
 		Load();
 	}
 
-	void OnDisable ()
+	void OnDestroy ()
 	{
 		Save();
 	}
