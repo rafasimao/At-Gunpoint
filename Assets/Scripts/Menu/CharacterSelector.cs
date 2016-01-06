@@ -94,7 +94,8 @@ public class CharacterSelector : MonoBehaviour
 
 	public void SelectCharacter ()
 	{
-		GameController.Instance.GamePlayer.SelectCharacter(_CurrentRun.Characters[_CurrentCharacter]);
+		//GameController.Instance.GamePlayer.SelectCharacter(_CurrentRun.Characters[_CurrentCharacter]);
+		GameController.Instance.GamePlayer.SelectCharacter(_CurrentCharacter);
 	}
 
 }

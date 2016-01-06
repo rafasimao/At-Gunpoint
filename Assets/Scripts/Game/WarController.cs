@@ -10,8 +10,10 @@ public class WarController : MonoBehaviour
 
 	GameObject Base1, Base2;
 
-	public WarDescriptor CurrentWarDescriptor { get { return WarsDescriptors[_CurrentWar]; } }
+	public int CurrentWarId { get { return _CurrentWar; } }
+	public WarDescriptor.WarRun CurrentRunId { get { return _CurrentRun; } }
 
+	public WarDescriptor CurrentWarDescriptor { get { return WarsDescriptors[_CurrentWar]; } }
 	public RunDescriptor CurrentRunDescriptor { get { return WarsDescriptors[_CurrentWar].GetRun(_CurrentRun); } }
 
 	void Start ()

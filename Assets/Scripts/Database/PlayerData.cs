@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PlayerData
 {
 	public int Coins;
-	public int SelectedWar, SelectedCharacter;
+	public int SelectedWar, SelectedRun, SelectedCharacter;
 	public List<int> ItemsOwn;
 
 	public PlayerData ()
@@ -19,6 +19,7 @@ public class PlayerData
 	{
 		Coins = player.Coins;
 		SelectedWar = player.SelectedWar;
+		SelectedRun = (int)player.SelectedRun;
 		SelectedCharacter = player.SelectedCharacter;
 
 		for (int i=0; i<player.ItemsOwn.Length; i++)

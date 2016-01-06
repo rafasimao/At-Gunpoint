@@ -73,7 +73,6 @@ public class Player : MonoBehaviour
 
 	public void StopRun ()
 	{
-		//SelectedChar.GetComponent<CharacterMovement>().StopRunning();
 		SelectedChar.GetComponent<CharacterMovement>().Reset();
 	}
 
@@ -82,26 +81,31 @@ public class Player : MonoBehaviour
 		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
 	}
 
-	public void SelectCharacter (CharacterDescriptor characterDescriptor)
+	public void SelectCharacter (int charId)
 	{
+		UpdateDescriptor(charId);
+
+		CharacterDescriptor characterDescriptor = 
+			GameController.Instance.War.CurrentRunDescriptor.Characters[charId];
+
 		SelectedChar.AlignToDescriptor(characterDescriptor);
 		SelectedChar.GetComponent<CharacterShooter>().AlignToDescriptor(characterDescriptor);
 
 		GameController.Instance.Missions.SelectGun(characterDescriptor.GunType);
-		//IntegrateCharacterAndControl();
+	}
+
+	void UpdateDescriptor (int charId)
+	{
+		WarController war = GameController.Instance.War;
+		Descriptor.SelectedWar = war.CurrentWarId;
+		Descriptor.SelectedRun = war.CurrentRunId;
+		Descriptor.SelectedCharacter = charId;
 	}
 
 	public void SelectControl (Control control)
 	{
 		SelectedControl = control;
-		IntegrateCharacterAndControl();
-	}
-
-	void IntegrateCharacterAndControl ()
-	{
 		SelectedChar.CharControl = SelectedControl;
-		//SelectedControl.Movement = SelectedChar.GetComponent<CharacterMovement>();
-		//SelectedControl.Shooter = SelectedChar.GetComponent<CharacterShooter>();
 	}
 
 	public int GetDistanceRan ()

@@ -11,7 +11,8 @@ public class PlayerDescriptor : ScriptableObject
 	int[] _ItemsOwn;
 	public int[] ItemsOwn { get { return _ItemsOwn; } }
 
-	public int SelectedCharacter, SelectedWar;
+	public int SelectedWar, SelectedCharacter;
+	public WarDescriptor.WarRun SelectedRun;
 
 	void OnEnable ()
 	{
@@ -57,6 +58,7 @@ public class PlayerDescriptor : ScriptableObject
 	{
 		_Coins = data.Coins;
 		SelectedWar = data.SelectedWar;
+		SelectedRun = (WarDescriptor.WarRun)data.SelectedRun;
 		SelectedCharacter = data.SelectedCharacter;
 
 		for (int i=0; i<data.ItemsOwn.Count; i++)
