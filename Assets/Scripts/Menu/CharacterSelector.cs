@@ -77,7 +77,7 @@ public class CharacterSelector : MonoBehaviour
 
 	void ChangeCharacterInfos (CharacterDescriptor character)
 	{
-		UpdateCharacterSkin(character);
+		MainCharSkin.AlignToDescriptor(character);
 		SelectorView.UpdateCharInformations(character);
 	}
 
@@ -90,12 +90,6 @@ public class CharacterSelector : MonoBehaviour
 			descriptor.Upgrade();
 
 		SelectorView.UpdateCharInformations(_CurrentRun.Characters[_CurrentCharacter]);
-	}
-
-	void UpdateCharacterSkin (CharacterDescriptor character)
-	{
-		MainCharSkin.ChangeSkin(character.SkinType);
-		MainCharSkin.ChangeGun(character.GunType);
 	}
 
 	public void SelectCharacter ()

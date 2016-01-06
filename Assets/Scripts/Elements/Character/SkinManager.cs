@@ -9,6 +9,13 @@ public class SkinManager : MonoBehaviour
 	public GameObject[] SkinsGOs, GunsGOs;
 	public GameObject ActiveSkin, ActiveGun;
 
+
+	public void AlignToDescriptor (CharacterDescriptor character)
+	{
+		ChangeSkin(character.SkinType);
+		ChangeGun(character.GunType);
+	}
+
 	public void ChangeSkin (Skins.Type skinType)
 	{
 		ActiveSkin = ChangeGO((int)skinType, SkinsGOs, ActiveSkin);
