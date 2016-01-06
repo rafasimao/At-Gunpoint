@@ -58,7 +58,9 @@ public class DataController : MonoBehaviour
 
 	void LoadPlayerData (GameData data)
 	{
-		GameController.Instance.GamePlayer.Descriptor.LoadData(data.Player);
+		Player player = GameController.Instance.GamePlayer;
+		player.Descriptor.LoadData(data.Player);
+		player.LoadGame();
 	}
 
 	void LoadWarsData (GameData data)

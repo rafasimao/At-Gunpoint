@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 	public PlayerDescriptor Descriptor;
 
 	public Character SelectedChar;// { get; private set; }
+	public SkinManager CharSkinManager;
+
 	public Control SelectedControl;// { get; private set; }
 
 	Vector3 _InitialCharPosition;
@@ -79,6 +81,17 @@ public class Player : MonoBehaviour
 	public void ResumeRun ()
 	{
 		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
+	}
+
+
+	public void LoadGame ()
+	{
+		WarController war = GameController.Instance.War;
+		war.SelectWar(Descriptor.SelectedWar);
+		war.SelectRun(Descriptor.SelectedRun);
+
+		CharSkinManager.AlignToDescriptor(war.CurrentRunDescriptor.Characters[Descriptor.SelectedCharacter]);
+		SelectCharacter(Descriptor.SelectedCharacter);
 	}
 
 	public void SelectCharacter (int charId)
