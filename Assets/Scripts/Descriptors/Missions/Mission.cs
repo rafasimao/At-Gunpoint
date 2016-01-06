@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class Mission
+public class Mission : ScriptableObject
 {
 	public enum Actions 
 	{

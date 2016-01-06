@@ -14,10 +14,10 @@ public class MissionsSetData
 
 	public void FetchData (MissionsSetDescriptor missionsSet)
 	{
-		for (int i=0; i<missionsSet.ActiveMissions.Count; i++)
+		for (int i=0; i<missionsSet.Missions.Count; i++)
 		{
 			Missions.Add(new MissionData());
-			Missions[i].FetchData(missionsSet.ActiveMissions[i]);
+			Missions[i].FetchData(missionsSet.Missions[i]);
 		}
 	}
 

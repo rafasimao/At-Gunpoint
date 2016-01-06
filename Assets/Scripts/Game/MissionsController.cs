@@ -11,11 +11,14 @@ public class MissionsController : MonoBehaviour
 	// Select the gun that is being used
 	Guns.Types _CurrentGun = 0;
 
-	public List<Mission> ActiveMissions {
-		get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.ActiveMissions : null; } }
+	public List<Mission> Missions {
+		get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.Missions : null; } }
 
-	public List<Mission> CompletedMissions { 
-		get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.CompletedMissions : null; } }
+	//public List<Mission> ActiveMissions {
+	//	get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.ActiveMissions : null; } }
+
+	//public List<Mission> CompletedMissions { 
+	//	get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.CompletedMissions : null; } }
 
 	public int ActiveSetReward { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.Reward : 0; } }
 	public string ActiveSetName { get { return (_CurrentMissionsSet!=null) ? _CurrentMissionsSet.SetName : ""; } }
@@ -64,7 +67,8 @@ public class MissionsController : MonoBehaviour
 		if ((action==Mission.Actions.Run) ||
 			(action!=Mission.Actions.Run && !GameController.Instance.GamePlayer.SelectedChar.IsDead()))
 		{
-			List<Mission> actives = ActiveMissions;
+			//List<Mission> actives = ActiveMissions;
+			List<Mission> actives = Missions;
 			if (actives != null)
 			{
 				for (int i=0; i<actives.Count; i++)
