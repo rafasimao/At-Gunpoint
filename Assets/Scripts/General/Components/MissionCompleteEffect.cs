@@ -16,7 +16,7 @@ public class MissionCompleteEffect : MonoBehaviour
 	bool _IsPlaying;
 	int _State;
 
-	float _Timer;
+	float _Timer, _InitialTime;
 
 	public void Play ()
 	{
@@ -24,6 +24,7 @@ public class MissionCompleteEffect : MonoBehaviour
 		_IsPlaying = true;
 		_Timer = 0f;
 		_State = 0;
+		_InitialTime = Time.realtimeSinceStartup;
 	}
 
 	void Update ()
@@ -55,6 +56,7 @@ public class MissionCompleteEffect : MonoBehaviour
 	{
 		_State++;
 		_Timer = 0f;
+		_InitialTime = Time.realtimeSinceStartup;
 
 		if (_State>2)
 			_IsPlaying = false;
@@ -62,7 +64,8 @@ public class MissionCompleteEffect : MonoBehaviour
 
 	float UpdateTimer (float transitionTime)
 	{
-		_Timer += Time.deltaTime;
+		//_Timer += Time.deltaTime;
+		_Timer = Time.realtimeSinceStartup - _InitialTime;
 		return _Timer/transitionTime;
 	}
 
