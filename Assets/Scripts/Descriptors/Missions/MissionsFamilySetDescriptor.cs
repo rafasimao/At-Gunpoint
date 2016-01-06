@@ -19,8 +19,7 @@ public class MissionsFamilySetDescriptor : ScriptableObject
 
 	public void CompleteMissionSet ()
 	{
-		//if (_Counter+1 < Sets.Length)
-			_Counter++;
+		_Counter++;
 	}
 
 	public void LoadData (MissionsFamilySetData data)

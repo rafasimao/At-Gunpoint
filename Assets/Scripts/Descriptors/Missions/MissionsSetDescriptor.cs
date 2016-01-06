@@ -101,8 +101,14 @@ public class MissionsSetDescriptor : ScriptableObject
 		//for (int i=0; i<_ActiveMissions.Count; i++)
 		//	_ActiveMissions[i].LoadData(data.Missions[i]);
 
+		_CompletedMissionsCounter = 0;
+
 		for (int i=0; i<_Missions.Count; i++)
+		{
 			_Missions[i].LoadData(data.Missions[i]);
+			if (_Missions[i].IsCompleted)
+				_CompletedMissionsCounter++;
+		}
 	}
 
 }
