@@ -32,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
 	{
 		StopRunning();
 		_MovingDown = _MovingUp = false;
+		_CurrentLane = 0;
 	}
 
 	public void StartRunning ()
