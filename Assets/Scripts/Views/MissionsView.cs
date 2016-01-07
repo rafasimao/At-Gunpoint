@@ -64,26 +64,10 @@ public class MissionsView : MonoBehaviour
 
 	void ShowMissions ()
 	{
-		// Show Active missions
-		//List<Mission> missions = GameController.Instance.Missions.ActiveMissions;
 		List<Mission> missions = GameController.Instance.Missions.Missions;
-		//if (missions!=null)
-		//{
 		int count = (missions!=null) ? missions.Count : 0 ;
 		for (int i=0; i<Missions.Length; i++)
 			Missions[i].UpdateInfo((i<count) ? missions[i] : null);
-
-		//}
-		// Show Completed missions and closed missions
-		/*
-		int initial = (missions!=null) ? missions.Count : 0;
-		missions = GameController.Instance.Missions.CompletedMissions;
-		if (missions!=null)
-		{
-			for (int i=initial; i<Missions.Length; i++)
-				Missions[i].UpdateInfo(((i-initial)<missions.Count) ? missions[i-initial] : null);
-		}
-		*/
 	}
 
 	void OnDisable ()

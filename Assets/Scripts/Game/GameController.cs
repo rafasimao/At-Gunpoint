@@ -65,6 +65,9 @@ public class GameController : MonoBehaviour
 
 			// Refresh quests
 			GameController.Instance.Missions.RefreshMissions();
+
+			//Garbage collector collects!
+			//System.GC.Collect(); //An Idea!!
 		}
 	}
 
