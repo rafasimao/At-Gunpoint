@@ -13,6 +13,8 @@ public class ShotgunBullet : Bullet
 
 	void OnEnable ()
 	{
+		transform.position += Direction;
+
 		if (Direction != Vector3.zero)
 			transform.rotation = Quaternion.LookRotation(Direction);
 
