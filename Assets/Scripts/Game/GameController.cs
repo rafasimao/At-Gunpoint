@@ -52,6 +52,9 @@ public class GameController : MonoBehaviour
 	{
 		if (IsOnRunMode)
 		{
+			// Save map checkpoint
+			Map.SaveCheckpoint();
+
 			// Reset map and wrappers
 			Map.Reset();
 			GameFXController.Reset();
@@ -67,7 +70,7 @@ public class GameController : MonoBehaviour
 			GameController.Instance.Missions.RefreshMissions();
 
 			//Garbage collector collects!
-			//System.GC.Collect(); //An Idea!!
+			System.GC.Collect(); //An Idea!!
 		}
 	}
 

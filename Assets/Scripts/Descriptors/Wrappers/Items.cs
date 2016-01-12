@@ -65,7 +65,8 @@ public class Items : MonoBehaviour
 
 	void UseCheckpoint ()
 	{
-		GameController.Instance.Map.SaveCheckpoint();
+		//GameController.Instance.Map.SaveCheckpoint();
+		GameController.Instance.Map.LoadCheckpoint();
 	}
 
 	void UseRevival ()

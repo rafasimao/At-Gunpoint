@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GamePreEndMenu : MonoBehaviour 
+public class GamePreStartEndMenu : MonoBehaviour 
 {
 
 	public TimerSwitcher Switcher;
