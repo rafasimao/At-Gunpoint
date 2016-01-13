@@ -22,7 +22,7 @@ public class GamePreStartEndMenu : MonoBehaviour
 		else
 		{
 			EnableItemButton(ItemBt, ItemType);
-			EnableItemButton(ItemVideoBt, ItemType);
+			ItemVideoBt.SetActive(GameController.Instance.Ads.IsRewardedAdReady());
 		}
 	}
 
@@ -38,7 +38,6 @@ public class GamePreStartEndMenu : MonoBehaviour
 		{
 			if (Items.UseItem(Items.Item.Checkpoint))
 			{
-				//gameObject.SetActive(false);
 				ItemBt.SetActive(false);
 				ItemVideoBt.SetActive(false);
 			}
@@ -55,6 +54,38 @@ public class GamePreStartEndMenu : MonoBehaviour
 				Switcher.Deactivate();
 			}
 		}
+	}
+
+	public void UseCheckpointVideo ()
+	{
+		GameController.Instance.Ads.ShowRewardedAd(CheckpointVideoCallBack);
+	}
+
+	public void UseRevivalVideo ()
+	{
+		GameController.Instance.Ads.ShowRewardedAd(RevivalVideoCallBack);	
+	}
+
+	public void CheckpointVideoCallBack (bool finished)
+	{
+		if (GetFreeItem(Items.Item.Checkpoint, finished))
+			UseCheckpoint();
+	}
+
+	public void RevivalVideoCallBack (bool finished)
+	{
+		if (GetFreeItem(Items.Item.Revival, finished))
+			UseRevival();
+	}
+
+	bool GetFreeItem (Items.Item item, bool sawVideo)
+	{
+		if (sawVideo)
+		{
+			_GamePlayer.CollectCoins(Items.GetItemPrice(item));
+			_GamePlayer.BuyItem(item);
+		}
+		return sawVideo;
 	}
 
 	bool OwnsOrBuy (Items.Item item)
