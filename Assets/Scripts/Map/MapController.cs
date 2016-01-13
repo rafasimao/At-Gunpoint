@@ -72,7 +72,9 @@ public class MapController : MonoBehaviour
 
 	public void LoadCheckpoint ()
 	{
-		_CurrentZone = GameController.Instance.War.CurrentRunDescriptor.CheckpointZone;
+		//_CurrentZone = GameController.Instance.War.CurrentRunDescriptor.CheckpointZone;
+		GoToZone(GameController.Instance.War.CurrentRunDescriptor.CheckpointZone,false);
+		_NumberOfFloorsPassed = _Zones[_CurrentZone].StartFloor;
 	}
 
 	void InitiateComponents ()
@@ -119,14 +121,14 @@ public class MapController : MonoBehaviour
 		}
 	}
 
-	void GoToNextSegment ()
+	void GoToZone (int zone, bool willTrashOut=true)
 	{
-		if (_CurrentZone+1 < _Zones.Length)
+		if (zone < _Zones.Length)
 		{
-			_CurrentZone++;
+			_CurrentZone = zone;
 
 			//ClearComponents();
-			TrashOutComponentsObjects();
+			if (willTrashOut) TrashOutComponentsObjects();
 			AlignComponentsToSegment(_Zones[_CurrentZone].Segment);
 			InitiateComponents();
 
@@ -167,7 +169,8 @@ public class MapController : MonoBehaviour
 		if (_Zones!=null &&
 		    _CurrentZone+1 < _Zones.Length && 
 		    _NumberOfFloorsPassed > _Zones[_CurrentZone+1].StartFloor)
-			GoToNextSegment();
+			GoToZone(_CurrentZone+1);
+			//GoToNextSegment();
 
 		// Generate new floor
 		if (!_FirstFloorTrigger)
