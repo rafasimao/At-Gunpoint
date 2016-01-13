@@ -5,7 +5,10 @@ public class GamePreStartEndMenu : MonoBehaviour
 {
 
 	public TimerSwitcher Switcher;
-	public GameObject CheckpointBt, RevivalBt;
+	public Items.Item ItemType;
+	public GameObject ItemBt, ItemVideoBt;
+
+	public bool IsEnd;
 
 	Player _GamePlayer;
 
@@ -14,12 +17,12 @@ public class GamePreStartEndMenu : MonoBehaviour
 		if (_GamePlayer==null)
 			_GamePlayer = GameController.Instance.GamePlayer;
 
-		if (PlayerTracer.ReachedBoss())
+		if (IsEnd && PlayerTracer.ReachedBoss())
 			Switcher.Activate();
 		else
 		{
-			EnableItemButton(CheckpointBt, Items.Item.Checkpoint);
-			EnableItemButton(RevivalBt, Items.Item.Revival);
+			EnableItemButton(ItemBt, ItemType);
+			EnableItemButton(ItemVideoBt, ItemType);
 		}
 	}
 
@@ -34,7 +37,11 @@ public class GamePreStartEndMenu : MonoBehaviour
 		if (OwnsOrBuy(Items.Item.Checkpoint))
 		{
 			if (Items.UseItem(Items.Item.Checkpoint))
-				gameObject.SetActive(false);
+			{
+				//gameObject.SetActive(false);
+				ItemBt.SetActive(false);
+				ItemVideoBt.SetActive(false);
+			}
 		}
 	}
 
