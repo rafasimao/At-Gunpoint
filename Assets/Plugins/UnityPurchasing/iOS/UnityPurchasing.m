@@ -194,13 +194,7 @@ int delayInSeconds = 2;
 -(void) purchaseProduct:(ProductDefinition*)productDef
 {
     // Look up our corresponding product.
-    SKProduct* requestedProduct = nil;
-    for (SKProduct* product in validProducts) {
-        if ([product.productIdentifier isEqualToString:productDef.storeSpecificId]) {
-            requestedProduct = product;
-            break;
-        }
-    }
+    SKProduct* requestedProduct = [validProducts objectForKey:productDef.storeSpecificId];
     
     if (requestedProduct != nil) {
         UnityPurchasingLog(@"PurchaseProduct: %@", requestedProduct.productIdentifier);
@@ -239,8 +233,9 @@ int delayInSeconds = 2;
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     
     UnityPurchasingLog(@"ProductsRequest:didReceiveResponse:%@", response.products);
-    // Record our products.
-    validProducts = [[NSArray alloc] initWithArray:response.products];
+    // Add the retrieved products to our set of valid products.
+    NSDictionary* fetchedProducts = [NSDictionary dictionaryWithObjects:response.products forKeys:[response.products valueForKey:@"productIdentifier"]];
+    [validProducts addEntriesFromDictionary:fetchedProducts];
 
     NSString* productJSON = [UnityPurchasing serializeProductMetadata:response.products];
     
@@ -436,7 +431,7 @@ int delayInSeconds = 2;
 
 - (id)init {
     if ( self = [super init] ) {
-        validProducts = nil;
+        validProducts = [[NSMutableDictionary alloc] init];
         pendingTransactions = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -511,4 +506,8 @@ void unityPurchasingRefreshAppReceipt() {
 char* getUnityPurchasingAppReceipt () {
     NSString* receipt = [UnityPurchasing_getInstance() getAppReceipt];
     return UnityPurchasingMakeHeapAllocatedStringCopy(receipt);
+}
+
+BOOL getUnityPurchasingCanMakePayments () {
+    return [SKPaymentQueue canMakePayments];
 }

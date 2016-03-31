@@ -19,7 +19,7 @@ typedef void (*UnityPurchasingCallback)(const char* subject, const char* payload
 
 @interface UnityPurchasing : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver> {
     UnityPurchasingCallback messageCallback;
-    NSArray* validProducts;
+    NSMutableDictionary* validProducts;
     NSSet* productIds;
     SKProductsRequest *request;
     NSMutableDictionary *pendingTransactions;

@@ -54,6 +54,9 @@ PluginImporter:
       settings:
         CompileFlags: 
         FrameworkDependencies: StoreKit;
+    tvOS:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
