@@ -7,12 +7,12 @@ public class ProductsManager : MonoBehaviour
 
 	public enum ProductID
 	{
-		// Easterns
+		// Westerns
 		//Scott,
 		ONeill,
 		Katie,
 		Ellen,
-		// Westerns
+		// Easterns
 		//Aamir,
 		Asad,
 		Fathi,
@@ -48,12 +48,12 @@ public class ProductsManager : MonoBehaviour
 	// Product identifiers for all products capable of being purchased: 
 	private static string[] kProductIDs = new string[]
 	{
-		// Easterns
+		// Westerns
 		//"Scott",
 		"ONeill",
 		"Katie",
 		"Ellen",
-		// Westerns
+		// Easterns
 		//"Aamir",
 		"Asad",
 		"Fathi",
