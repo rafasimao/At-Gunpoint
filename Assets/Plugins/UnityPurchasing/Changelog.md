@@ -1,3 +1,65 @@
+## [1.6.1] - 2016-07-18
+### Fixed
+- Google Play - fixed non fatal 'IllegalArgumentException: Receiver not registered' warning appearing in crashlogs.
+
+## [1.6.0] - 2016-7-7
+### Added
+- Support for redeeming [Google Play promo codes](https://developer.android.com/google/play/billing/billing_promotions.html) for IAPs.
+- IAndroidStoreSelection extended configuration for accessing the currently selected Android store.
+
+```csharp
+var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+Debug.Log(builder.Configure<IAndroidStoreSelection>().androidStore);
+```
+
+### Fixed
+- Apple Stores - ProcessPurchase not being called on initialize for existing transactions if another storekit transaction observer is added elsewhere in the App. This addresses a number of issues when using third party SDKs, including Facebook's.
+- Google Play - sandbox purchases. In Google's sandbox Unity IAP now uses Google's purchase token instead of Order ID to represent transaction IDs.
+- iOS not initializing when IAP purchase restrictions are active. IAP will now initialise if restrictions are active, enabling browsing of IAP metadata, although purchases will fail until restrictions are disabled.
+- Instantiating multiple ConfigurationBuilders causing purchasing to break on Google Play & iOS.
+
+## [1.5.0] - 2016-5-10
+### Added
+- Amazon stores - Added NotifyUnableToFulfillUnavailableProduct(string transactionID) to IAmazonExtensions.
+
+You should use this method if your App cannot fulfill an Amazon purchase and you need to call [notifyFulfillment](https://developer.amazon.com/public/apis/earn/in-app-purchasing/docs-v2/implementing-iap-2.0) method with a FulfillmentResult of UNAVAILABLE.
+
+### Fixed
+- Google Play - purchase failure event not firing if the Google Play purchase dialog was destroyed when backgrounding and relaunching the App.
+
+### Changed
+- Updated to V2.0.61 of Amazon's IAP API.
+- Apple stores, Google Play - removed logging of products details on startup.
+
+## [1.4.1] - 2016-4-12
+### Fixed
+- Amazon stores - "App failed to call Purchasing Fullfillment" error caused by Unity IAP misuse of Amazon's notifyFulfillment mechanism.
+
+### Added
+- Editor API call for toggling between Android billing platforms in build scripts; UnityPurchasingEditor.TargetAndroidStore(AndroidStore). See below for usage.
+
+```csharp
+using UnityEngine;
+using UnityEngine.Purchasing;
+using UnityEditor;
+
+// A sample Editor script.
+public class MyEditorScript {
+	void AnEditorMethod() {
+		// Set the store to Google Play.
+		UnityPurchasingEditor.TargetAndroidStore(AndroidStore.GooglePlay);
+	}
+}
+```
+
+## [1.4.0] - 2016-4-5
+### Added
+- Amazon Apps & Amazon underground support. Preliminary documentation is available [here](https://docs.google.com/document/d/1QxHRo7DdjwNIUAm0Gb4J3EW3k1vODJ8dGdZZfJwetYk/edit?ts=56f97483).
+
+## [1.3.2] - 2016-4-4
+### Fixed
+- Apple stores; AppleReceiptValidator not parsing AppleInAppPurchaseReceipt subscriptionExpirationDate and cancellationDate fields.
+
 ## [1.3.1] - 2016-3-10
 ### Changed
 - Google Play - Google's auto generated IInAppBillingService types have been moved to a separate Android archive; GoogleAIDL. If other plugins define IInAppBillingService, generating duplicate class errors when building for Android, you can delete this AAR to resolve them.

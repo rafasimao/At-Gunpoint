@@ -64,7 +64,7 @@ int delayInSeconds = 2;
         }
     }
     
-    UnityPurchasingLog(@"No App Receipt found!");
+    UnityPurchasingLog(@"No App Receipt found");
     return @"";
 }
 
@@ -168,14 +168,9 @@ int delayInSeconds = 2;
 -(void) requestProducts:(NSSet*)paramIds
 {
     productIds = paramIds;
-    UnityPurchasingLog(@"RequestProducts:%@", productIds);
-    if ([SKPaymentQueue canMakePayments]) {
-        // Start an immediate poll.
-        [self initiateProductPoll:0];
-    } else {
-        // Send an InitializationFailureReason.
-        [self UnitySendMessage:@"OnSetupFailed" payload:@"PurchasingUnavailable" ];
-    }
+    UnityPurchasingLog(@"Requesting %lu products", (unsigned long) [productIds count]);
+    // Start an immediate poll.
+    [self initiateProductPoll:0];
 }
 
 // Execute a product metadata retrieval request via GCD.
@@ -223,7 +218,24 @@ int delayInSeconds = 2;
 // and maintained for the life of the app, since transactions can
 // be delivered at any time.
 -(void) addTransactionObserver {
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    SKPaymentQueue* defaultQueue = [SKPaymentQueue defaultQueue];
+
+    // Detect whether an existing transaction observer is in place.
+    // An existing observer will have processed any transactions already pending,
+    // so when we add our own storekit will not call our updatedTransactions handler.
+    // We workaround this by explicitly processing any existing transactions if they exist.
+    BOOL processExistingTransactions = false;
+    if (defaultQueue != nil && defaultQueue.transactions != nil)
+    {
+        if ([[defaultQueue transactions] count] > 0) {
+            processExistingTransactions = true;
+        }
+    }
+
+    [defaultQueue addTransactionObserver:self];
+    if (processExistingTransactions) {
+        [self paymentQueue:defaultQueue updatedTransactions:defaultQueue.transactions];
+    }
 }
 
 #pragma mark -
@@ -232,7 +244,7 @@ int delayInSeconds = 2;
 // Store Kit returns a response from an SKProductsRequest.
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     
-    UnityPurchasingLog(@"ProductsRequest:didReceiveResponse:%@", response.products);
+    UnityPurchasingLog(@"Received %lu products", (unsigned long) [response.products count]);
     // Add the retrieved products to our set of valid products.
     NSDictionary* fetchedProducts = [NSDictionary dictionaryWithObjects:response.products forKeys:[response.products valueForKey:@"productIdentifier"]];
     [validProducts addEntriesFromDictionary:fetchedProducts];
