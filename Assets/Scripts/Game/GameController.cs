@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 	public MapController Map;
 	public WarController War;
 	public AdManager Ads;
+	public Purchaser GamePurchaser;
 
 	bool IsOnRunMode;
 

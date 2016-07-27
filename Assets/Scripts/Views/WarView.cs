@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class WarView : MonoBehaviour 
+public class WarView : MonoBehaviour, IPurchaseCaller
 {
 	public int WarNumber;
 
@@ -39,6 +39,21 @@ public class WarView : MonoBehaviour
 	{
 		_War.Unlock(); // The warDescriptor tries to buy its unlock
 		if (!_War.IsLocked)
+			UnlockWar();
+	}
+
+	public void BuyUnlockWithCash ()
+	{
+		GameController.Instance.GamePurchaser.BuyWar(_War.ID, this);
+	}
+
+
+	// IPurchaseCaller
+	public void OnPurchaseEnd()
+	{
+		if (_War.IsLocked)
+			LockWar();
+		else
 			UnlockWar();
 	}
 

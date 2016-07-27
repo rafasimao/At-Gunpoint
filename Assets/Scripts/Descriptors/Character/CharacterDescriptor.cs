@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CharacterDescriptor : ScriptableObject
+public class CharacterDescriptor : ProductDescriptor
 {
 	public string Name;
 	public Skins.Type SkinType;
@@ -36,21 +36,10 @@ public class CharacterDescriptor : ScriptableObject
 
 	public bool IsUpgradable { get { return (_CurrentLevel < (NumberOfLevels-1)); } }
 
-	[SerializeField]
-	bool _IsLocked;
-	public bool IsLocked { get { return _IsLocked; } }
-	public int UnlockPrice;
-
 	public void Upgrade ()
 	{
 		if (IsUpgradable)
 			_CurrentLevel++;
-	}
-
-	public void Unlock ()
-	{
-		if (GameController.Instance.GamePlayer.SpendCoins(UnlockPrice))
-			_IsLocked = false;
 	}
 
 	public void LoadData (CharacterData data)

@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class CharSelectorView : MonoBehaviour 
+public class CharSelectorView : MonoBehaviour, IPurchaseCaller
 {
 	public Text NameText, GunNameText, UpgradePriceText;
 	public Button UpgradeBt;
@@ -94,4 +94,17 @@ public class CharSelectorView : MonoBehaviour
 		}
 	}
 
+	public void BuyUnlockWithCash ()
+	{
+		GameController.Instance.GamePurchaser.BuyCharacter(_CurrentChar.ID, this);
+	}
+
+	// IPurchaseCaller
+	public void OnPurchaseEnd()
+	{
+		if (_CurrentChar.IsLocked)
+			LockChar();
+		else
+			UnlockChar();
+	}
 }

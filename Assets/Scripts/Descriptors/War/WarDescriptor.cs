@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WarDescriptor : ScriptableObject
+public class WarDescriptor : ProductDescriptor
 {
 	public enum WarRun
 	{
@@ -20,18 +20,9 @@ public class WarDescriptor : ScriptableObject
 		return null;
 	}
 
-	public bool IsLocked;
-	public int UnlockPrice;
-
-	public void Unlock ()
-	{
-		if (GameController.Instance.GamePlayer.SpendCoins(UnlockPrice))
-			IsLocked = false;
-	}
-
 	public void LoadData (WarData data)
 	{
-		IsLocked = data.IsLocked;
+		_IsLocked = data.IsLocked;
 		Run1.LoadData(data.Run1);
 		Run2.LoadData(data.Run2);
 	}
