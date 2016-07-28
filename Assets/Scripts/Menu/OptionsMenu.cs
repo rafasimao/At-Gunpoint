@@ -16,6 +16,7 @@ public class OptionsMenu : MonoBehaviour
 
 	public Control[] Controls;
 	int _CurrentControl;
+	public int CurrentControl { get { return _CurrentControl; } }
 
 	void Start ()
 	{
