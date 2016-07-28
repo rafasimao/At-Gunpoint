@@ -50,36 +50,36 @@ public class ProductsManager : MonoBehaviour
 	{
 		// Westerns
 		//"Scott",
-		"ONeill",
-		"Katie",
-		"Ellen",
+		"com.deltablues.atgunpoint.oneill",
+		"com.deltablues.atgunpoint.katie",
+		"com.deltablues.atgunpoint.ellen",
 		// Easterns
 		//"Aamir",
-		"Asad",
-		"Fathi",
+		"com.deltablues.atgunpoint.asad",
+		"com.deltablues.atgunpoint.fathi",
 
 		// Americans
 		//"Heacock",
-		"Burke",
-		"Browne",
+		"com.deltablues.atgunpoint.burke",
+		"com.deltablues.atgunpoint.browne",
 		// Germans
-		"Schreiber",
-		"Krieger",
-		"Kraemer",
+		"com.deltablues.atgunpoint.schreiber",
+		"com.deltablues.atgunpoint.krieger",
+		"com.deltablues.atgunpoint.kraemer",
 
 		// Counters
 		//"Jones",
-		"Barnes",
-		"Norman",
-		"Davis",
+		"com.deltablues.atgunpoint.barnes",
+		"com.deltablues.atgunpoint.norman",
+		"com.deltablues.atgunpoint.davis",
 		// Terrors
-		"Hassan",
-		"Abdul",
-		"Khalid",
+		"com.deltablues.atgunpoint.hassan",
+		"com.deltablues.atgunpoint.abdul",
+		"com.deltablues.atgunpoint.khalid",
 
 		// Wars
-		"War2",
-		"War3"
+		"com.deltablues.atgunpoint.war2",
+		"com.deltablues.atgunpoint.war3"
 	};
 
 	public static string[] GetAllProductKeyIDs ()
