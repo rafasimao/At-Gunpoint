@@ -63,6 +63,21 @@ public class Items : MonoBehaviour
 		return canUseItem;
 	}
 
+	public static bool IsItemReady (Item item)
+	{
+		bool result = true;
+		switch (item)
+		{
+		case Item.Checkpoint:
+			result = GameController.Instance.Map.HasCheckpoint();
+			break;
+		case Item.Revival:
+			break;
+		}
+
+		return result;
+	}
+
 	void UseCheckpoint ()
 	{
 		//GameController.Instance.Map.SaveCheckpoint();

@@ -70,6 +70,12 @@ public class MapController : MonoBehaviour
 		GameController.Instance.War.CurrentRunDescriptor.SaveCheckpoint(_CurrentZone);
 	}
 
+	public bool HasCheckpoint ()
+	{
+		int checkpoint = GameController.Instance.War.CurrentRunDescriptor.CheckpointZone;
+		return (checkpoint > 0 && checkpoint < _Zones.Length);
+	}
+
 	public void LoadCheckpoint ()
 	{
 		//_CurrentZone = GameController.Instance.War.CurrentRunDescriptor.CheckpointZone;

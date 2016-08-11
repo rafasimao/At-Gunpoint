@@ -21,8 +21,16 @@ public class GamePreStartEndMenu : MonoBehaviour
 			Switcher.Activate();
 		else
 		{
-			EnableItemButton(ItemBt, ItemType);
-			ItemVideoBt.SetActive(GameController.Instance.Ads.IsRewardedAdReady());
+			if (Items.IsItemReady(ItemType))
+			{
+				EnableItemButton(ItemBt, ItemType);
+				ItemVideoBt.SetActive(GameController.Instance.Ads.IsRewardedAdReady());
+			}
+			else
+			{
+				ItemBt.SetActive(false);
+				ItemVideoBt.SetActive(false);
+			}
 		}
 	}
 
