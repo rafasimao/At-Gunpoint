@@ -8,10 +8,11 @@ public class Blinker : MonoBehaviour
 	public float TotalTime, BlinkTime, BetweenBlinksTime;
 	public Behaviour TargetBehaviour;
 	public GameObject TargetGameObject;
-	//float _Timer;
+	float _Timer;
 
 	void OnEnable ()
 	{
+		_Timer = TotalTime;
 		Invoke("Blink", BetweenBlinksTime);
 	}
 
@@ -24,6 +25,14 @@ public class Blinker : MonoBehaviour
 	void Unblink ()
 	{
 		SetTargets(true);
+
+		if (IsTimeLimited)
+		{
+			_Timer -= BetweenBlinksTime+BlinkTime;
+			if (_Timer <= 0)
+				return; // break the chain of blinks
+		}
+
 		Invoke("Blink", BetweenBlinksTime);
 	}
 
