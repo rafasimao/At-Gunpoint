@@ -9,6 +9,9 @@ public class Character : MonoBehaviour, Damageable
 
 	public int Reward = 10;
 
+	public float SpawnBlinkTime;
+	bool _IsOnBlinkMode; 
+
 	public Switcher Switch;
 
 	Animator _Animator;
@@ -38,6 +41,14 @@ public class Character : MonoBehaviour, Damageable
 		
 		if (Switch!=null)
 			Switch.Switch(true);
+
+		_IsOnBlinkMode = true;
+		Invoke("EndBlinkMode", SpawnBlinkTime);
+	}
+
+	void EndBlinkMode ()
+	{
+		_IsOnBlinkMode = false;
 	}
 
 	public void AlignToDescriptor (CharacterDescriptor descriptor)
@@ -48,7 +59,7 @@ public class Character : MonoBehaviour, Damageable
 
 	public void TakeDamage (int damage)
 	{
-		if (!IsDead())
+		if (!IsDead() && !_IsOnBlinkMode)
 		{
 			// notify damage
 			if (_IsPlayer) 
