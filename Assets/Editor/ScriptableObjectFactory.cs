@@ -22,7 +22,8 @@ public class ScriptableObjectFactory
 		                            select t).ToArray();
 		
 		// Show the selection window.
-		var window = EditorWindow.GetWindow<ScriptableObjectWindow>(true, "Create a new ScriptableObject", true);
+		var window = EditorWindow.GetWindow<ScriptableObjectWindow>(
+			true, "Create a new ScriptableObject", true);
 		window.ShowPopup();
 		
 		window.Types = allScriptableObjects;

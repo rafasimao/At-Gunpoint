@@ -25,7 +25,6 @@ public class Blinker : MonoBehaviour
 	void Unblink ()
 	{
 		SetTargets(true);
-
 		if (IsTimeLimited)
 		{
 			_Timer -= BetweenBlinksTime+BlinkTime;

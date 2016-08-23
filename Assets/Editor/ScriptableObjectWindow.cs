@@ -9,7 +9,8 @@ internal class EndNameEdit : EndNameEditAction
 	#region implemented abstract members of EndNameEditAction
 	public override void Action (int instanceId, string pathName, string resourceFile)
 	{
-		AssetDatabase.CreateAsset(EditorUtility.InstanceIDToObject(instanceId), AssetDatabase.GenerateUniqueAssetPath(pathName));
+		AssetDatabase.CreateAsset(EditorUtility.InstanceIDToObject(instanceId), 
+			AssetDatabase.GenerateUniqueAssetPath(pathName));
 	}
 	
 	#endregion
