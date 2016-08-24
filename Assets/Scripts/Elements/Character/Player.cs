@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 
 	public void ResetPlayerCharacter ()
 	{
-		StopRun();
+		SelectedChar.GetComponent<CharacterMovement>().Reset();
 
 		SelectedChar.transform.position = _InitialCharPosition;
 		SelectedChar.transform.rotation = _InitialCharRotation;
@@ -69,20 +69,11 @@ public class Player : MonoBehaviour
 		SelectedChar.gameObject.SetActive(false);
 		SelectedChar.gameObject.SetActive(true);
 
-		StopRun();
-		ResumeRun();
+		// get character movement var
+		CharacterMovement cMove = SelectedChar.GetComponent<CharacterMovement>();
+		cMove.StopRunning(); // Stop running
+		cMove.StartRunning(); // Resume running
 	}
-
-	public void StopRun ()
-	{
-		SelectedChar.GetComponent<CharacterMovement>().Reset();
-	}
-
-	public void ResumeRun ()
-	{
-		SelectedChar.GetComponent<CharacterMovement>().StartRunning();
-	}
-
 
 	public void LoadGame ()
 	{
