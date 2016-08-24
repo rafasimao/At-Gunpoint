@@ -6,6 +6,7 @@ public class GamePreStartEndMenu : MonoBehaviour
 
 	public TimerSwitcher Switcher;
 	public Items.Item ItemType;
+	public GameObject TitleText;
 	public GameObject ItemBt, ItemVideoBt;
 
 	public bool IsEnd;
@@ -23,13 +24,13 @@ public class GamePreStartEndMenu : MonoBehaviour
 		{
 			if (Items.IsItemReady(ItemType))
 			{
+				TitleText.SetActive(true);
 				EnableItemButton(ItemBt, ItemType);
 				ItemVideoBt.SetActive(GameController.Instance.Ads.IsRewardedAdReady());
 			}
 			else
 			{
-				ItemBt.SetActive(false);
-				ItemVideoBt.SetActive(false);
+				SetAllOff();
 			}
 		}
 	}
@@ -40,14 +41,20 @@ public class GamePreStartEndMenu : MonoBehaviour
 		             _GamePlayer.Coins >= Items.GetItemPrice(item));
 	}
 
+	void SetAllOff()
+	{
+		TitleText.SetActive(false);
+		ItemBt.SetActive(false);
+		ItemVideoBt.SetActive(false);
+	}
+
 	public void UseCheckpoint ()
 	{
 		if (OwnsOrBuy(Items.Item.Checkpoint))
 		{
 			if (Items.UseItem(Items.Item.Checkpoint))
 			{
-				ItemBt.SetActive(false);
-				ItemVideoBt.SetActive(false);
+				SetAllOff();
 			}
 		}
 	}
