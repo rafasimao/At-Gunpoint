@@ -51,8 +51,8 @@ public class DataController : MonoBehaviour
 			GameData data = (GameData)bf.Deserialize(file);
 			file.Close();
 
-			LoadPlayerData(data);
 			LoadWarsData(data);
+			LoadPlayerData(data);
 		}
 	}
 
