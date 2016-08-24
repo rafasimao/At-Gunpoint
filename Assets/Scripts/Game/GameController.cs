@@ -45,8 +45,8 @@ public class GameController : MonoBehaviour
 		{
 			Map.StartRun();
 			IsOnRunMode = true;
-			GamePlayer.StartRun();
 			GameCamera.ChangeMode();
+			GamePlayer.StartRun();
 		}
 	}
 

@@ -17,7 +17,7 @@ public class SwipeControl : Control
 	{
 		if (Input.touches.Length == 1) 
 		{
-			if (!EventSystem.current.IsPointerOverGameObject(0))
+			if (!EventSystem.current.IsPointerOverGameObject())
 			{
 				// Beginning of the swipe, first press
 				Touch t = Input.GetTouch(0);
