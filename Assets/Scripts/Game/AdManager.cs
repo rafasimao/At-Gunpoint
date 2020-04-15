@@ -7,7 +7,18 @@ public class AdManager : MonoBehaviour
 	public delegate void CallBackHandler (bool finished);
 	CallBackHandler _ResultHandler;
 
+#if UNITY_IOS
+    private string gameId = "1029763";
+#elif UNITY_ANDROID
+    private string gameId = "1029764";
+#endif
+
 	string _RewardedZone = "rewardedVideo";
+
+	void Start()
+	{
+		Advertisement.Initialize(gameId, false);
+	}
 
 	public bool IsRewardedAdReady ()
 	{

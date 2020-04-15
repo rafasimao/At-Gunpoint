@@ -1,104 +1,225 @@
 fileFormatVersion: 2
 guid: aa0b9969f65904ea7b0255bfa1f43d58
-timeCreated: 1451942226
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Revival
-    21300002: Bt_Main
-    21300004: Music_Off
-    21300006: Play
-    21300008: Pause
-    21300010: buttons_5
-    21300012: Up
-    21300014: Heart_Back
-    21300016: Star
-    21300018: Bt_WhiteBorder
-    21300020: Music_On
-    21300022: Coin
-    21300024: Heart
-    21300026: Checkpoint
-    21300028: Star_Back
-    21300030: Config
-    21300032: Shop
-    21300034: Wars
-    21300036: Chars
-    21300038: Bt_Side
-    21300040: Green_Left_Bar
-    21300042: Green_Mid_Bar
-    21300044: Green_Right_Bar
-    21300046: Grey_Left_Bar
-    21300048: Grey_Mid_Bar
-    21300050: Grey_Right_Bar
-    21300052: buttons_26
-    21300054: buttons_27
-    21300056: buttons_28
-    21300058: buttons_29
-    21300060: buttons_30
-    21300062: buttons_31
-    21300064: buttons_32
-    21300066: Private
-    21300068: Green_Star
-    21300070: buttons_35
-    21300072: buttons_36
-    21300074: Sergeant
-    21300076: Corporal
-    21300078: Sound_Off
-    21300080: Sound_On
-    21300082: buttons_41
-    21300084: buttons_42
-    21300086: buttons_43
-    21300088: Staff_Sergeant
-    21300090: Sergeant_First_Class
-    21300092: Big_Star
-    21300094: Lock
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Revival
+  - first:
+      213: 21300002
+    second: Bt_Main
+  - first:
+      213: 21300004
+    second: Music_Off
+  - first:
+      213: 21300006
+    second: Play
+  - first:
+      213: 21300008
+    second: Pause
+  - first:
+      213: 21300010
+    second: buttons_5
+  - first:
+      213: 21300012
+    second: Up
+  - first:
+      213: 21300014
+    second: Heart_Back
+  - first:
+      213: 21300016
+    second: Star
+  - first:
+      213: 21300018
+    second: Bt_WhiteBorder
+  - first:
+      213: 21300020
+    second: Music_On
+  - first:
+      213: 21300022
+    second: Coin
+  - first:
+      213: 21300024
+    second: Heart
+  - first:
+      213: 21300026
+    second: Checkpoint
+  - first:
+      213: 21300028
+    second: Star_Back
+  - first:
+      213: 21300030
+    second: Config
+  - first:
+      213: 21300032
+    second: Shop
+  - first:
+      213: 21300034
+    second: Wars
+  - first:
+      213: 21300036
+    second: Chars
+  - first:
+      213: 21300038
+    second: Bt_Side
+  - first:
+      213: 21300040
+    second: Green_Left_Bar
+  - first:
+      213: 21300042
+    second: Green_Mid_Bar
+  - first:
+      213: 21300044
+    second: Green_Right_Bar
+  - first:
+      213: 21300046
+    second: Grey_Left_Bar
+  - first:
+      213: 21300048
+    second: Grey_Mid_Bar
+  - first:
+      213: 21300050
+    second: Grey_Right_Bar
+  - first:
+      213: 21300052
+    second: buttons_26
+  - first:
+      213: 21300054
+    second: buttons_27
+  - first:
+      213: 21300056
+    second: buttons_28
+  - first:
+      213: 21300058
+    second: buttons_29
+  - first:
+      213: 21300060
+    second: buttons_30
+  - first:
+      213: 21300062
+    second: buttons_31
+  - first:
+      213: 21300064
+    second: buttons_32
+  - first:
+      213: 21300066
+    second: Private
+  - first:
+      213: 21300068
+    second: Green_Star
+  - first:
+      213: 21300070
+    second: buttons_35
+  - first:
+      213: 21300072
+    second: buttons_36
+  - first:
+      213: 21300074
+    second: Sergeant
+  - first:
+      213: 21300076
+    second: Corporal
+  - first:
+      213: 21300078
+    second: Sound_Off
+  - first:
+      213: 21300080
+    second: Sound_On
+  - first:
+      213: 21300082
+    second: buttons_41
+  - first:
+      213: 21300084
+    second: buttons_42
+  - first:
+      213: 21300086
+    second: buttons_43
+  - first:
+      213: 21300088
+    second: Staff_Sergeant
+  - first:
+      213: 21300090
+    second: Sergeant_First_Class
+  - first:
+      213: 21300092
+    second: Big_Star
+  - first:
+      213: 21300094
+    second: Lock
+  externalObjects: {}
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 512
   textureSettings:
+    serializedVersion: 2
     filterMode: -1
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: Revival
+    - serializedVersion: 2
+      name: Revival
       rect:
         serializedVersion: 2
         x: 6
@@ -106,9 +227,20 @@ TextureImporter:
         width: 138
         height: 122
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bt_Main
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bt_Main
       rect:
         serializedVersion: 2
         x: 152
@@ -116,9 +248,20 @@ TextureImporter:
         width: 58
         height: 49
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 7, y: 7, z: 7, w: 8}
-    - name: Music_Off
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Music_Off
       rect:
         serializedVersion: 2
         x: 212
@@ -126,9 +269,20 @@ TextureImporter:
         width: 50
         height: 51
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Play
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Play
       rect:
         serializedVersion: 2
         x: 266
@@ -136,9 +290,20 @@ TextureImporter:
         width: 48
         height: 67
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Pause
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause
       rect:
         serializedVersion: 2
         x: 272
@@ -146,9 +311,20 @@ TextureImporter:
         width: 35
         height: 30
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Up
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Up
       rect:
         serializedVersion: 2
         x: 314
@@ -156,9 +332,20 @@ TextureImporter:
         width: 68
         height: 92
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Heart_Back
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart_Back
       rect:
         serializedVersion: 2
         x: 383
@@ -166,9 +353,20 @@ TextureImporter:
         width: 61
         height: 54
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Star
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Star
       rect:
         serializedVersion: 2
         x: 444
@@ -176,9 +374,20 @@ TextureImporter:
         width: 58
         height: 55
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bt_WhiteBorder
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bt_WhiteBorder
       rect:
         serializedVersion: 2
         x: 153
@@ -186,9 +395,20 @@ TextureImporter:
         width: 54
         height: 40
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 7, z: 6, w: 6}
-    - name: Music_On
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Music_On
       rect:
         serializedVersion: 2
         x: 212
@@ -196,9 +416,20 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Coin
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin
       rect:
         serializedVersion: 2
         x: 399
@@ -206,9 +437,20 @@ TextureImporter:
         width: 31
         height: 44
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Heart
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart
       rect:
         serializedVersion: 2
         x: 451
@@ -216,9 +458,20 @@ TextureImporter:
         width: 44
         height: 41
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Checkpoint
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkpoint
       rect:
         serializedVersion: 2
         x: 0
@@ -226,9 +479,20 @@ TextureImporter:
         width: 149
         height: 142
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Star_Back
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Star_Back
       rect:
         serializedVersion: 2
         x: 149
@@ -236,9 +500,20 @@ TextureImporter:
         width: 92
         height: 87
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Config
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Config
       rect:
         serializedVersion: 2
         x: 242
@@ -246,9 +521,20 @@ TextureImporter:
         width: 63
         height: 63
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Shop
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop
       rect:
         serializedVersion: 2
         x: 306
@@ -256,9 +542,20 @@ TextureImporter:
         width: 50
         height: 53
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Wars
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wars
       rect:
         serializedVersion: 2
         x: 358
@@ -266,9 +563,20 @@ TextureImporter:
         width: 68
         height: 63
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Chars
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chars
       rect:
         serializedVersion: 2
         x: 428
@@ -276,9 +584,20 @@ TextureImporter:
         width: 73
         height: 81
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bt_Side
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bt_Side
       rect:
         serializedVersion: 2
         x: 151
@@ -286,9 +605,20 @@ TextureImporter:
         width: 242
         height: 50
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Left_Bar
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_Left_Bar
       rect:
         serializedVersion: 2
         x: 408
@@ -296,9 +626,20 @@ TextureImporter:
         width: 27
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Mid_Bar
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_Mid_Bar
       rect:
         serializedVersion: 2
         x: 441
@@ -306,9 +647,20 @@ TextureImporter:
         width: 25
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Right_Bar
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_Right_Bar
       rect:
         serializedVersion: 2
         x: 472
@@ -316,9 +668,20 @@ TextureImporter:
         width: 27
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grey_Left_Bar
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grey_Left_Bar
       rect:
         serializedVersion: 2
         x: 408
@@ -326,9 +689,20 @@ TextureImporter:
         width: 27
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grey_Mid_Bar
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grey_Mid_Bar
       rect:
         serializedVersion: 2
         x: 441
@@ -336,9 +710,20 @@ TextureImporter:
         width: 25
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grey_Right_Bar
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grey_Right_Bar
       rect:
         serializedVersion: 2
         x: 472
@@ -346,9 +731,20 @@ TextureImporter:
         width: 27
         height: 15
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Private
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Private
       rect:
         serializedVersion: 2
         x: 348
@@ -356,9 +752,20 @@ TextureImporter:
         width: 44
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Green_Star
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_Star
       rect:
         serializedVersion: 2
         x: 397
@@ -366,9 +773,20 @@ TextureImporter:
         width: 30
         height: 29
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sergeant
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sergeant
       rect:
         serializedVersion: 2
         x: 252
@@ -376,9 +794,20 @@ TextureImporter:
         width: 44
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Corporal
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corporal
       rect:
         serializedVersion: 2
         x: 300
@@ -386,9 +815,20 @@ TextureImporter:
         width: 44
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sound_Off
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6305410000000000800000000000000
+      internalID: 21300076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound_Off
       rect:
         serializedVersion: 2
         x: 398
@@ -396,9 +836,20 @@ TextureImporter:
         width: 35
         height: 34
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sound_On
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6305410000000000800000000000000
+      internalID: 21300078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound_On
       rect:
         serializedVersion: 2
         x: 442
@@ -406,9 +857,20 @@ TextureImporter:
         width: 44
         height: 35
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Staff_Sergeant
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07305410000000000800000000000000
+      internalID: 21300080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Staff_Sergeant
       rect:
         serializedVersion: 2
         x: 201
@@ -416,9 +878,20 @@ TextureImporter:
         width: 44
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sergeant_First_Class
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87305410000000000800000000000000
+      internalID: 21300088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sergeant_First_Class
       rect:
         serializedVersion: 2
         x: 150
@@ -426,9 +899,20 @@ TextureImporter:
         width: 44
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Big_Star
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7305410000000000800000000000000
+      internalID: 21300090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Big_Star
       rect:
         serializedVersion: 2
         x: 0
@@ -436,9 +920,20 @@ TextureImporter:
         width: 146
         height: 139
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Lock
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7305410000000000800000000000000
+      internalID: 21300092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lock
       rect:
         serializedVersion: 2
         x: 154
@@ -446,9 +941,31 @@ TextureImporter:
         width: 119
         height: 128
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7305410000000000800000000000000
+      internalID: 21300094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

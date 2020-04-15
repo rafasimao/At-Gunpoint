@@ -11,8 +11,8 @@ public class GameController : MonoBehaviour
 	public PointsController GamePointsController;
 	public MissionsController Missions;
 	public MapController Map;
-	public WarController War;
-	public AdManager Ads;
+    public WarController War;
+    public AdManager Ads;
 	public Purchaser GamePurchaser;
 
 	bool IsOnRunMode;
@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 	#region Singleton:
 	public static GameController Instance { get; private set; }
 
-	void Awake()
+    void Awake()
 	{
 		// First we check if there are any other instances conflicting
 		if(Instance != null && Instance != this)

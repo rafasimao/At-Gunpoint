@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{11926843-F74C-51C2-840A-BEA28792C868}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/Purchaser.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Game/AdManager.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/Game/Purchaser.cs" Line="17" Column="3" />
+      <File FileName="Assets/Scripts/Game/GameController.cs" Line="23" Column="5" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="At Gunpoint" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="72ad1ff0-0fe2-4f9c-beca-3d37e42f4a98" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
